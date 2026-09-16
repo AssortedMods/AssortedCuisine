@@ -21,9 +21,9 @@
     "X": "#minecraft:planks"
   },
   "pattern": [
-    "X",
-    "W",
-    "W"
+    "X  ",
+    " W ",
+    "  W"
   ],
   "result": {
     "id": "assortedcuisine:knife"

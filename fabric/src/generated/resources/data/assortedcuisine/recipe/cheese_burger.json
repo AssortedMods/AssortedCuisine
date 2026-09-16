@@ -12,9 +12,9 @@
     "O": "minecraft:cooked_beef"
   },
   "pattern": [
-    "C  ",
+    " C ",
     "AOA",
-    "C  "
+    " C "
   ],
   "result": {
     "id": "assortedcuisine:cheese_burger"

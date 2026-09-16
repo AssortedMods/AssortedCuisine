@@ -22,7 +22,6 @@ public class CuisineManualProvider extends LibManualProvider {
     protected void addChapters() {
         this.section(40, CuisineItems.CHEESE_BURGER.get());
 
-        this.addCocoa();
         this.addChocolate();
         this.addDairy();
         this.addFood();
@@ -33,18 +32,10 @@ public class CuisineManualProvider extends LibManualProvider {
         this.addHealth();
     }
 
-    private void addCocoa() {
-        ChapterBuilder cocoa = this.chapter("cocoa").whenPartEnabled(Parts.CHOCOLATE);
-
-        // The pod and the sapling are blocks with no item of their own; the fruit plants them.
-        cocoa.image("tree", picture("cocoa_tree"), 90, 104)
-                .opens(CuisineItems.COCOA_FRUIT.get(), CuisineBlocks.COCOA_POD.get(), CuisineBlocks.COCOA_SAPLING.get());
-        cocoa.recipes("dust", CuisineItems.COCOA_DUST.get()).opens(CuisineItems.COCOA_DUST.get());
-    }
-
     private void addChocolate() {
         ChapterBuilder chocolate = this.chapter("chocolate").whenPartEnabled(Parts.CHOCOLATE);
 
+        chocolate.recipes("dust", CuisineItems.COCOA_DUST.get()).opens(CuisineItems.COCOA_DUST.get());
         chocolate.recipes("bowl", CuisineItems.CHOCOLATE_BOWL.get()).opens(CuisineItems.CHOCOLATE_BOWL.get());
         chocolate.recipesById("hot", recipeId("hot_chocolate_smelting")).opens(CuisineItems.HOT_CHOCOLATE.get());
         chocolate.recipes("ball", CuisineItems.CHOCOLATE_BALL.get()).opens(CuisineItems.CHOCOLATE_BALL.get());

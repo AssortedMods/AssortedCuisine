@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:function",
-  "environment": "minecraft:default",
-  "function": "assortedcuisine:cocoa_tree_grows_on_every_soil",
-  "structure": "assortedcuisine:test_box",
-  "max_ticks": 1,
-  "setup_ticks": 0,
-  "required": true
-}

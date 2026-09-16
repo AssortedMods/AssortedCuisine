@@ -60,7 +60,6 @@ public class CuisineCreativeItems {
         }
 
         if (config.chocolateEnabled.get()) {
-            items.add(CuisineItems.COCOA_FRUIT.get());
             items.add(CuisineItems.COCOA_DUST.get());
             items.add(CuisineItems.CHOCOLATE_BOWL.get());
             items.add(CuisineItems.HOT_CHOCOLATE.get());

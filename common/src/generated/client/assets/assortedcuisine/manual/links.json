@@ -1,20 +1,10 @@
 {
   "links": [
     {
-      "blocks": [
-        "assortedcuisine:cocoa_pod",
-        "assortedcuisine:cocoa_sapling"
-      ],
-      "items": [
-        "assortedcuisine:cocoa_fruit"
-      ],
-      "page": "assortedcuisine:cocoa/tree"
-    },
-    {
       "items": [
         "assortedcuisine:cocoa_dust"
       ],
-      "page": "assortedcuisine:cocoa/dust"
+      "page": "assortedcuisine:chocolate/dust"
     },
     {
       "items": [

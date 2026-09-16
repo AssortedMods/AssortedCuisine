@@ -11,9 +11,9 @@
     "S": "minecraft:sugar"
   },
   "pattern": [
-    "#  ",
+    " # ",
     "#S#",
-    "#  "
+    " # "
   ],
   "result": {
     "id": "assortedcuisine:healthpack"

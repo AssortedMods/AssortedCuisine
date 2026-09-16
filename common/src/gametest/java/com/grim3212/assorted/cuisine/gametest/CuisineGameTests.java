@@ -19,7 +19,6 @@ public final class CuisineGameTests {
     public static void forEach(BiConsumer<String, Consumer<GameTestHelper>> out) {
         SmokeTests.register(out);
         MachineTests.register(out);
-        CocoaTests.register(out);
         RecipeTests.register(out);
         PartTests.register(out);
     }

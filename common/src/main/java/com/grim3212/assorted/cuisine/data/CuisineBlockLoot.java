@@ -1,7 +1,6 @@
 package com.grim3212.assorted.cuisine.data;
 
 import com.grim3212.assorted.cuisine.common.block.CuisineBlocks;
-import com.grim3212.assorted.cuisine.common.item.CuisineItems;
 import com.grim3212.assorted.lib.data.LibBlockLootProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.block.Block;
@@ -28,9 +27,5 @@ public class CuisineBlockLoot extends LibBlockLootProvider {
         for (Block pie : new Block[]{CuisineBlocks.APPLE_PIE.get(), CuisineBlocks.MELON_PIE.get(), CuisineBlocks.PUMPKIN_PIE.get(), CuisineBlocks.CHOCOLATE_PIE.get(), CuisineBlocks.PORK_PIE.get()}) {
             this.add(pie, noDrop());
         }
-
-        // Both cocoa blocks give back the fruit they were grown from.
-        this.dropOther(CuisineBlocks.COCOA_POD.get(), CuisineItems.COCOA_FRUIT.get());
-        this.dropOther(CuisineBlocks.COCOA_SAPLING.get(), CuisineItems.COCOA_FRUIT.get());
     }
 }

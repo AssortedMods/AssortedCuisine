@@ -4,9 +4,7 @@ import com.grim3212.assorted.cuisine.Constants;
 import com.grim3212.assorted.cuisine.common.block.ButterChurnBlock;
 import com.grim3212.assorted.cuisine.common.block.CheeseMakerBlock;
 import com.grim3212.assorted.cuisine.common.block.ChocolateBarMouldBlock;
-import com.grim3212.assorted.cuisine.common.block.CocoaSaplingBlock;
 import com.grim3212.assorted.cuisine.common.block.CuisineBlocks;
-import com.grim3212.assorted.cuisine.common.item.CuisineItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -70,20 +68,6 @@ public class CuisineBlockstateProvider extends ModelProvider {
             }))
             .build();
 
-    /** The cocoa pod: a box hanging from the leaf block above it. */
-    private static final ModelTemplate COCOA_POD = ExtendedModelTemplateBuilder.builder()
-            .parent(MC_BLOCK)
-            .requiredTextureSlot(TextureSlot.PARTICLE)
-            .requiredTextureSlot(TextureSlot.ALL)
-            .element(e -> e.from(4.5F, 4, 4.5F).to(11.5F, 16, 11.5F).allFaces((dir, face) -> {
-                switch (dir) {
-                    case DOWN -> face.texture(TextureSlot.ALL).uvs(11.5F, 11.5F, 4.5F, 4.5F);
-                    case UP -> face.texture(TextureSlot.ALL).uvs(4.5F, 4.5F, 11.5F, 11.5F);
-                    default -> face.texture(TextureSlot.ALL).uvs(4.5F, 0, 11.5F, 12);
-                }
-            }))
-            .build();
-
     public CuisineBlockstateProvider(PackOutput output) {
         super(output, Constants.MOD_ID);
     }
@@ -110,12 +94,6 @@ public class CuisineBlockstateProvider extends ModelProvider {
         cheeseMaker(blockModels);
         butterChurn(blockModels);
         chocolateBarMould(blockModels);
-        cocoaPod(blockModels);
-        cocoaSapling(blockModels);
-
-        // Cocoa fruit is a BlockItem - it plants the sapling - so it lands in this provider rather
-        // than the item one, but it is drawn as a flat sprite like every other item in the mod.
-        itemModels.generateFlatItem(CuisineItems.COCOA_FRUIT.get(), ModelTemplates.FLAT_ITEM);
 
         cake(blockModels, CuisineBlocks.CHOCOLATE_CAKE.get(), "chocolate_cake_bottom", "chocolate_cake_side", "chocolate_cake_top", "chocolate_cake_sidecut");
         pie(blockModels, CuisineBlocks.APPLE_PIE.get(), "apple_pie");
@@ -177,25 +155,6 @@ public class CuisineBlockstateProvider extends ModelProvider {
                 .with(PropertyDispatch.initial(ChocolateBarMouldBlock.STAGE).generate(stage -> BlockModelGenerators.plainVariant(
                         stage == 0 ? empty : stage < ChocolateBarMouldBlock.DONE ? setting : done))));
         blockModels.registerSimpleItemModel(block, empty);
-    }
-
-    private void cocoaPod(BlockModelGenerators blockModels) {
-        Block block = CuisineBlocks.COCOA_POD.get();
-        Material texture = blockTexture("cocoa_pod");
-        Identifier model = COCOA_POD.create(resource("block/cocoa_pod"), new TextureMapping()
-                .put(TextureSlot.PARTICLE, texture)
-                .put(TextureSlot.ALL, texture), blockModels.modelOutput);
-
-        blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, BlockModelGenerators.plainVariant(model)));
-    }
-
-    private void cocoaSapling(BlockModelGenerators blockModels) {
-        Block block = CuisineBlocks.COCOA_SAPLING.get();
-        Identifier model = ModelTemplates.CROSS.create(block, TextureMapping.cross(blockTexture("cocoa_sapling")), blockModels.modelOutput);
-
-        // Both growth stages look the same; the sapling just thickens invisibly before it sprouts.
-        blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
-                .with(PropertyDispatch.initial(CocoaSaplingBlock.STAGE).generate(stage -> BlockModelGenerators.plainVariant(model))));
     }
 
     private void pie(BlockModelGenerators blockModels, Block block, String name) {

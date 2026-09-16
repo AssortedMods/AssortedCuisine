@@ -7,11 +7,11 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cocoa_fruit": {
+    "has_cocoa_beans": {
       "conditions": {
         "items": [
           {
-            "items": "assortedcuisine:cocoa_fruit"
+            "items": "minecraft:cocoa_beans"
           }
         ]
       },
@@ -27,7 +27,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cocoa_fruit"
+      "has_cocoa_beans"
     ]
   ],
   "rewards": {

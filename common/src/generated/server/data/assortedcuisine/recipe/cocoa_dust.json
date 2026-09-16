@@ -7,7 +7,7 @@
   ],
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    "assortedcuisine:cocoa_fruit"
+    "minecraft:cocoa_beans"
   ],
   "result": {
     "count": 2,

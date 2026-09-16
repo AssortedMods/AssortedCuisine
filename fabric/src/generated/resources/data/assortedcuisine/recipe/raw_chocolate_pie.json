@@ -21,9 +21,9 @@
     "Y": "assortedcuisine:raw_empty_pie"
   },
   "pattern": [
-    "X  ",
+    " X ",
     "MMM",
-    "Y  "
+    " Y "
   ],
   "result": {
     "id": "assortedcuisine:raw_chocolate_pie"

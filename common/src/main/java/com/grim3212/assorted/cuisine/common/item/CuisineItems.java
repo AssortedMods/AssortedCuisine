@@ -41,7 +41,6 @@ public class CuisineItems {
     public static final IRegistryObject<Item> PAN = register("pan", props -> new Item(props.stacksTo(16)));
 
     // --- Chocolate ---
-    public static final IRegistryObject<Item> COCOA_FRUIT = register("cocoa_fruit", props -> new CocoaFruitItem(props.stacksTo(16)));
     public static final IRegistryObject<Item> COCOA_DUST = register("cocoa_dust", props -> new Item(props));
     public static final IRegistryObject<Item> CHOCOLATE_BOWL = register("chocolate_bowl", props -> new ChocolateBowlItem(drinkable(props.stacksTo(16))));
     public static final IRegistryObject<Item> HOT_CHOCOLATE = register("hot_chocolate", props -> new ChocolateBowlItem(drinkable(props.stacksTo(1)).craftRemainder(Items.BOWL)));

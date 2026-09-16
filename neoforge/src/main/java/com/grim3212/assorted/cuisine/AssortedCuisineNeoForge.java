@@ -6,11 +6,9 @@ import com.grim3212.assorted.cuisine.client.data.CuisineLanguageProvider;
 import com.grim3212.assorted.cuisine.client.data.CuisineManualProvider;
 import com.grim3212.assorted.cuisine.data.CuisineBlockLoot;
 import com.grim3212.assorted.cuisine.data.CuisineBlockTagProvider;
-import com.grim3212.assorted.cuisine.data.CuisineGenData;
 import com.grim3212.assorted.cuisine.data.CuisineItemTagProvider;
 import com.grim3212.assorted.cuisine.data.CuisineRecipes;
 import com.grim3212.assorted.lib.data.ForgeBlockTagProvider;
-import com.grim3212.assorted.lib.data.ForgeDatapackRegistryProvider;
 import com.grim3212.assorted.lib.data.ForgeItemTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -52,7 +50,6 @@ public class AssortedCuisineNeoForge {
         // Recipe providers are not data providers any more - the Runner owns the output.
         event.addProvider(new CuisineRecipes.Runner(packOutput, lookupProvider));
         event.addProvider(new LootTableProvider(packOutput, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(CuisineBlockLoot::new, LootContextParamSets.BLOCK)), lookupProvider));
-        event.addProvider(new ForgeDatapackRegistryProvider(Constants.MOD_ID, new CuisineGenData()).datpackEntriesProvider(packOutput, lookupProvider));
     }
 
     /** Client datagen: models and the language file, written into common for both loaders. */

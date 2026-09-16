@@ -9,9 +9,8 @@ rebuilt on the modern APIs.
 * **Dairy** - a butter churn and a cheese maker that take a bucket of milk and give back butter or a
   block of cheese; cheese, bread slices, cheese burgers and sandwiches; cracked, mixed and
   scrambled eggs; a knife and a mixer that wear out a point at a time instead of being used up.
-* **Chocolate** - cocoa trees that generate in the overworld and grow from cocoa fruit, cocoa dust,
-  bowls of chocolate hot and cold, a mould that sets hot chocolate into bars, wrapped bars,
-  chocolate blocks and a chocolate cake.
+* **Chocolate** - cocoa dust ground from vanilla cocoa beans, bowls of chocolate hot and cold, a
+  mould that sets hot chocolate into bars, wrapped bars, chocolate blocks and a chocolate cake.
 * **Pies** - a pie pan and dough, and apple, melon, pumpkin, chocolate and pork pies to fill and
   bake.
 * **Health** - sugar sweets, powered sugar and sweets, bandages and health packs that heal on use.
@@ -24,8 +23,8 @@ milk bucket or knife works here too.
 
 Each of the six is a part that `config/assortedcuisine-common` can switch off under `parts`. A
 disabled part keeps its blocks and items registered, so worlds still load, but loses its recipes,
-creative tab entries and manual chapters, along with the cocoa trees or the cactus drop. The knife
-stays while either dairy or pies is on, and the chocolate pie needs both pies and chocolate.
+creative tab entries and manual chapters, along with the cactus drop. The knife stays while either
+dairy or pies is on, and the chocolate pie needs both pies and chocolate.
 
 Minecraft 26.2, on both NeoForge and Fabric from a single source tree. Requires
 [Assorted Lib](https://github.com/grim3212/AssortedLib). Branches are per Minecraft version; `26.2`

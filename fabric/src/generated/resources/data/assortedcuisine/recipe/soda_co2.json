@@ -11,9 +11,9 @@
     "X": "#c:ingots/iron"
   },
   "pattern": [
-    "X  ",
+    " X ",
     "XOX",
-    "X  "
+    " X "
   ],
   "result": {
     "count": 4,

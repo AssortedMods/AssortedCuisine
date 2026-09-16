@@ -7,7 +7,7 @@
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-    "X": "#c:dyes/brown",
+    "X": "minecraft:cocoa_beans",
     "Y": "assortedcuisine:soda_carbonated_water"
   },
   "pattern": [

@@ -22,20 +22,18 @@ public class CuisineCommonConfig {
     public final Supplier<Boolean> piesEnabled;
     public final Supplier<Boolean> sodaEnabled;
 
-    public final Supplier<Boolean> generateCocoaTrees;
     public final Supplier<Double> dragonFruitChance;
 
     public CuisineCommonConfig() {
         final IConfigurationBuilder builder = Services.CONFIG.createBuilder(ConfigurationType.NOT_SYNCED, Constants.MOD_ID + "-common");
 
-        chocolateEnabled = builder.defineBoolean("parts.chocolateEnabled", true, "Set this to true if you would like cocoa trees to generate and the chocolate items to be craftable and found in the creative tab.");
+        chocolateEnabled = builder.defineBoolean("parts.chocolateEnabled", true, "Set this to true if you would like the chocolate items to be craftable and found in the creative tab.");
         dairyEnabled = builder.defineBoolean("parts.dairyEnabled", true, "Set this to true if you would like the butter churn, cheese maker, cheese, sandwiches and eggs to be craftable and found in the creative tab.");
         dragonFruitEnabled = builder.defineBoolean("parts.dragonFruitEnabled", true, "Set this to true if you would like cacti to drop dragon fruit and for it to be found in the creative tab.");
         healthEnabled = builder.defineBoolean("parts.healthEnabled", true, "Set this to true if you would like the sweets, bandages and health packs to be craftable and found in the creative tab.");
         piesEnabled = builder.defineBoolean("parts.piesEnabled", true, "Set this to true if you would like pies to be craftable and found in the creative tab.");
         sodaEnabled = builder.defineBoolean("parts.sodaEnabled", true, "Set this to true if you would like sodas to be craftable and found in the creative tab.");
 
-        generateCocoaTrees = builder.defineBoolean("worldgen.generateCocoaTrees", true, "Whether cocoa trees generate in the overworld. Turning this off leaves cocoa fruit plantable by hand. Has no effect while the chocolate part is disabled.");
         dragonFruitChance = builder.defineDouble("dragonFruit.dropChance", 0.33D, 0, 1, "The chance that breaking a cactus also drops dragon fruit. Set to 0 to turn the drop off.");
 
         builder.setup();

@@ -11,9 +11,9 @@
     "R": "assortedcuisine:powered_sugar"
   },
   "pattern": [
-    "#  ",
+    " # ",
     "#R#",
-    "#  "
+    " # "
   ],
   "result": {
     "id": "assortedcuisine:healthpack_super"

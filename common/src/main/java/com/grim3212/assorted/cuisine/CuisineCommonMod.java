@@ -5,8 +5,6 @@ import com.grim3212.assorted.cuisine.common.crafting.CuisineConditions;
 import com.grim3212.assorted.cuisine.common.handlers.CuisineCreativeItems;
 import com.grim3212.assorted.cuisine.common.handlers.LootTableHandlers;
 import com.grim3212.assorted.cuisine.common.item.CuisineItems;
-import com.grim3212.assorted.cuisine.common.worldgen.CuisineBiomeModifiers;
-import com.grim3212.assorted.cuisine.common.worldgen.CuisineFeatures;
 import com.grim3212.assorted.cuisine.config.CuisineCommonConfig;
 import com.grim3212.assorted.lib.events.LootTableModifyEvent;
 import com.grim3212.assorted.lib.platform.Services;
@@ -24,8 +22,6 @@ public class CuisineCommonMod {
 
         CuisineBlocks.init();
         CuisineItems.init();
-        CuisineFeatures.init();
-        CuisineBiomeModifiers.init();
         CuisineConditions.init();
         CuisineCreativeItems.init();
 

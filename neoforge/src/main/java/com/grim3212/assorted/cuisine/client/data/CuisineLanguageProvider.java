@@ -55,9 +55,6 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("item.assortedcuisine.soda_mushroom", "Mushroom Soda");
         this.add("item.assortedcuisine.soda_slurm", "Slurm");
 
-        this.add("block.assortedcuisine.cocoa_pod", "Cocoa Pod");
-        this.add("block.assortedcuisine.cocoa_sapling", "Cocoa Sapling");
-
         this.add("tag.item.assortedcuisine.pies", "Pies");
         this.add("tag.item.assortedcuisine.sodas", "Sodas");
         this.add("tag.item.c.tools.knife", "Knives");
@@ -77,7 +74,6 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("manual.assortedcuisine.description",
                 "Cocoa, chocolate, dairy and everything else this mod gives you to cook, bottle and eat.");
 
-        this.addCocoaChapter();
         this.addChocolateChapter();
         this.addDairyChapter();
         this.addFoodChapter();
@@ -88,22 +84,13 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.addHealthChapter();
     }
 
-    private void addCocoaChapter() {
-        this.add("manual.assortedcuisine.chapter.cocoa", "Cocoa Trees");
-
-        this.add("manual.assortedcuisine.chapter.cocoa.tree.title", "Cocoa Trees");
-        this.add("manual.assortedcuisine.chapter.cocoa.tree",
-                "Cocoa trees grow wild with fruit hanging under their leaves. Plant the fruit and it grows "
-                        + "another tree.");
-
-        this.add("manual.assortedcuisine.chapter.cocoa.dust.title", "Cocoa Dust");
-        this.add("manual.assortedcuisine.chapter.cocoa.dust",
-                "Ground down, the fruit gives cocoa dust, which is the form every chocolate recipe actually "
-                        + "asks for. Two of it also makes ordinary cocoa beans if that is what you needed.");
-    }
-
     private void addChocolateChapter() {
         this.add("manual.assortedcuisine.chapter.chocolate", "Chocolate");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.dust.title", "Cocoa Dust");
+        this.add("manual.assortedcuisine.chapter.chocolate.dust",
+                "Ground down, cocoa beans give cocoa dust, which is the form every chocolate recipe actually "
+                        + "asks for.");
 
         this.add("manual.assortedcuisine.chapter.chocolate.bowl.title", "Chocolate Bowl");
         this.add("manual.assortedcuisine.chapter.chocolate.bowl",

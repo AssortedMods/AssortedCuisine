@@ -8,6 +8,15 @@
   "pages": [
     {
       "type": "assortedlib:recipe",
+      "id": "dust",
+      "recipes": [
+        "assortedcuisine:cocoa_dust"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.dust",
+      "title": "manual.assortedcuisine.chapter.chocolate.dust.title"
+    },
+    {
+      "type": "assortedlib:recipe",
       "id": "bowl",
       "recipes": [
         "assortedcuisine:chocolate_bowl"
@@ -80,6 +89,5 @@
       "text": "manual.assortedcuisine.chapter.chocolate.cake",
       "title": "manual.assortedcuisine.chapter.chocolate.cake.title"
     }
-  ],
-  "sort_order": 10
+  ]
 }

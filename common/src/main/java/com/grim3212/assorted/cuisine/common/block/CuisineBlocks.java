@@ -36,10 +36,6 @@ public class CuisineBlocks {
     public static final IRegistryObject<Block> CHOCOLATE_BLOCK = register("chocolate_block", props -> new Block(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(1.0F)));
     public static final IRegistryObject<CuisineCakeBlock> CHOCOLATE_CAKE = register("chocolate_cake", props -> new CuisineCakeBlock(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.DESTROY)));
 
-    // The pod and the sapling are placed and dropped as cocoa fruit, so neither gets a BlockItem.
-    public static final IRegistryObject<CocoaPodBlock> COCOA_POD = registerNoItem("cocoa_pod", props -> new CocoaPodBlock(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(1.0F).noOcclusion().pushReaction(PushReaction.DESTROY)));
-    public static final IRegistryObject<CocoaSaplingBlock> COCOA_SAPLING = registerNoItem("cocoa_sapling", props -> new CocoaSaplingBlock(props.mapColor(MapColor.PLANT).sound(SoundType.WOOL).instabreak().noCollision().randomTicks().pushReaction(PushReaction.DESTROY)));
-
     public static final IRegistryObject<CuisineCakeBlock> APPLE_PIE = registerPie("apple_pie");
     public static final IRegistryObject<CuisineCakeBlock> MELON_PIE = registerPie("melon_pie");
     public static final IRegistryObject<CuisineCakeBlock> PUMPKIN_PIE = registerPie("pumpkin_pie");
@@ -81,16 +77,12 @@ public class CuisineBlocks {
     }
 
     private static <T extends Block> IRegistryObject<T> register(String name, Function<BlockBehaviour.Properties, ? extends T> factory) {
-        IRegistryObject<T> ret = registerNoItem(name, factory);
-        ITEMS.register(name, item(name, ret));
-        return ret;
-    }
-
-    private static <T extends Block> IRegistryObject<T> registerNoItem(String name, Function<BlockBehaviour.Properties, ? extends T> factory) {
         // Since 1.21.2 every block has to know its own id before it is constructed, so the
         // properties are built here where the registration name is known.
         final ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, name));
-        return BLOCKS.register(name, () -> factory.apply(BlockBehaviour.Properties.of().setId(key)));
+        IRegistryObject<T> ret = BLOCKS.register(name, () -> factory.apply(BlockBehaviour.Properties.of().setId(key)));
+        ITEMS.register(name, item(name, ret));
+        return ret;
     }
 
     private static Supplier<BlockItem> item(final String name, final IRegistryObject<? extends Block> block) {

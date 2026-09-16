@@ -11,8 +11,8 @@
     "X": "#c:cobblestones"
   },
   "pattern": [
-    "I  ",
-    "I  ",
+    " I ",
+    " I ",
     "XXX"
   ],
   "result": {

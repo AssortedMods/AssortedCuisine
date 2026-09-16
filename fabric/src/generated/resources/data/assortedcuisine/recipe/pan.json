@@ -11,8 +11,8 @@
     "X": "#c:stones"
   },
   "pattern": [
-    "XX",
-    "X "
+    "X X",
+    " X "
   ],
   "result": {
     "id": "assortedcuisine:pan"

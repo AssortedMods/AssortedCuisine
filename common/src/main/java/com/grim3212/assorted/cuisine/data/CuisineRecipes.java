@@ -84,17 +84,17 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.DECORATIONS, CuisineBlocks.CHEESE_MAKER.get())
                 .define('X', LibCommonTags.Items.COBBLESTONE).define('I', Items.BUCKET)
-                .pattern("XX ").pattern("XIX").pattern("XXX")
+                .pattern("X X").pattern("XIX").pattern("XXX")
                 .unlockedBy("has_bucket", has(Items.BUCKET)).save(this.output, key("cheese_maker"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.TOOLS, CuisineItems.KNIFE.get())
                 .define('X', ItemTags.PLANKS).define('W', LibCommonTags.Items.INGOTS_IRON)
-                .pattern("X").pattern("W").pattern("W")
+                .pattern("X  ").pattern(" W ").pattern("  W")
                 .unlockedBy("has_iron", has(LibCommonTags.Items.INGOTS_IRON)).save(this.output, key("knife"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.TOOLS, CuisineItems.MIXER.get())
                 .define('X', LibCommonTags.Items.INGOTS_IRON)
-                .pattern("X ").pattern("XX").pattern("X ")
+                .pattern("X  ").pattern(" XX").pattern(" X ")
                 .unlockedBy("has_iron", has(LibCommonTags.Items.INGOTS_IRON)).save(this.output, key("mixer"));
 
         // A block of cheese is nine pieces, either way round.
@@ -114,17 +114,17 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, CuisineItems.CHEESE_BURGER.get())
                 .define('A', CuisineTags.Items.FOODS_CHEESE).define('C', CuisineTags.Items.FOODS_BREAD).define('O', Items.COOKED_BEEF)
-                .pattern("C  ").pattern("AOA").pattern("C  ")
+                .pattern(" C ").pattern("AOA").pattern(" C ")
                 .unlockedBy("has_cheese", has(CuisineTags.Items.FOODS_CHEESE)).save(this.output, key("cheese_burger"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, CuisineItems.HOT_CHEESE.get())
                 .define('A', CuisineTags.Items.FOODS_CHEESE).define('C', CuisineTags.Items.FOODS_BREAD)
-                .pattern("C  ").pattern("AAA").pattern("C  ")
+                .pattern(" C ").pattern("AAA").pattern(" C ")
                 .unlockedBy("has_cheese", has(CuisineTags.Items.FOODS_CHEESE)).save(this.output, key("hot_cheese"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, CuisineItems.EGGS_UNMIXED.get())
                 .define('X', LibCommonTags.Items.EGGS).define('I', CuisineTags.Items.FOODS_BUTTER).define('M', Items.BOWL)
-                .pattern("XIX").pattern("M  ")
+                .pattern("XIX").pattern(" M ")
                 .unlockedBy("has_butter", has(CuisineTags.Items.FOODS_BUTTER)).save(this.output, key("eggs_unmixed"));
 
         ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.FOOD, CuisineItems.EGGS_MIXED.get())
@@ -136,19 +136,19 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
     private void chocolate() {
         ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, CuisineItems.COCOA_DUST.get(), 2)
-                .requires(CuisineItems.COCOA_FRUIT.get())
-                .unlockedBy("has_cocoa_fruit", has(CuisineItems.COCOA_FRUIT.get())).save(this.output, key("cocoa_dust"));
+                .requires(Items.COCOA_BEANS)
+                .unlockedBy("has_cocoa_beans", has(Items.COCOA_BEANS)).save(this.output, key("cocoa_dust"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, CuisineItems.CHOCOLATE_BOWL.get())
                 .define('X', CuisineItems.COCOA_DUST.get()).define('A', Items.SUGAR).define('B', LibCommonTags.Items.BUCKETS_MILK)
-                .pattern("X  ").pattern("XAX").pattern("B  ")
+                .pattern(" X ").pattern("XAX").pattern("B  ")
                 .unlockedBy("has_cocoa_dust", has(CuisineItems.COCOA_DUST.get())).save(this.output, key("chocolate_bowl"));
 
         smelt(CuisineItems.CHOCOLATE_BOWL.get(), CuisineItems.HOT_CHOCOLATE.get(), 0.3F, "hot_chocolate");
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.DECORATIONS, CuisineBlocks.CHOCOLATE_BAR_MOULD.get())
                 .define('I', LibCommonTags.Items.STONE).define('X', LibCommonTags.Items.COBBLESTONE)
-                .pattern("I  ").pattern("I  ").pattern("XXX")
+                .pattern(" I ").pattern(" I ").pattern("XXX")
                 .unlockedBy("has_hot_chocolate", has(CuisineItems.HOT_CHOCOLATE.get())).save(this.output, key("chocolate_bar_mould"));
 
         ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.FOOD, CuisineItems.CHOCOLATE_BALL.get(), 2)
@@ -185,7 +185,7 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.TOOLS, CuisineItems.PAN.get())
                 .define('X', LibCommonTags.Items.STONE)
-                .pattern("XX").pattern("X ")
+                .pattern("X X").pattern(" X ")
                 .unlockedBy("has_stone", has(LibCommonTags.Items.STONE)).save(this.output, key("pan"));
 
         ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.FOOD, CuisineItems.PUMPKIN_SLICE.get(), 6)
@@ -230,24 +230,24 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, CuisineItems.HEALTHPACK.get())
                 .define('#', WHITE_WOOL).define('S', Items.SUGAR)
-                .pattern("#  ").pattern("#S#").pattern("#  ")
+                .pattern(" # ").pattern("#S#").pattern(" # ")
                 .unlockedBy("has_wool", has(WHITE_WOOL)).save(this.output, key("healthpack"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, CuisineItems.HEALTHPACK_SUPER.get())
                 .define('#', WHITE_WOOL).define('R', CuisineItems.POWERED_SUGAR.get())
-                .pattern("#  ").pattern("#R#").pattern("#  ")
+                .pattern(" # ").pattern("#R#").pattern(" # ")
                 .unlockedBy("has_powered_sugar", has(CuisineItems.POWERED_SUGAR.get())).save(this.output, key("healthpack_super"));
     }
 
     private void soda() {
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, CuisineItems.SODA_BOTTLE.get())
                 .define('X', LibCommonTags.Items.GLASS_PANES)
-                .pattern("X  ").pattern("XX ").pattern("XXX")
+                .pattern("X X").pattern("X X").pattern("XXX")
                 .unlockedBy("has_glass_pane", has(LibCommonTags.Items.GLASS_PANES)).save(this.output, key("soda_bottle"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, CuisineItems.SODA_CO2.get(), 4)
                 .define('X', LibCommonTags.Items.INGOTS_IRON).define('O', Items.FLINT)
-                .pattern("X  ").pattern("XOX").pattern("X  ")
+                .pattern(" X ").pattern("XOX").pattern(" X ")
                 .unlockedBy("has_flint", has(Items.FLINT)).save(this.output, key("soda_co2"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, CuisineItems.SODA_CARBONATED_WATER.get())
@@ -263,7 +263,7 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
         flavour(CuisineItems.SODA_ROOT_BEER.get(), Ingredient.of(Items.WHEAT_SEEDS), "soda_root_beer");
         flavour(CuisineItems.SODA_ORANGE.get(), Ingredient.of(Items.PUMPKIN), "soda_orange");
         flavour(CuisineItems.SODA_DIAMOND.get(), Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.GEMS_DIAMOND)), "soda_diamond");
-        flavour(CuisineItems.SODA_COCOA.get(), Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.DYES_BROWN)), "soda_cocoa");
+        flavour(CuisineItems.SODA_COCOA.get(), Ingredient.of(Items.COCOA_BEANS), "soda_cocoa");
         flavour(CuisineItems.SODA_MUSHROOM.get(), Ingredient.of(Items.RED_MUSHROOM), "soda_mushroom");
 
         // Cream orange is the one built on another soda rather than on plain carbonated water.
@@ -283,7 +283,7 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
     private void rawPie(ItemLike result, ItemLike filling, String name) {
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, result)
                 .define('X', CuisineTags.Items.FOODS_DOUGH).define('M', filling).define('Y', CuisineItems.RAW_EMPTY_PIE.get())
-                .pattern("X  ").pattern("MMM").pattern("Y  ")
+                .pattern(" X ").pattern("MMM").pattern(" Y ")
                 .unlockedBy("has_empty_pie", has(CuisineItems.RAW_EMPTY_PIE.get())).save(this.output, key(name));
     }
 

@@ -11,9 +11,9 @@
     "C": "#c:foods/bread"
   },
   "pattern": [
-    "C  ",
+    " C ",
     "AAA",
-    "C  "
+    " C "
   ],
   "result": {
     "id": "assortedcuisine:hot_cheese"

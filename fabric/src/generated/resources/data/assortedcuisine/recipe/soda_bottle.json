@@ -10,8 +10,8 @@
     "X": "#c:glass_panes"
   },
   "pattern": [
-    "X  ",
-    "XX ",
+    "X X",
+    "X X",
     "XXX"
   ],
   "result": {
