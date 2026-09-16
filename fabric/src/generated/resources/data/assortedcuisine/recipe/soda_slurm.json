@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "soda"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": "#c:slime_balls",
+    "Y": "assortedcuisine:soda_carbonated_water"
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "result": {
+    "id": "assortedcuisine:soda_slurm"
+  }
+}

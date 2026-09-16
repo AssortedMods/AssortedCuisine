@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hot_chocolate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:hot_chocolate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedcuisine:chocolate_bar_mould"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hot_chocolate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedcuisine:chocolate_bar_mould"
+    ]
+  }
+}

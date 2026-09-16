@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "assortedcuisine:block/butter_churn_side",
+    "top": "assortedcuisine:block/butter_churn_top"
+  }
+}

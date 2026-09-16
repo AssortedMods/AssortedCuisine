@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": "#c:stones",
+    "X": "#c:cobblestones"
+  },
+  "pattern": [
+    "I  ",
+    "I  ",
+    "XXX"
+  ],
+  "result": {
+    "id": "assortedcuisine:chocolate_bar_mould"
+  }
+}

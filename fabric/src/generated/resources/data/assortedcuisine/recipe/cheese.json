@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "assortedcuisine:cheese_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "assortedcuisine:cheese"
+  }
+}

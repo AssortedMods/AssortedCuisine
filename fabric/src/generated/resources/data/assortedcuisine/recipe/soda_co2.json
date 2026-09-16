@@ -1,0 +1,22 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "soda"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "O": "minecraft:flint",
+    "X": "#c:ingots/iron"
+  },
+  "pattern": [
+    "X  ",
+    "XOX",
+    "X  "
+  ],
+  "result": {
+    "count": 4,
+    "id": "assortedcuisine:soda_co2"
+  }
+}

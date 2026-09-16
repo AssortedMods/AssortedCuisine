@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": "#c:foods/butter",
+    "M": "minecraft:bowl",
+    "X": "#c:eggs"
+  },
+  "pattern": [
+    "XIX",
+    "M  "
+  ],
+  "result": {
+    "id": "assortedcuisine:eggs_unmixed"
+  }
+}

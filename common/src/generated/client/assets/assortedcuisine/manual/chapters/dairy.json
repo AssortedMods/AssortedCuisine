@@ -1,0 +1,49 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "id": "butter_churn",
+      "recipes": [
+        "assortedcuisine:butter_churn"
+      ],
+      "text": "manual.assortedcuisine.chapter.dairy.butter_churn",
+      "title": "manual.assortedcuisine.chapter.dairy.butter_churn.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "cheese_maker",
+      "recipes": [
+        "assortedcuisine:cheese_maker"
+      ],
+      "text": "manual.assortedcuisine.chapter.dairy.cheese_maker",
+      "title": "manual.assortedcuisine.chapter.dairy.cheese_maker.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "cheese",
+      "interval": 60,
+      "recipes": [
+        "assortedcuisine:cheese",
+        "assortedcuisine:cheese_block"
+      ],
+      "text": "manual.assortedcuisine.chapter.dairy.cheese",
+      "title": "manual.assortedcuisine.chapter.dairy.cheese.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "hot_cheese",
+      "recipes": [
+        "assortedcuisine:hot_cheese"
+      ],
+      "text": "manual.assortedcuisine.chapter.dairy.hot_cheese",
+      "title": "manual.assortedcuisine.chapter.dairy.hot_cheese.title"
+    }
+  ],
+  "sort_order": 20
+}

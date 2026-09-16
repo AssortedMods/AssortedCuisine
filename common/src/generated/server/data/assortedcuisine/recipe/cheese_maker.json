@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": "minecraft:bucket",
+    "X": "#c:cobblestones"
+  },
+  "pattern": [
+    "XX ",
+    "XIX",
+    "XXX"
+  ],
+  "result": {
+    "id": "assortedcuisine:cheese_maker"
+  }
+}

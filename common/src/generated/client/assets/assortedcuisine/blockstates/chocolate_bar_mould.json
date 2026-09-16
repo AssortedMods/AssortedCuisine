@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "assortedcuisine:block/chocolate_bar_mould"
+    },
+    "stage=1": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=10": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=11": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=12": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=13": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=14": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=15": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_done"
+    },
+    "stage=2": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=3": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=4": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=5": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=6": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=7": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=8": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    },
+    "stage=9": {
+      "model": "assortedcuisine:block/chocolate_bar_mould_cooking"
+    }
+  }
+}

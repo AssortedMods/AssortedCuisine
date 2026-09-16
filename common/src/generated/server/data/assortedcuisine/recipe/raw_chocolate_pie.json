@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "pies"
+        },
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "chocolate"
+        }
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "assortedcuisine:chocolate_ball",
+    "X": "#c:foods/dough",
+    "Y": "assortedcuisine:raw_empty_pie"
+  },
+  "pattern": [
+    "X  ",
+    "MMM",
+    "Y  "
+  ],
+  "result": {
+    "id": "assortedcuisine:raw_chocolate_pie"
+  }
+}

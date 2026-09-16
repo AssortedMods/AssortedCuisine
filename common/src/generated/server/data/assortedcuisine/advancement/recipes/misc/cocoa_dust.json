@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cocoa_fruit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:cocoa_fruit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedcuisine:cocoa_dust"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cocoa_fruit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedcuisine:cocoa_dust"
+    ]
+  }
+}

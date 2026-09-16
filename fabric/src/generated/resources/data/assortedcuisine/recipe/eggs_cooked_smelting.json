@@ -1,0 +1,15 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 0.35,
+  "ingredient": "assortedcuisine:eggs_mixed",
+  "result": {
+    "id": "assortedcuisine:eggs_cooked"
+  }
+}

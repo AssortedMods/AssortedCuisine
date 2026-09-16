@@ -1,0 +1,79 @@
+{
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "conditions": [
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "dairy"
+        }
+      ],
+      "id": "eggs",
+      "interval": 60,
+      "recipes": [
+        "assortedcuisine:eggs_unmixed",
+        "assortedcuisine:eggs_mixed",
+        "assortedcuisine:eggs_cooked_smelting"
+      ],
+      "text": "manual.assortedcuisine.chapter.food.eggs",
+      "title": "manual.assortedcuisine.chapter.food.eggs.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "conditions": [
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "dairy"
+        }
+      ],
+      "id": "sandwiches",
+      "interval": 60,
+      "recipes": [
+        "assortedcuisine:bread_slice",
+        "assortedcuisine:cheese_burger"
+      ],
+      "text": "manual.assortedcuisine.chapter.food.sandwiches",
+      "title": "manual.assortedcuisine.chapter.food.sandwiches.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "conditions": [
+        {
+          "type": "assortedlib:any_of",
+          "values": [
+            {
+              "type": "assortedlib:part_enabled",
+              "part": "dairy"
+            },
+            {
+              "type": "assortedlib:part_enabled",
+              "part": "pies"
+            }
+          ]
+        }
+      ],
+      "id": "knife",
+      "recipes": [
+        "assortedcuisine:knife"
+      ],
+      "text": "manual.assortedcuisine.chapter.food.knife",
+      "title": "manual.assortedcuisine.chapter.food.knife.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "conditions": [
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "dairy"
+        }
+      ],
+      "id": "mixer",
+      "recipes": [
+        "assortedcuisine:mixer"
+      ],
+      "text": "manual.assortedcuisine.chapter.food.mixer",
+      "title": "manual.assortedcuisine.chapter.food.mixer.title"
+    }
+  ],
+  "sort_order": 30
+}

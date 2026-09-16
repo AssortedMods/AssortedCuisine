@@ -1,0 +1,51 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#bottom"
+        },
+        "east": {
+          "texture": "#side"
+        },
+        "north": {
+          "texture": "#side",
+          "uv": [
+            7.0,
+            8.0,
+            15.0,
+            16.0
+          ]
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "west": {
+          "texture": "#inside"
+        }
+      },
+      "from": [
+        7,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        8,
+        15
+      ]
+    }
+  ],
+  "textures": {
+    "bottom": "assortedcuisine:block/pie_bottom",
+    "inside": "assortedcuisine:block/melon_pie_cut",
+    "particle": "assortedcuisine:block/melon_pie_top",
+    "side": "assortedcuisine:block/pie_side",
+    "top": "assortedcuisine:block/melon_pie_top"
+  }
+}

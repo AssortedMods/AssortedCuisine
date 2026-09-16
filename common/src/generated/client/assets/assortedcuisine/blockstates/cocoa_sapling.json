@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "assortedcuisine:block/cocoa_sapling"
+    },
+    "stage=1": {
+      "model": "assortedcuisine:block/cocoa_sapling"
+    }
+  }
+}

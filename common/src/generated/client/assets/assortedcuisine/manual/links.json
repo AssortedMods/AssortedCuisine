@@ -1,0 +1,207 @@
+{
+  "links": [
+    {
+      "blocks": [
+        "assortedcuisine:cocoa_pod",
+        "assortedcuisine:cocoa_sapling"
+      ],
+      "items": [
+        "assortedcuisine:cocoa_fruit"
+      ],
+      "page": "assortedcuisine:cocoa/tree"
+    },
+    {
+      "items": [
+        "assortedcuisine:cocoa_dust"
+      ],
+      "page": "assortedcuisine:cocoa/dust"
+    },
+    {
+      "items": [
+        "assortedcuisine:chocolate_bowl"
+      ],
+      "page": "assortedcuisine:chocolate/bowl"
+    },
+    {
+      "items": [
+        "assortedcuisine:hot_chocolate"
+      ],
+      "page": "assortedcuisine:chocolate/hot"
+    },
+    {
+      "items": [
+        "assortedcuisine:chocolate_ball"
+      ],
+      "page": "assortedcuisine:chocolate/ball"
+    },
+    {
+      "blocks": [
+        "assortedcuisine:chocolate_bar_mould"
+      ],
+      "page": "assortedcuisine:chocolate/mould"
+    },
+    {
+      "items": [
+        "assortedcuisine:chocolate_bar"
+      ],
+      "page": "assortedcuisine:chocolate/bar"
+    },
+    {
+      "items": [
+        "assortedcuisine:wrapper",
+        "assortedcuisine:chocolate_bar_wrapped"
+      ],
+      "page": "assortedcuisine:chocolate/wrapped"
+    },
+    {
+      "blocks": [
+        "assortedcuisine:chocolate_block"
+      ],
+      "page": "assortedcuisine:chocolate/storage"
+    },
+    {
+      "blocks": [
+        "assortedcuisine:chocolate_cake"
+      ],
+      "page": "assortedcuisine:chocolate/cake"
+    },
+    {
+      "blocks": [
+        "assortedcuisine:butter_churn"
+      ],
+      "items": [
+        "assortedcuisine:butter"
+      ],
+      "page": "assortedcuisine:dairy/butter_churn"
+    },
+    {
+      "blocks": [
+        "assortedcuisine:cheese_maker"
+      ],
+      "page": "assortedcuisine:dairy/cheese_maker"
+    },
+    {
+      "blocks": [
+        "assortedcuisine:cheese_block"
+      ],
+      "items": [
+        "assortedcuisine:cheese"
+      ],
+      "page": "assortedcuisine:dairy/cheese"
+    },
+    {
+      "items": [
+        "assortedcuisine:hot_cheese"
+      ],
+      "page": "assortedcuisine:dairy/hot_cheese"
+    },
+    {
+      "items": [
+        "assortedcuisine:eggs_unmixed",
+        "assortedcuisine:eggs_mixed",
+        "assortedcuisine:eggs_cooked"
+      ],
+      "page": "assortedcuisine:food/eggs"
+    },
+    {
+      "items": [
+        "assortedcuisine:bread_slice",
+        "assortedcuisine:cheese_burger"
+      ],
+      "page": "assortedcuisine:food/sandwiches"
+    },
+    {
+      "items": [
+        "assortedcuisine:knife"
+      ],
+      "page": "assortedcuisine:food/knife"
+    },
+    {
+      "items": [
+        "assortedcuisine:mixer"
+      ],
+      "page": "assortedcuisine:food/mixer"
+    },
+    {
+      "items": [
+        "assortedcuisine:dragon_fruit"
+      ],
+      "page": "assortedcuisine:dragon_fruit/cactus"
+    },
+    {
+      "items": [
+        "assortedcuisine:pan",
+        "assortedcuisine:dough",
+        "assortedcuisine:pumpkin_slice"
+      ],
+      "page": "assortedcuisine:pies/ingredients"
+    },
+    {
+      "items": [
+        "assortedcuisine:raw_empty_pie",
+        "assortedcuisine:raw_apple_pie",
+        "assortedcuisine:raw_pumpkin_pie",
+        "assortedcuisine:raw_melon_pie",
+        "assortedcuisine:raw_pork_pie"
+      ],
+      "page": "assortedcuisine:pies/raw"
+    },
+    {
+      "blocks": [
+        "assortedcuisine:apple_pie",
+        "assortedcuisine:pumpkin_pie",
+        "assortedcuisine:melon_pie",
+        "assortedcuisine:pork_pie"
+      ],
+      "page": "assortedcuisine:pies/baking"
+    },
+    {
+      "blocks": [
+        "assortedcuisine:chocolate_pie"
+      ],
+      "items": [
+        "assortedcuisine:raw_chocolate_pie"
+      ],
+      "page": "assortedcuisine:pies/chocolate"
+    },
+    {
+      "items": [
+        "assortedcuisine:soda_bottle",
+        "assortedcuisine:soda_co2",
+        "assortedcuisine:soda_carbonated_water"
+      ],
+      "page": "assortedcuisine:soda/carbonated"
+    },
+    {
+      "items": [
+        "assortedcuisine:soda_slurm",
+        "assortedcuisine:soda_apple",
+        "assortedcuisine:soda_golden_apple",
+        "assortedcuisine:soda_cocoa",
+        "assortedcuisine:soda_root_beer",
+        "assortedcuisine:soda_diamond",
+        "assortedcuisine:soda_mushroom",
+        "assortedcuisine:soda_orange",
+        "assortedcuisine:soda_cream_orange",
+        "assortedcuisine:soda_spiked_orange"
+      ],
+      "page": "assortedcuisine:soda/types"
+    },
+    {
+      "items": [
+        "assortedcuisine:powered_sugar",
+        "assortedcuisine:sweets",
+        "assortedcuisine:powered_sweets"
+      ],
+      "page": "assortedcuisine:sugar/sweets"
+    },
+    {
+      "items": [
+        "assortedcuisine:bandage",
+        "assortedcuisine:healthpack",
+        "assortedcuisine:healthpack_super"
+      ],
+      "page": "assortedcuisine:health/packs"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "#c:foods/cheese",
+    "C": "#c:foods/bread"
+  },
+  "pattern": [
+    "C  ",
+    "AAA",
+    "C  "
+  ],
+  "result": {
+    "id": "assortedcuisine:hot_cheese"
+  }
+}

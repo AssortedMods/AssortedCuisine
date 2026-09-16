@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": "#c:rods/wooden",
+    "X": "#minecraft:planks"
+  },
+  "pattern": [
+    "XIX",
+    "XIX",
+    "XXX"
+  ],
+  "result": {
+    "id": "assortedcuisine:butter_churn"
+  }
+}

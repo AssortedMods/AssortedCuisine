@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "minecraft:sugar",
+    "B": "#c:buckets/milk",
+    "X": "assortedcuisine:cocoa_dust"
+  },
+  "pattern": [
+    "X  ",
+    "XAX",
+    "B  "
+  ],
+  "result": {
+    "id": "assortedcuisine:chocolate_bowl"
+  }
+}

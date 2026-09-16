@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "dragonfruit"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:image",
+      "height": 104,
+      "id": "cactus",
+      "image": "assortedcuisine:textures/gui/manual/dragon_fruit.png",
+      "text": "manual.assortedcuisine.chapter.dragon_fruit.cactus",
+      "title": "manual.assortedcuisine.chapter.dragon_fruit.cactus.title",
+      "width": 69
+    }
+  ],
+  "sort_order": 40
+}

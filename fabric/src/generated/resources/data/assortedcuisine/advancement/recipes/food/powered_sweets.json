@@ -1,0 +1,38 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "health"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_powered_sugar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:powered_sugar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedcuisine:powered_sweets"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_powered_sugar"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedcuisine:powered_sweets"
+    ]
+  }
+}

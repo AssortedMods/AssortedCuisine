@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "pies"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "minecraft:porkchop",
+    "X": "#c:foods/dough",
+    "Y": "assortedcuisine:raw_empty_pie"
+  },
+  "pattern": [
+    "X  ",
+    "MMM",
+    "Y  "
+  ],
+  "result": {
+    "id": "assortedcuisine:raw_pork_pie"
+  }
+}

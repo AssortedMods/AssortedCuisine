@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#bottom"
+        },
+        "east": {
+          "texture": "#side"
+        },
+        "north": {
+          "texture": "#side"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "west": {
+          "texture": "#side"
+        }
+      },
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        8,
+        15
+      ]
+    }
+  ],
+  "textures": {
+    "bottom": "assortedcuisine:block/chocolate_cake_bottom",
+    "inside": "assortedcuisine:block/chocolate_cake_sidecut",
+    "particle": "assortedcuisine:block/chocolate_cake_top",
+    "side": "assortedcuisine:block/chocolate_cake_side",
+    "top": "assortedcuisine:block/chocolate_cake_top"
+  }
+}

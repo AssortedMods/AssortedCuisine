@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "health"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:dusts/redstone",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "assortedcuisine:powered_sugar"
+  }
+}

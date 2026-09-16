@@ -1,0 +1,42 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "soda"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "id": "carbonated",
+      "interval": 60,
+      "recipes": [
+        "assortedcuisine:soda_bottle",
+        "assortedcuisine:soda_co2",
+        "assortedcuisine:soda_carbonated_water"
+      ],
+      "text": "manual.assortedcuisine.chapter.soda.carbonated",
+      "title": "manual.assortedcuisine.chapter.soda.carbonated.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "types",
+      "interval": 60,
+      "recipes": [
+        "assortedcuisine:soda_slurm",
+        "assortedcuisine:soda_apple",
+        "assortedcuisine:soda_golden_apple",
+        "assortedcuisine:soda_cocoa",
+        "assortedcuisine:soda_root_beer",
+        "assortedcuisine:soda_diamond",
+        "assortedcuisine:soda_mushroom",
+        "assortedcuisine:soda_orange",
+        "assortedcuisine:soda_cream_orange",
+        "assortedcuisine:soda_spiked_orange"
+      ],
+      "text": "manual.assortedcuisine.chapter.soda.types",
+      "title": "manual.assortedcuisine.chapter.soda.types.title"
+    }
+  ],
+  "sort_order": 60
+}

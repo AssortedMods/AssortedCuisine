@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "pies"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "assortedcuisine:pan",
+    "X": "#c:foods/dough"
+  },
+  "pattern": [
+    "X",
+    "M"
+  ],
+  "result": {
+    "id": "assortedcuisine:raw_empty_pie"
+  }
+}

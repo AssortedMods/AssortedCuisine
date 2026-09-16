@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:image",
+      "height": 104,
+      "id": "tree",
+      "image": "assortedcuisine:textures/gui/manual/cocoa_tree.png",
+      "text": "manual.assortedcuisine.chapter.cocoa.tree",
+      "title": "manual.assortedcuisine.chapter.cocoa.tree.title",
+      "width": 90
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "dust",
+      "recipes": [
+        "assortedcuisine:cocoa_dust"
+      ],
+      "text": "manual.assortedcuisine.chapter.cocoa.dust",
+      "title": "manual.assortedcuisine.chapter.cocoa.dust.title"
+    }
+  ]
+}

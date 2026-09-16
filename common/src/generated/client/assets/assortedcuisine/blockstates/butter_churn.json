@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "full=false": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "full=true": {
+      "model": "assortedcuisine:block/butter_churn"
+    }
+  }
+}

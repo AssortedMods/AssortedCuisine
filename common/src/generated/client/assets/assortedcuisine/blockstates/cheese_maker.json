@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "assortedcuisine:block/cheese_maker"
+    },
+    "stage=1": {
+      "model": "assortedcuisine:block/cheese_maker_milk1"
+    },
+    "stage=10": {
+      "model": "assortedcuisine:block/cheese_maker_milk2"
+    },
+    "stage=11": {
+      "model": "assortedcuisine:block/cheese_maker_milk2"
+    },
+    "stage=12": {
+      "model": "assortedcuisine:block/cheese_maker_milk2"
+    },
+    "stage=13": {
+      "model": "assortedcuisine:block/cheese_maker_milk2"
+    },
+    "stage=14": {
+      "model": "assortedcuisine:block/cheese_maker_milk2"
+    },
+    "stage=15": {
+      "model": "assortedcuisine:block/cheese_maker_done"
+    },
+    "stage=2": {
+      "model": "assortedcuisine:block/cheese_maker_milk1"
+    },
+    "stage=3": {
+      "model": "assortedcuisine:block/cheese_maker_milk1"
+    },
+    "stage=4": {
+      "model": "assortedcuisine:block/cheese_maker_milk1"
+    },
+    "stage=5": {
+      "model": "assortedcuisine:block/cheese_maker_milk1"
+    },
+    "stage=6": {
+      "model": "assortedcuisine:block/cheese_maker_milk1"
+    },
+    "stage=7": {
+      "model": "assortedcuisine:block/cheese_maker_milk1"
+    },
+    "stage=8": {
+      "model": "assortedcuisine:block/cheese_maker_milk2"
+    },
+    "stage=9": {
+      "model": "assortedcuisine:block/cheese_maker_milk2"
+    }
+  }
+}

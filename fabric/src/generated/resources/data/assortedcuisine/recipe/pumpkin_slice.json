@@ -1,0 +1,17 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "pies"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:pumpkin",
+    "#c:tools/knife"
+  ],
+  "result": {
+    "count": 6,
+    "id": "assortedcuisine:pumpkin_slice"
+  }
+}

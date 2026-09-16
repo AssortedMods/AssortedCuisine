@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "#c:ingots/iron"
+  },
+  "pattern": [
+    "X ",
+    "XX",
+    "X "
+  ],
+  "result": {
+    "id": "assortedcuisine:mixer"
+  }
+}

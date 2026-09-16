@@ -1,0 +1,85 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "id": "bowl",
+      "recipes": [
+        "assortedcuisine:chocolate_bowl"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.bowl",
+      "title": "manual.assortedcuisine.chapter.chocolate.bowl.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "hot",
+      "recipes": [
+        "assortedcuisine:hot_chocolate_smelting"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.hot",
+      "title": "manual.assortedcuisine.chapter.chocolate.hot.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "ball",
+      "recipes": [
+        "assortedcuisine:chocolate_ball"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.ball",
+      "title": "manual.assortedcuisine.chapter.chocolate.ball.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "mould",
+      "recipes": [
+        "assortedcuisine:chocolate_bar_mould"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.mould",
+      "title": "manual.assortedcuisine.chapter.chocolate.mould.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "bar",
+      "recipes": [
+        "assortedcuisine:chocolate_bar"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.bar",
+      "title": "manual.assortedcuisine.chapter.chocolate.bar.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "wrapped",
+      "interval": 60,
+      "recipes": [
+        "assortedcuisine:wrapper",
+        "assortedcuisine:chocolate_bar_wrapped"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.wrapped",
+      "title": "manual.assortedcuisine.chapter.chocolate.wrapped.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "storage",
+      "recipes": [
+        "assortedcuisine:chocolate_block"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.storage",
+      "title": "manual.assortedcuisine.chapter.chocolate.storage.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "cake",
+      "recipes": [
+        "assortedcuisine:chocolate_cake"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.cake",
+      "title": "manual.assortedcuisine.chapter.chocolate.cake.title"
+    }
+  ],
+  "sort_order": 10
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "assortedcuisine:block/cocoa_sapling"
+  }
+}

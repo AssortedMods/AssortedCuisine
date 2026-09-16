@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "health"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "minecraft:white_wool",
+    "R": "assortedcuisine:powered_sugar"
+  },
+  "pattern": [
+    "#  ",
+    "#R#",
+    "#  "
+  ],
+  "result": {
+    "id": "assortedcuisine:healthpack_super"
+  }
+}

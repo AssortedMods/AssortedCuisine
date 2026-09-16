@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "pies"
+        },
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "chocolate"
+        }
+      ]
+    }
+  ],
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 0.35,
+  "ingredient": "assortedcuisine:raw_chocolate_pie",
+  "result": {
+    "id": "assortedcuisine:chocolate_pie"
+  }
+}

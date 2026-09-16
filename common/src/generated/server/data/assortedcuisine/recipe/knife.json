@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:or",
+      "values": [
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "dairy"
+        },
+        {
+          "type": "assortedlib:part_enabled",
+          "part": "pies"
+        }
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": "#c:ingots/iron",
+    "X": "#minecraft:planks"
+  },
+  "pattern": [
+    "X",
+    "W",
+    "W"
+  ],
+  "result": {
+    "id": "assortedcuisine:knife"
+  }
+}

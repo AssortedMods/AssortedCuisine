@@ -1,0 +1,23 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "health"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "id": "sweets",
+      "interval": 60,
+      "recipes": [
+        "assortedcuisine:powered_sugar",
+        "assortedcuisine:sweets",
+        "assortedcuisine:powered_sweets"
+      ],
+      "text": "manual.assortedcuisine.chapter.sugar.sweets",
+      "title": "manual.assortedcuisine.chapter.sugar.sweets.title"
+    }
+  ],
+  "sort_order": 70
+}

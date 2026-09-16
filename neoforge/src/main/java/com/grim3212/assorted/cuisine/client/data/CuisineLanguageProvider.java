@@ -1,0 +1,262 @@
+package com.grim3212.assorted.cuisine.client.data;
+
+import com.grim3212.assorted.cuisine.Constants;
+import com.grim3212.assorted.lib.data.LibLanguageProvider;
+import net.minecraft.data.PackOutput;
+
+/**
+ * Generates the en_us.json of this mod. A block or item whose name is its id in title case needs no
+ * line here (see {@link LibLanguageProvider}); these are the names that read differently, and every
+ * key that is not a name.
+ */
+public class CuisineLanguageProvider extends LibLanguageProvider {
+
+    /** A blank line between paragraphs; the manual splits its text the way the font does. */
+    private static final String BREAK = "\n\n";
+
+    public CuisineLanguageProvider(PackOutput output) {
+        super(output, Constants.MOD_ID);
+    }
+
+    @Override
+    protected void addNames() {
+        this.add("itemGroup.assortedcuisine", "Assorted Cuisine");
+
+        // Names that are not just the id in title case.
+        this.add("item.assortedcuisine.eggs_unmixed", "Cracked Eggs");
+        this.add("item.assortedcuisine.eggs_mixed", "Mixed Eggs");
+        this.add("item.assortedcuisine.eggs_cooked", "Scrambled Eggs");
+        this.add("item.assortedcuisine.powered_sugar", "Powered Sugar");
+        this.add("item.assortedcuisine.powered_sweets", "Powered Sweets");
+        this.add("item.assortedcuisine.sweets", "Sugar Sweets");
+        this.add("item.assortedcuisine.healthpack", "Health Pack");
+        this.add("item.assortedcuisine.healthpack_super", "Super Health Pack");
+        this.add("item.assortedcuisine.hot_cheese", "Cheese Sandwich");
+        this.add("item.assortedcuisine.pan", "Pie Pan");
+        this.add("item.assortedcuisine.raw_empty_pie", "Unbaked Pie Shell");
+        this.add("item.assortedcuisine.raw_apple_pie", "Unbaked Apple Pie");
+        this.add("item.assortedcuisine.raw_melon_pie", "Unbaked Melon Pie");
+        this.add("item.assortedcuisine.raw_pumpkin_pie", "Unbaked Pumpkin Pie");
+        this.add("item.assortedcuisine.raw_chocolate_pie", "Unbaked Chocolate Pie");
+        this.add("item.assortedcuisine.raw_pork_pie", "Unbaked Pork Pie");
+        this.add("item.assortedcuisine.chocolate_bowl", "Bowl of Chocolate");
+        this.add("item.assortedcuisine.hot_chocolate", "Hot Chocolate");
+        this.add("item.assortedcuisine.soda_bottle", "Soda Bottle");
+        this.add("item.assortedcuisine.soda_co2", "CO2 Canister");
+        this.add("item.assortedcuisine.soda_carbonated_water", "Carbonated Water");
+        this.add("item.assortedcuisine.soda_apple", "Apple Soda");
+        this.add("item.assortedcuisine.soda_golden_apple", "Golden Apple Soda");
+        this.add("item.assortedcuisine.soda_diamond", "Diamond Soda");
+        this.add("item.assortedcuisine.soda_cocoa", "Cocoa Soda");
+        this.add("item.assortedcuisine.soda_orange", "Orange Soda");
+        this.add("item.assortedcuisine.soda_cream_orange", "Orange Cream Soda");
+        this.add("item.assortedcuisine.soda_spiked_orange", "Spiked Orange Soda");
+        this.add("item.assortedcuisine.soda_root_beer", "Root Beer");
+        this.add("item.assortedcuisine.soda_mushroom", "Mushroom Soda");
+        this.add("item.assortedcuisine.soda_slurm", "Slurm");
+
+        this.add("block.assortedcuisine.cocoa_pod", "Cocoa Pod");
+        this.add("block.assortedcuisine.cocoa_sapling", "Cocoa Sapling");
+
+        this.add("tag.item.assortedcuisine.pies", "Pies");
+        this.add("tag.item.assortedcuisine.sodas", "Sodas");
+        this.add("tag.item.c.tools.knife", "Knives");
+        this.add("tag.item.c.tools.mixer", "Mixers");
+        this.add("tag.item.c.foods.cheese", "Cheeses");
+        this.add("tag.item.c.foods.butter", "Butters");
+        this.add("tag.item.c.foods.dough", "Doughs");
+        this.add("tag.item.c.foods.cooked_egg", "Cooked Eggs");
+        this.add("tag.item.c.foods.bread", "Breads");
+
+        this.addManual();
+    }
+
+    /** The chapters in {@code assets/assortedcuisine/manual} name these keys. */
+    private void addManual() {
+        this.add("manual.assortedcuisine.title", "Assorted Cuisine");
+        this.add("manual.assortedcuisine.description",
+                "Cocoa, chocolate, dairy and everything else this mod gives you to cook, bottle and eat.");
+
+        this.addCocoaChapter();
+        this.addChocolateChapter();
+        this.addDairyChapter();
+        this.addFoodChapter();
+        this.addDragonFruitChapter();
+        this.addPiesChapter();
+        this.addSodaChapter();
+        this.addSugarChapter();
+        this.addHealthChapter();
+    }
+
+    private void addCocoaChapter() {
+        this.add("manual.assortedcuisine.chapter.cocoa", "Cocoa Trees");
+
+        this.add("manual.assortedcuisine.chapter.cocoa.tree.title", "Cocoa Trees");
+        this.add("manual.assortedcuisine.chapter.cocoa.tree",
+                "Cocoa trees grow wild with fruit hanging under their leaves. Plant the fruit and it grows "
+                        + "another tree.");
+
+        this.add("manual.assortedcuisine.chapter.cocoa.dust.title", "Cocoa Dust");
+        this.add("manual.assortedcuisine.chapter.cocoa.dust",
+                "Ground down, the fruit gives cocoa dust, which is the form every chocolate recipe actually "
+                        + "asks for. Two of it also makes ordinary cocoa beans if that is what you needed.");
+    }
+
+    private void addChocolateChapter() {
+        this.add("manual.assortedcuisine.chapter.chocolate", "Chocolate");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.bowl.title", "Chocolate Bowl");
+        this.add("manual.assortedcuisine.chapter.chocolate.bowl",
+                "Cocoa dust and milk in a bowl is cold chocolate, which is not much use on its own. Any milk "
+                        + "bucket will do, including the ones Assorted Tools adds.");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.hot.title", "Hot Chocolate");
+        this.add("manual.assortedcuisine.chapter.chocolate.hot",
+                "Heat the bowl in a furnace and it becomes hot chocolate. Everything below wants it hot.");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.ball.title", "Chocolate Balls");
+        this.add("manual.assortedcuisine.chapter.chocolate.ball",
+                "Hot chocolate rolled into balls is the quickest thing here to eat, and what the cake is "
+                        + "built from.");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.mould.title", "Chocolate Bar Mould");
+        this.add("manual.assortedcuisine.chapter.chocolate.mould",
+                "Place the mould and right click it with hot chocolate to pour. It sets on its own over a "
+                        + "while." + BREAK
+                        + "Once it has set, punch the mould to knock the bar out. The mould stays where it is, "
+                        + "ready for the next pour.");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.bar.title", "Chocolate Bars");
+        this.add("manual.assortedcuisine.chapter.chocolate.bar",
+                "A plain bar is food on its own, and the base of everything wrapped.");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.wrapped.title", "Wrapped Bars");
+        this.add("manual.assortedcuisine.chapter.chocolate.wrapped",
+                "Make a wrapper, wrap a bar in it, and the result feeds you better than the bare bar did.");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.storage.title", "Storage");
+        this.add("manual.assortedcuisine.chapter.chocolate.storage",
+                "Nine bars press into a block, and a block gives the nine back.");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.cake.title", "Chocolate Cake");
+        this.add("manual.assortedcuisine.chapter.chocolate.cake",
+                "Chocolate balls and milk make a cake. It is placed and eaten a slice at a time, the way any "
+                        + "cake is.");
+    }
+
+    private void addDairyChapter() {
+        this.add("manual.assortedcuisine.chapter.dairy", "Dairy");
+
+        this.add("manual.assortedcuisine.chapter.dairy.butter_churn.title", "Butter Churn");
+        this.add("manual.assortedcuisine.chapter.dairy.butter_churn",
+                "Right click the churn with any milk bucket to fill it, then punch it to churn. One filling "
+                        + "gives one to three butter." + BREAK
+                        + "The bucket comes back, so a stack of milk is a stack of butter.");
+
+        this.add("manual.assortedcuisine.chapter.dairy.cheese_maker.title", "Cheese Maker");
+        this.add("manual.assortedcuisine.chapter.dairy.cheese_maker",
+                "The cheese maker takes a milk bucket the same way, but it needs time. Watch it turn from pale "
+                        + "to a yellow orange; punching it early gets you nothing." + BREAK
+                        + "When it has gone the whole way, punch it for a block of cheese.");
+
+        this.add("manual.assortedcuisine.chapter.dairy.cheese.title", "Cheese");
+        this.add("manual.assortedcuisine.chapter.dairy.cheese",
+                "A block of cheese cuts into nine pieces, and nine pieces press back into a block.");
+
+        this.add("manual.assortedcuisine.chapter.dairy.hot_cheese.title", "Hot Cheese");
+        this.add("manual.assortedcuisine.chapter.dairy.hot_cheese",
+                "Melted cheese is the filling a burger wants, and better food than the cold piece was.");
+    }
+
+    private void addFoodChapter() {
+        this.add("manual.assortedcuisine.chapter.food", "Food");
+
+        this.add("manual.assortedcuisine.chapter.food.eggs.title", "Eggs");
+        this.add("manual.assortedcuisine.chapter.food.eggs",
+                "Crack eggs into a pan, mix them, then cook them in a furnace. Raw eggs are not worth eating, "
+                        + "and the game will let you try anyway." + BREAK
+                        + "Cooked eggs are filling and heal well, which is most of the reason to keep butter "
+                        + "around.");
+
+        this.add("manual.assortedcuisine.chapter.food.sandwiches.title", "Sandwiches");
+        this.add("manual.assortedcuisine.chapter.food.sandwiches",
+                "Bread cuts into slices, and slices with cheese make a burger that carries a long trip.");
+
+        this.add("manual.assortedcuisine.chapter.food.knife.title", "Knife");
+        this.add("manual.assortedcuisine.chapter.food.knife",
+                "The knife slices bread and pumpkins. It stays in the crafting grid and wears out a little "
+                        + "with every cut.");
+
+        this.add("manual.assortedcuisine.chapter.food.mixer.title", "Mixer");
+        this.add("manual.assortedcuisine.chapter.food.mixer",
+                "The mixer whisks eggs, and wears out the same way the knife does.");
+    }
+
+    private void addDragonFruitChapter() {
+        this.add("manual.assortedcuisine.chapter.dragon_fruit", "Dragon Fruit");
+
+        this.add("manual.assortedcuisine.chapter.dragon_fruit.cactus.title", "Dragon Fruit");
+        this.add("manual.assortedcuisine.chapter.dragon_fruit.cactus",
+                "Cacti sometimes drop dragon fruit when they break. It is a small meal.");
+    }
+
+    private void addPiesChapter() {
+        this.add("manual.assortedcuisine.chapter.pies", "Pies");
+
+        this.add("manual.assortedcuisine.chapter.pies.ingredients.title", "Ingredients");
+        this.add("manual.assortedcuisine.chapter.pies.ingredients",
+                "Every pie starts with dough in a pan. Pumpkin slices are the one filling you have to cut "
+                        + "yourself.");
+
+        this.add("manual.assortedcuisine.chapter.pies.raw.title", "Filling a Pie");
+        this.add("manual.assortedcuisine.chapter.pies.raw",
+                "Make an empty pie, then fill it with apple, pumpkin, melon or pork. A raw pie is not food "
+                        + "yet.");
+
+        this.add("manual.assortedcuisine.chapter.pies.baking.title", "Baking");
+        this.add("manual.assortedcuisine.chapter.pies.baking",
+                "A raw pie bakes in a furnace, and the baked pie is a block. Place it down and eat it a slice "
+                        + "at a time, the way a cake works.");
+
+        this.add("manual.assortedcuisine.chapter.pies.chocolate.title", "Chocolate Pie");
+        this.add("manual.assortedcuisine.chapter.pies.chocolate",
+                "Chocolate balls fill a pie too, and it bakes the same way.");
+    }
+
+    private void addSodaChapter() {
+        this.add("manual.assortedcuisine.chapter.soda", "Soda");
+
+        this.add("manual.assortedcuisine.chapter.soda.carbonated.title", "Carbonated Water");
+        this.add("manual.assortedcuisine.chapter.soda.carbonated",
+                "Every soda starts the same way: a soda bottle, some carbon dioxide, and water to carbonate. "
+                        + "Get that far and the flavour is the easy part.");
+
+        this.add("manual.assortedcuisine.chapter.soda.types.title", "Flavours");
+        this.add("manual.assortedcuisine.chapter.soda.types",
+                "Ten flavours, and they do not heal the same. Slurm and root beer are light, apple and the two "
+                        + "oranges are ordinary, and cocoa, golden apple and diamond are worth saving." + BREAK
+                        + "Spiked orange is the exception. It hurts whoever drinks it, which is the whole point "
+                        + "of handing one to somebody else.");
+    }
+
+    private void addSugarChapter() {
+        this.add("manual.assortedcuisine.chapter.sugar", "Sweets");
+
+        this.add("manual.assortedcuisine.chapter.sugar.sweets.title", "Sweets");
+        this.add("manual.assortedcuisine.chapter.sugar.sweets",
+                "Powdered sugar makes sweets, and powdered sweets make the stronger kind. Neither is a meal, "
+                        + "but both stack deep and eat quickly." + BREAK
+                        + "Powdered sweets are also what the super health pack is built on.");
+    }
+
+    private void addHealthChapter() {
+        this.add("manual.assortedcuisine.chapter.health", "Healing");
+
+        this.add("manual.assortedcuisine.chapter.health.packs.title", "Bandages and Packs");
+        this.add("manual.assortedcuisine.chapter.health.packs",
+                "Food heals slowly and only while you are fed. These three heal now, which is what you want "
+                        + "halfway through a fight." + BREAK
+                        + "The bandage is the cheap one, the health pack the middle, and the super pack needs "
+                        + "powdered sweets from the previous chapter.");
+    }
+}
