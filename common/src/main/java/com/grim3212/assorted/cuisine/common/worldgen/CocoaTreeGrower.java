@@ -58,9 +58,12 @@ public class CocoaTreeGrower {
 
                     level.setBlock(pos, leaves, Block.UPDATE_CLIENTS);
 
-                    // A pod hangs below a leaf, never below another pod.
+                    // A pod hangs below a leaf, never below another pod, and never in the trunk's
+                    // column: on the shortest trees the canopy starts a block above the sapling,
+                    // and a pod there would take the spot the trunk's bottom log needs.
                     BlockPos below = pos.below();
-                    if (random.nextInt(POD_CHANCE) == 0 && isReplaceable(level, below) && !level.getBlockState(below).is(CuisineBlocks.COCOA_POD.get())) {
+                    boolean trunkColumn = x == origin.getX() && z == origin.getZ();
+                    if (!trunkColumn && random.nextInt(POD_CHANCE) == 0 && isReplaceable(level, below) && !level.getBlockState(below).is(CuisineBlocks.COCOA_POD.get())) {
                         level.setBlock(below, pod, Block.UPDATE_CLIENTS);
                     }
                 }
@@ -78,7 +81,9 @@ public class CocoaTreeGrower {
     }
 
     private static boolean canFit(LevelAccessor level, BlockPos origin, int height) {
-        if (!level.getBlockState(origin.below()).is(BlockTags.DIRT)) {
+        // Not #dirt: since 26.2 that is only dirt, coarse dirt and rooted dirt, which left out the
+        // grass almost every tree stands on. #substrate_overworld is what #dirt used to hold.
+        if (!level.getBlockState(origin.below()).is(BlockTags.SUBSTRATE_OVERWORLD)) {
             return false;
         }
 
