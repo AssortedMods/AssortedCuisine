@@ -2,6 +2,7 @@ package com.grim3212.assorted.cuisine.data;
 
 import com.grim3212.assorted.cuisine.Constants;
 import com.grim3212.assorted.cuisine.api.CuisineTags;
+import com.grim3212.assorted.cuisine.api.crafting.CuisineMachine;
 import com.grim3212.assorted.cuisine.common.block.CuisineBlocks;
 import com.grim3212.assorted.cuisine.common.crafting.CuisineConditions.Parts;
 import com.grim3212.assorted.cuisine.common.item.CuisineItems;
@@ -22,6 +23,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -47,12 +49,12 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
     @Override
     public void registerConditions() {
         this.addConditions(partEnabled(Parts.DAIRY), ids("butter_churn", "cheese_maker", "mixer", "cheese_block", "cheese", "bread_slice",
-                "cheese_burger", "hot_cheese", "eggs_unmixed", "eggs_mixed", "eggs_cooked_smelting"));
+                "cheese_burger", "hot_cheese", "eggs_unmixed", "eggs_mixed", "eggs_cooked_smelting", "cheese_making", "churning"));
         // Both halves cut with the knife, so either keeps it craftable.
         this.addConditions(or(partEnabled(Parts.DAIRY), partEnabled(Parts.PIES)), ids("knife"));
 
         this.addConditions(partEnabled(Parts.CHOCOLATE), ids("cocoa_dust", "chocolate_bowl", "hot_chocolate_smelting", "chocolate_bar_mould",
-                "chocolate_ball", "chocolate_block", "chocolate_bar", "wrapper", "chocolate_bar_wrapped", "chocolate_cake"));
+                "chocolate_ball", "chocolate_block", "chocolate_bar", "wrapper", "chocolate_bar_wrapped", "chocolate_cake", "chocolate_moulding"));
 
         this.addConditions(partEnabled(Parts.PIES), ids("dough", "pan", "pumpkin_slice", "raw_empty_pie", "raw_apple_pie", "raw_melon_pie",
                 "raw_pumpkin_pie", "raw_pork_pie", "apple_pie_smelting", "melon_pie_smelting", "pumpkin_pie_smelting", "pork_pie_smelting"));
@@ -132,6 +134,14 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
                 .unlockedBy("has_mixer", has(CuisineTags.Items.MIXERS)).save(this.output, key("eggs_mixed"));
 
         smelt(CuisineItems.EGGS_MIXED.get(), CuisineItems.EGGS_COOKED.get(), 0.35F, "eggs_cooked");
+
+        // What the two dairy machines actually do. 1.12 hardcoded both inside the blocks; as
+        // recipes a pack can add a second milk, or a cheese of its own.
+        CuisineMachineRecipeBuilder.recipe(CuisineMachine.CHEESE_MAKER, Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.BUCKETS_MILK)), new ItemStackTemplate(CuisineBlocks.CHEESE_BLOCK.get().asItem(), 1))
+                .unlockedBy("has_cheese_maker", has(CuisineBlocks.CHEESE_MAKER.get())).save(this.output, key("cheese_making"));
+
+        CuisineMachineRecipeBuilder.recipe(CuisineMachine.BUTTER_CHURN, Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.BUCKETS_MILK)), new ItemStackTemplate(CuisineItems.BUTTER.get(), 2))
+                .unlockedBy("has_butter_churn", has(CuisineBlocks.BUTTER_CHURN.get())).save(this.output, key("churning"));
     }
 
     private void chocolate() {
@@ -145,6 +155,10 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
                 .unlockedBy("has_cocoa_dust", has(CuisineItems.COCOA_DUST.get())).save(this.output, key("chocolate_bowl"));
 
         smelt(CuisineItems.CHOCOLATE_BOWL.get(), CuisineItems.HOT_CHOCOLATE.get(), 0.3F, "hot_chocolate");
+
+        // The mould, as a recipe rather than a hardcoded hot chocolate check.
+        CuisineMachineRecipeBuilder.recipe(CuisineMachine.CHOCOLATE_MOULD, Ingredient.of(CuisineItems.HOT_CHOCOLATE.get()), new ItemStackTemplate(CuisineItems.CHOCOLATE_BAR.get(), 2))
+                .unlockedBy("has_chocolate_bar_mould", has(CuisineBlocks.CHOCOLATE_BAR_MOULD.get())).save(this.output, key("chocolate_moulding"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.DECORATIONS, CuisineBlocks.CHOCOLATE_BAR_MOULD.get())
                 .define('I', LibCommonTags.Items.STONE).define('X', LibCommonTags.Items.COBBLESTONE)

@@ -1,0 +1,56 @@
+{
+  "criteria": {
+    "drink": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:drinks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "food": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:tools/knife"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:block/pumpkin_top",
+    "description": {
+      "translate": "advancements.assortedcuisine.root.description"
+    },
+    "icon": {
+      "id": "assortedcuisine:cheese_burger"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.assortedcuisine.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "food",
+      "drink",
+      "tool"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

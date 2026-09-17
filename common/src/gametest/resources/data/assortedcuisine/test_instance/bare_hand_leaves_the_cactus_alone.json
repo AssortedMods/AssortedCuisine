@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedcuisine:bare_hand_leaves_the_cactus_alone",
+  "structure": "assortedcuisine:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

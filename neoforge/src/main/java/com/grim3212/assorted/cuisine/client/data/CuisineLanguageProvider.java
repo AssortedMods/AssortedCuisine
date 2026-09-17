@@ -55,6 +55,13 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("item.assortedcuisine.soda_mushroom", "Mushroom Soda");
         this.add("item.assortedcuisine.soda_slurm", "Slurm");
 
+        // The soda and healing tooltips, so thirteen near-identical bottles can be told apart.
+        this.add("tooltip.assortedcuisine.restores", "Restores %s hearts");
+        this.add("tooltip.assortedcuisine.hurts", "Costs %s hearts");
+
+        this.add("death.attack.assortedcuisine.spiked_soda", "%1$s drank a spiked orange soda");
+        this.add("death.attack.assortedcuisine.spiked_soda.player", "%1$s drank a spiked orange soda given to them by %2$s");
+
         this.add("tag.item.assortedcuisine.pies", "Pies");
         this.add("tag.item.assortedcuisine.sodas", "Sodas");
         this.add("tag.item.c.tools.knife", "Knives");
@@ -82,6 +89,7 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.addSodaChapter();
         this.addSugarChapter();
         this.addHealthChapter();
+        this.addAdvancements();
     }
 
     private void addChocolateChapter() {
@@ -108,10 +116,13 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
 
         this.add("manual.assortedcuisine.chapter.chocolate.mould.title", "Chocolate Bar Mould");
         this.add("manual.assortedcuisine.chapter.chocolate.mould",
-                "Place the mould and right click it with hot chocolate to pour. It sets on its own over a "
-                        + "while." + BREAK
-                        + "Once it has set, punch the mould to knock the bar out. The mould stays where it is, "
-                        + "ready for the next pour.");
+                "Place the mould and right click it with hot chocolate to pour. It steams while it sets, and "
+                        + "sets twice as fast standing on ice or snow." + BREAK
+                        + "Once it has set, right click the mould for the bars.");
+
+        this.add("manual.assortedcuisine.chapter.chocolate.moulding.title", "Setting Bars");
+        this.add("manual.assortedcuisine.chapter.chocolate.moulding",
+                "One bowl of hot chocolate sets into two bars.");
 
         this.add("manual.assortedcuisine.chapter.chocolate.bar.title", "Chocolate Bars");
         this.add("manual.assortedcuisine.chapter.chocolate.bar",
@@ -136,15 +147,19 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
 
         this.add("manual.assortedcuisine.chapter.dairy.butter_churn.title", "Butter Churn");
         this.add("manual.assortedcuisine.chapter.dairy.butter_churn",
-                "Right click the churn with any milk bucket to fill it, then punch it to churn. One filling "
-                        + "gives one to three butter." + BREAK
-                        + "The bucket comes back, so a stack of milk is a stack of butter.");
+                "Right click the churn with any milk bucket to fill it. It separates on its own, but every "
+                        + "right click while it works gives the handle a turn and hurries it along." + BREAK
+                        + "Right click once more when it is done for two butter.");
 
         this.add("manual.assortedcuisine.chapter.dairy.cheese_maker.title", "Cheese Maker");
         this.add("manual.assortedcuisine.chapter.dairy.cheese_maker",
-                "The cheese maker takes a milk bucket the same way, but it needs time. Watch it turn from pale "
-                        + "to a yellow orange; punching it early gets you nothing." + BREAK
-                        + "When it has gone the whole way, punch it for a block of cheese.");
+                "The cheese maker takes a milk bucket the same way, but it needs longer and cannot be hurried. "
+                        + "Watch it turn from pale to a yellow orange." + BREAK
+                        + "When it has gone the whole way, right click it to get your cheese.");
+
+        this.add("manual.assortedcuisine.chapter.dairy.making.title", "What Goes In");
+        this.add("manual.assortedcuisine.chapter.dairy.making",
+                "Any milk bucket should work to craft these wonderful Dairy items. So don't worry about it.");
 
         this.add("manual.assortedcuisine.chapter.dairy.cheese.title", "Cheese");
         this.add("manual.assortedcuisine.chapter.dairy.cheese",
@@ -241,9 +256,37 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
 
         this.add("manual.assortedcuisine.chapter.health.packs.title", "Bandages and Packs");
         this.add("manual.assortedcuisine.chapter.health.packs",
-                "Food heals slowly and only while you are fed. These three heal now, which is what you want "
-                        + "halfway through a fight." + BREAK
+                "Food heals slowly and only while you are fed. These three heal directly, which is what you "
+                        + "want halfway through a fight - but each takes a moment to apply, and being hit "
+                        + "interrupts it." + BREAK
                         + "The bandage is the cheap one, the health pack the middle, and the super pack needs "
                         + "powdered sweets from the previous chapter.");
+    }
+
+    /** The advancement tab. Keys match the ids {@code CuisineAdvancements} saves. */
+    private void addAdvancements() {
+        this.advancement("root", "Assorted Cuisine", "Cook something worth eating");
+
+        this.advancement("cheese", "Say Cheese", "Turn a bucket of milk into a block of cheese");
+        this.advancement("butter", "Churn Baby Churn", "Work a butter churn until it gives up its butter");
+        this.advancement("sandwich", "Lunch Break", "Build a cheese burger");
+
+        this.advancement("chocolate", "Bar None", "Set hot chocolate into a bar");
+        this.advancement("chocolate_cake", "The Cake Is Chocolate", "Bake a chocolate cake");
+
+        this.advancement("pie", "Easy As Pie", "Bake any pie");
+        this.advancement("every_pie", "Pie Chart", "Bake all five pies");
+
+        this.advancement("soda", "Fizzy Lifting", "Bottle your first soda");
+        this.advancement("every_soda", "Taste Test", "Collect all ten drinkable flavours");
+        this.advancement("spiked", "Hold My Drink", "Find out what is in a spiked orange soda");
+
+        this.advancement("dragon_fruit", "Fruit of the Desert", "Take dragon fruit from a cactus");
+        this.advancement("field_medic", "Field Medic", "Build a super health pack");
+    }
+
+    private void advancement(String name, String title, String description) {
+        this.add("advancements." + Constants.MOD_ID + "." + name + ".title", title);
+        this.add("advancements." + Constants.MOD_ID + "." + name + ".description", description);
     }
 }

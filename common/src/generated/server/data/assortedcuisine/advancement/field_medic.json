@@ -1,0 +1,32 @@
+{
+  "parent": "assortedcuisine:root",
+  "criteria": {
+    "has_healthpack_super": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:healthpack_super"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.field_medic.description"
+    },
+    "icon": {
+      "id": "assortedcuisine:healthpack_super"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.field_medic.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_healthpack_super"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

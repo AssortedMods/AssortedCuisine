@@ -1,0 +1,32 @@
+{
+  "parent": "assortedcuisine:root",
+  "criteria": {
+    "has_butter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:butter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.butter.description"
+    },
+    "icon": {
+      "id": "assortedcuisine:butter"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.butter.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_butter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

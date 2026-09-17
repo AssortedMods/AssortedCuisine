@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cheese_maker": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:cheese_maker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedcuisine:cheese_making"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cheese_maker"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedcuisine:cheese_making"
+    ]
+  }
+}

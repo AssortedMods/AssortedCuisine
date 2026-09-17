@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedcuisine:empty_bucket_can_be_hoppered_out",
+  "structure": "assortedcuisine:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

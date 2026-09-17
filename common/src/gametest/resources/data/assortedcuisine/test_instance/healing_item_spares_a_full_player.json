@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedcuisine:healing_item_spares_a_full_player",
+  "structure": "assortedcuisine:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

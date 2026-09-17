@@ -47,6 +47,41 @@ public class CuisineItemTagProvider extends LibItemTagProvider {
                 .add(CuisineBlocks.CHOCOLATE_PIE.get().asItem())
                 .add(CuisineBlocks.PORK_PIE.get().asItem());
 
+        // The broad tags, so a recipe elsewhere asking for any food or any drink finds these.
+        tagger.apply(CuisineTags.Items.FOODS)
+                .add(CuisineItems.BUTTER.get(), CuisineItems.CHEESE.get(), CuisineItems.BREAD_SLICE.get(),
+                        CuisineItems.CHEESE_BURGER.get(), CuisineItems.HOT_CHEESE.get(), CuisineItems.EGGS_UNMIXED.get(),
+                        CuisineItems.EGGS_MIXED.get(), CuisineItems.EGGS_COOKED.get(), CuisineItems.DOUGH.get(),
+                        CuisineItems.PUMPKIN_SLICE.get(), CuisineItems.CHOCOLATE_BALL.get(), CuisineItems.CHOCOLATE_BAR.get(),
+                        CuisineItems.CHOCOLATE_BAR_WRAPPED.get(), CuisineItems.SWEETS.get(), CuisineItems.POWERED_SWEETS.get(),
+                        CuisineItems.DRAGON_FRUIT.get(), CuisineItems.RAW_EMPTY_PIE.get(), CuisineItems.RAW_APPLE_PIE.get(),
+                        CuisineItems.RAW_MELON_PIE.get(), CuisineItems.RAW_PUMPKIN_PIE.get(), CuisineItems.RAW_CHOCOLATE_PIE.get(),
+                        CuisineItems.RAW_PORK_PIE.get())
+                .add(CuisineBlocks.APPLE_PIE.get().asItem(), CuisineBlocks.MELON_PIE.get().asItem(),
+                        CuisineBlocks.PUMPKIN_PIE.get().asItem(), CuisineBlocks.CHOCOLATE_PIE.get().asItem(),
+                        CuisineBlocks.PORK_PIE.get().asItem(), CuisineBlocks.CHOCOLATE_CAKE.get().asItem());
+
+        tagger.apply(CuisineTags.Items.FOODS_PIE)
+                .add(CuisineBlocks.APPLE_PIE.get().asItem(), CuisineBlocks.MELON_PIE.get().asItem(),
+                        CuisineBlocks.PUMPKIN_PIE.get().asItem(), CuisineBlocks.CHOCOLATE_PIE.get().asItem(),
+                        CuisineBlocks.PORK_PIE.get().asItem());
+
+        tagger.apply(CuisineTags.Items.FOODS_CANDY)
+                .add(CuisineItems.SWEETS.get(), CuisineItems.POWERED_SWEETS.get(), CuisineItems.CHOCOLATE_BALL.get(),
+                        CuisineItems.CHOCOLATE_BAR.get(), CuisineItems.CHOCOLATE_BAR_WRAPPED.get());
+
+        tagger.apply(CuisineTags.Items.FOODS_FRUIT).add(CuisineItems.DRAGON_FRUIT.get());
+
+        // The two bowls are drinks as much as the bottles are.
+        tagger.apply(CuisineTags.Items.DRINKS)
+                .add(CuisineItems.CHOCOLATE_BOWL.get(), CuisineItems.HOT_CHOCOLATE.get(),
+                        CuisineItems.SODA_CARBONATED_WATER.get(), CuisineItems.SODA_APPLE.get(),
+                        CuisineItems.SODA_GOLDEN_APPLE.get(), CuisineItems.SODA_DIAMOND.get(),
+                        CuisineItems.SODA_COCOA.get(), CuisineItems.SODA_ORANGE.get(),
+                        CuisineItems.SODA_CREAM_ORANGE.get(), CuisineItems.SODA_SPIKED_ORANGE.get(),
+                        CuisineItems.SODA_ROOT_BEER.get(), CuisineItems.SODA_MUSHROOM.get(),
+                        CuisineItems.SODA_SLURM.get());
+
         tagger.apply(CuisineTags.Items.SODAS)
                 .add(CuisineItems.SODA_BOTTLE.get())
                 .add(CuisineItems.SODA_CO2.get())

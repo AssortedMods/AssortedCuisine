@@ -1,5 +1,7 @@
 package com.grim3212.assorted.cuisine.gametest;
 
+import com.grim3212.assorted.cuisine.api.crafting.CuisineMachine;
+import com.grim3212.assorted.cuisine.api.crafting.CuisineMachineRecipe;
 import com.grim3212.assorted.cuisine.common.item.CuisineItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponents;
@@ -8,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 
@@ -29,6 +32,29 @@ final class RecipeTests {
     static void register(BiConsumer<String, Consumer<GameTestHelper>> out) {
         out.accept("bread_slice_wears_the_knife", RecipeTests::breadSliceWearsTheKnife);
         out.accept("spent_knife_is_not_returned", RecipeTests::spentKnifeIsNotReturned);
+        out.accept("machine_recipes_load_without_complaint", RecipeTests::machineRecipesLoadWithoutComplaint);
+    }
+
+    /**
+     * The machine recipes are not grid recipes, and must say so. A recipe that does not claim to be
+     * special but publishes no placement is warned about and dropped from the ingredient index on
+     * every load - this asserts the exact pair {@code RecipeManager} checks.
+     */
+    private static void machineRecipesLoadWithoutComplaint(GameTestHelper helper) {
+        List<RecipeHolder<?>> machineRecipes = helper.getLevel().recipeAccess().getRecipes().stream()
+                .filter(holder -> holder.value() instanceof CuisineMachineRecipe)
+                .toList();
+
+        helper.assertTrue(machineRecipes.size() == CuisineMachine.values().length,
+                "expected one recipe per machine, found " + machineRecipes.size());
+
+        for (RecipeHolder<?> holder : machineRecipes) {
+            Recipe<?> recipe = holder.value();
+            helper.assertFalse(!recipe.isSpecial() && recipe.placementInfo().isImpossibleToPlace(),
+                    holder.id().identifier() + " would be warned about and ignored when recipes load");
+        }
+
+        helper.succeed();
     }
 
     private static void breadSliceWearsTheKnife(GameTestHelper helper) {

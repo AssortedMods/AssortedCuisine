@@ -1,59 +1,45 @@
 package com.grim3212.assorted.cuisine.common.block;
 
-import com.grim3212.assorted.cuisine.common.item.CuisineItems;
+import com.grim3212.assorted.cuisine.api.crafting.CuisineMachine;
+import com.grim3212.assorted.cuisine.common.block.blockentity.CuisineMachineBlockEntity;
 import net.minecraft.core.BlockPos;
-import com.grim3212.assorted.lib.util.LibCommonTags;
-import net.minecraft.world.InteractionHand;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * Right click with a milk bucket to churn, punch to knock the butter out. Unlike the cheese maker
- * there is no waiting - the churn is either full or it is not, so the 1.12 0/1 integer property is
- * a plain boolean here.
+ * Milk in, butter out, but it is the one machine you can hurry: every right click while it is
+ * working gives the handle a turn worth {@link #CHURN_TICKS}. Leave it alone and it still finishes,
+ * just at its own pace - 1.12 had no wait at all, which made it a vending machine.
  */
-public class ButterChurnBlock extends Block {
+public class ButterChurnBlock extends CuisineMachineBlock {
 
-    public static final BooleanProperty FULL = BooleanProperty.create("full");
+    /** Ticks of progress one turn of the handle is worth. */
+    private static final int CHURN_TICKS = 60;
 
     public ButterChurnBlock(Properties props) {
-        super(props);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FULL, false));
+        super(CuisineMachine.BUTTER_CHURN, props);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FULL);
-    }
-
-    @Override
-    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (state.getValue(FULL)  || !stack.is(LibCommonTags.Items.BUCKETS_MILK)) {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
+    protected InteractionResult workOn(BlockState state, Level level, BlockPos pos, Player player, CuisineMachineBlockEntity entity) {
+        if (!level.isClientSide() && entity.advance(CHURN_TICKS)) {
+            syncStage(level, pos, state, entity);
+            level.playSound(null, pos, SoundEvents.WOOD_HIT, SoundSource.BLOCKS, 0.8F, 0.8F + level.getRandom().nextFloat() * 0.4F);
         }
 
-        if (!level.isClientSide()) {
-            level.setBlock(pos, state.setValue(FULL, true), Block.UPDATE_CLIENTS);
-            CuisineBlocks.consumeContainer(player, stack);
-        }
-
+        // Swings the arm on the client too, which is what sells it as a handle.
         return InteractionResult.SUCCESS;
     }
 
     @Override
-    protected void attack(BlockState state, Level level, BlockPos pos, Player player) {
-        if (level.isClientSide() || !state.getValue(FULL)) {
-            return;
-        }
-
-        level.setBlock(pos, state.setValue(FULL, false), Block.UPDATE_ALL);
-        CuisineBlocks.popResult(level, pos, new ItemStack(CuisineItems.BUTTER.get(), 1 + level.getRandom().nextInt(3)));
+    protected @Nullable ParticleOptions workingParticle() {
+        return ParticleTypes.SPLASH;
     }
 }

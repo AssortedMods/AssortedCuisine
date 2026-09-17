@@ -1,0 +1,85 @@
+{
+  "parent": "assortedcuisine:pie",
+  "criteria": {
+    "has_apple_pie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:apple_pie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_chocolate_pie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:chocolate_pie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_melon_pie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:melon_pie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pork_pie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:pork_pie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pumpkin_pie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:pumpkin_pie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.every_pie.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "assortedcuisine:chocolate_pie"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.every_pie.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_apple_pie"
+    ],
+    [
+      "has_melon_pie"
+    ],
+    [
+      "has_pumpkin_pie"
+    ],
+    [
+      "has_chocolate_pie"
+    ],
+    [
+      "has_pork_pie"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

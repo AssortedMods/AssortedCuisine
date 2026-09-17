@@ -7,6 +7,8 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -16,6 +18,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.consume_effects.ConsumeEffect;
 
 import java.util.function.Function;
 
@@ -63,9 +66,9 @@ public class CuisineItems {
     public static final IRegistryObject<Item> SWEETS = food("sweets", 2, 0.1F);
     public static final IRegistryObject<Item> POWERED_SUGAR = register("powered_sugar", props -> new Item(props));
     public static final IRegistryObject<Item> POWERED_SWEETS = food("powered_sweets", 6, 0.3F);
-    public static final IRegistryObject<Item> BANDAGE = register("bandage", props -> new HealingItem(3.0F, props.stacksTo(16)));
-    public static final IRegistryObject<Item> HEALTHPACK = register("healthpack", props -> new HealingItem(5.0F, props.stacksTo(4)));
-    public static final IRegistryObject<Item> HEALTHPACK_SUPER = register("healthpack_super", props -> new HealingItem(12.0F, props.stacksTo(4)));
+    public static final IRegistryObject<Item> BANDAGE = healing("bandage", 3.0F, 16);
+    public static final IRegistryObject<Item> HEALTHPACK = healing("healthpack", 5.0F, 4);
+    public static final IRegistryObject<Item> HEALTHPACK_SUPER = healing("healthpack_super", 12.0F, 4);
 
     // --- Dragon fruit ---
     public static final IRegistryObject<Item> DRAGON_FRUIT = food("dragon_fruit", 4, 0.3F);
@@ -76,16 +79,18 @@ public class CuisineItems {
     public static final IRegistryObject<Item> SODA_CO2 = register("soda_co2", props -> new Item(props.stacksTo(16)));
     public static final IRegistryObject<Item> SODA_CARBONATED_WATER = soda("soda_carbonated_water", 2.0F);
     public static final IRegistryObject<Item> SODA_APPLE = soda("soda_apple", 10.0F);
-    public static final IRegistryObject<Item> SODA_GOLDEN_APPLE = soda("soda_golden_apple", 20.0F);
-    public static final IRegistryObject<Item> SODA_DIAMOND = soda("soda_diamond", 20.0F);
-    public static final IRegistryObject<Item> SODA_COCOA = soda("soda_cocoa", 14.0F);
+    public static final IRegistryObject<Item> SODA_GOLDEN_APPLE = soda("soda_golden_apple", 20.0F, effect(MobEffects.ABSORPTION, 30, 0));
+    public static final IRegistryObject<Item> SODA_DIAMOND = soda("soda_diamond", 20.0F, effect(MobEffects.RESISTANCE, 20, 0));
+    // Caffeine.
+    public static final IRegistryObject<Item> SODA_COCOA = soda("soda_cocoa", 14.0F, effect(MobEffects.SPEED, 20, 0));
     public static final IRegistryObject<Item> SODA_ORANGE = soda("soda_orange", 8.0F);
-    public static final IRegistryObject<Item> SODA_CREAM_ORANGE = soda("soda_cream_orange", 10.0F);
-    public static final IRegistryObject<Item> SODA_ROOT_BEER = soda("soda_root_beer", 5.0F);
-    public static final IRegistryObject<Item> SODA_MUSHROOM = soda("soda_mushroom", 5.0F);
-    public static final IRegistryObject<Item> SODA_SLURM = soda("soda_slurm", 3.0F);
+    public static final IRegistryObject<Item> SODA_CREAM_ORANGE = soda("soda_cream_orange", 10.0F, effect(MobEffects.SATURATION, 1, 0));
+    public static final IRegistryObject<Item> SODA_ROOT_BEER = soda("soda_root_beer", 5.0F, effect(MobEffects.REGENERATION, 5, 0));
+    public static final IRegistryObject<Item> SODA_MUSHROOM = soda("soda_mushroom", 5.0F, effect(MobEffects.NAUSEA, 8, 0));
+    // Highly addictive, and it takes as much out of you as it puts in.
+    public static final IRegistryObject<Item> SODA_SLURM = soda("soda_slurm", 3.0F, effect(MobEffects.SPEED, 10, 1), effect(MobEffects.HUNGER, 20, 0));
     // Spiked orange is the one you hand to someone you have a grudge against.
-    public static final IRegistryObject<Item> SODA_SPIKED_ORANGE = soda("soda_spiked_orange", -8.0F);
+    public static final IRegistryObject<Item> SODA_SPIKED_ORANGE = soda("soda_spiked_orange", -8.0F, effect(MobEffects.POISON, 8, 0));
 
     /**
      * Drinking it leaves the bowl. Hot chocolate also sets a crafting remainder on top of this:
@@ -100,12 +105,27 @@ public class CuisineItems {
         return Consumables.defaultFood().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HUNGER, durationTicks, 0), probability)).build();
     }
 
+    /** Applied rather than eaten, so it takes a moment and can be interrupted. */
+    private static IRegistryObject<Item> healing(String name, float healAmount, int stackSize) {
+        return register(name, props -> new HealingItem(healAmount, props.stacksTo(stackSize).component(DataComponents.CONSUMABLE, HealingItem.APPLYING)));
+    }
+
     private static IRegistryObject<Item> rawPie(String name) {
         return food(name, 2, 0.3F, RAW_PASTRY);
     }
 
-    private static IRegistryObject<Item> soda(String name, float healAmount) {
-        return register(name, props -> new SodaItem(healAmount, props.stacksTo(16).component(DataComponents.CONSUMABLE, Consumables.defaultDrink().animation(ItemUseAnimation.DRINK).build())));
+    /** One certainty of drinking it, so the tooltip lists the effect without the item saying so. */
+    private static ConsumeEffect effect(Holder<MobEffect> effect, int seconds, int amplifier) {
+        return new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(effect, seconds * 20, amplifier));
+    }
+
+    private static IRegistryObject<Item> soda(String name, float healAmount, ConsumeEffect... effects) {
+        Consumable.Builder drink = Consumables.defaultDrink().animation(ItemUseAnimation.DRINK);
+        for (ConsumeEffect effect : effects) {
+            drink.onConsume(effect);
+        }
+
+        return register(name, props -> new SodaItem(healAmount, props.stacksTo(16).component(DataComponents.CONSUMABLE, drink.build())));
     }
 
     private static IRegistryObject<Item> food(String name, int nutrition, float saturation) {

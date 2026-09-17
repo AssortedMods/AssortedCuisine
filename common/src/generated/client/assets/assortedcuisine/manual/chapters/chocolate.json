@@ -53,6 +53,15 @@
     },
     {
       "type": "assortedlib:recipe",
+      "id": "moulding",
+      "recipes": [
+        "assortedcuisine:chocolate_moulding"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.moulding",
+      "title": "manual.assortedcuisine.chapter.chocolate.moulding.title"
+    },
+    {
+      "type": "assortedlib:recipe",
       "id": "bar",
       "recipes": [
         "assortedcuisine:chocolate_bar"

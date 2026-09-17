@@ -6,15 +6,21 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "pies"
+    }
+  ],
   "key": {
     "M": "assortedcuisine:pumpkin_slice",
     "X": "#c:foods/dough",
     "Y": "assortedcuisine:raw_empty_pie"
   },
   "pattern": [
-    "X  ",
+    " X ",
     "MMM",
-    "Y  "
+    " Y "
   ],
   "result": {
     "id": "assortedcuisine:raw_pumpkin_pie"

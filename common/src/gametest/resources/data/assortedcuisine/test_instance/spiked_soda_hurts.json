@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedcuisine:spiked_soda_hurts",
+  "structure": "assortedcuisine:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

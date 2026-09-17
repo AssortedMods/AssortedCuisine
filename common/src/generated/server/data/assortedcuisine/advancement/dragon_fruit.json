@@ -1,0 +1,32 @@
+{
+  "parent": "assortedcuisine:root",
+  "criteria": {
+    "has_dragon_fruit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:dragon_fruit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.dragon_fruit.description"
+    },
+    "icon": {
+      "id": "assortedcuisine:dragon_fruit"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.dragon_fruit.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dragon_fruit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,150 @@
+{
+  "parent": "assortedcuisine:soda",
+  "criteria": {
+    "has_soda_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_carbonated_water": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_carbonated_water"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_cocoa": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_cocoa"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_cream_orange": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_cream_orange"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_diamond": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_diamond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_golden_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_golden_apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_mushroom": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_mushroom"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_orange": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_orange"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_root_beer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_root_beer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soda_slurm": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:soda_slurm"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.every_soda.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "assortedcuisine:soda_golden_apple"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.every_soda.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_soda_carbonated_water"
+    ],
+    [
+      "has_soda_apple"
+    ],
+    [
+      "has_soda_golden_apple"
+    ],
+    [
+      "has_soda_diamond"
+    ],
+    [
+      "has_soda_cocoa"
+    ],
+    [
+      "has_soda_orange"
+    ],
+    [
+      "has_soda_cream_orange"
+    ],
+    [
+      "has_soda_root_beer"
+    ],
+    [
+      "has_soda_mushroom"
+    ],
+    [
+      "has_soda_slurm"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

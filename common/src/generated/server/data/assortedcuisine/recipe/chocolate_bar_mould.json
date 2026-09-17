@@ -6,13 +6,19 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
   "key": {
     "I": "#c:stones",
     "X": "#c:cobblestones"
   },
   "pattern": [
-    "I  ",
-    "I  ",
+    " I ",
+    " I ",
     "XXX"
   ],
   "result": {

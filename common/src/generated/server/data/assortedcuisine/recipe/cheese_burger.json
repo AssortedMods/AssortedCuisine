@@ -6,15 +6,21 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
   "key": {
     "A": "#c:foods/cheese",
     "C": "#c:foods/bread",
     "O": "minecraft:cooked_beef"
   },
   "pattern": [
-    "C  ",
+    " C ",
     "AOA",
-    "C  "
+    " C "
   ],
   "result": {
     "id": "assortedcuisine:cheese_burger"

@@ -1,0 +1,32 @@
+{
+  "values": [
+    "assortedcuisine:butter",
+    "assortedcuisine:cheese",
+    "assortedcuisine:bread_slice",
+    "assortedcuisine:cheese_burger",
+    "assortedcuisine:hot_cheese",
+    "assortedcuisine:eggs_unmixed",
+    "assortedcuisine:eggs_mixed",
+    "assortedcuisine:eggs_cooked",
+    "assortedcuisine:dough",
+    "assortedcuisine:pumpkin_slice",
+    "assortedcuisine:chocolate_ball",
+    "assortedcuisine:chocolate_bar",
+    "assortedcuisine:chocolate_bar_wrapped",
+    "assortedcuisine:sweets",
+    "assortedcuisine:powered_sweets",
+    "assortedcuisine:dragon_fruit",
+    "assortedcuisine:raw_empty_pie",
+    "assortedcuisine:raw_apple_pie",
+    "assortedcuisine:raw_melon_pie",
+    "assortedcuisine:raw_pumpkin_pie",
+    "assortedcuisine:raw_chocolate_pie",
+    "assortedcuisine:raw_pork_pie",
+    "assortedcuisine:apple_pie",
+    "assortedcuisine:melon_pie",
+    "assortedcuisine:pumpkin_pie",
+    "assortedcuisine:chocolate_pie",
+    "assortedcuisine:pork_pie",
+    "assortedcuisine:chocolate_cake"
+  ]
+}

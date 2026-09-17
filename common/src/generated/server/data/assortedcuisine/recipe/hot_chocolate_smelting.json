@@ -8,6 +8,12 @@
   "type": "minecraft:smelting",
   "category": "food",
   "experience": 0.3,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
   "ingredient": "assortedcuisine:chocolate_bowl",
   "result": {
     "id": "assortedcuisine:hot_chocolate"

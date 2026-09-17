@@ -6,6 +6,12 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
   "key": {
     "I": "#c:rods/wooden",
     "X": "#minecraft:planks"

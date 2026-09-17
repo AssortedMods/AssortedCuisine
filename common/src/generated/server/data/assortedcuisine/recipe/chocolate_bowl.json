@@ -6,13 +6,19 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "chocolate"
+    }
+  ],
   "key": {
     "A": "minecraft:sugar",
     "B": "#c:buckets/milk",
     "X": "assortedcuisine:cocoa_dust"
   },
   "pattern": [
-    "X  ",
+    " X ",
     "XAX",
     "B  "
   ],

@@ -4,6 +4,8 @@ import com.grim3212.assorted.cuisine.client.data.CuisineBlockstateProvider;
 import com.grim3212.assorted.cuisine.client.data.CuisineItemModelProvider;
 import com.grim3212.assorted.cuisine.client.data.CuisineLanguageProvider;
 import com.grim3212.assorted.cuisine.client.data.CuisineManualProvider;
+import com.grim3212.assorted.cuisine.common.handlers.CuisineCompostables;
+import com.grim3212.assorted.cuisine.data.CuisineAdvancements;
 import com.grim3212.assorted.cuisine.data.CuisineBlockLoot;
 import com.grim3212.assorted.cuisine.data.CuisineBlockTagProvider;
 import com.grim3212.assorted.cuisine.data.CuisineItemTagProvider;
@@ -12,11 +14,13 @@ import com.grim3212.assorted.lib.data.ForgeBlockTagProvider;
 import com.grim3212.assorted.lib.data.ForgeItemTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.Collections;
@@ -31,10 +35,16 @@ public class AssortedCuisineNeoForge {
      * into the {@code @Mod} constructor instead.
      */
     public AssortedCuisineNeoForge(IEventBus modBus, ModContainer modContainer) {
+        modBus.addListener(this::setup);
         modBus.addListener(this::gatherServerData);
         modBus.addListener(this::gatherClientData);
 
         CuisineCommonMod.init();
+    }
+
+    /** Anything that has to wait for the registries to be filled. */
+    private void setup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(CuisineCompostables::init);
     }
 
     /**
@@ -50,6 +60,7 @@ public class AssortedCuisineNeoForge {
         // Recipe providers are not data providers any more - the Runner owns the output.
         event.addProvider(new CuisineRecipes.Runner(packOutput, lookupProvider));
         event.addProvider(new LootTableProvider(packOutput, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(CuisineBlockLoot::new, LootContextParamSets.BLOCK)), lookupProvider));
+        event.addProvider(new AdvancementProvider(packOutput, lookupProvider, List.of(new CuisineAdvancements())));
     }
 
     /** Client datagen: models and the language file, written into common for both loaders. */

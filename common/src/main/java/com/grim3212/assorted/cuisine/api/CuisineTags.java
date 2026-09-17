@@ -25,6 +25,16 @@ public class CuisineTags {
         public static final TagKey<Item> FOODS_COOKED_EGG = commonTag("foods/cooked_egg");
         public static final TagKey<Item> FOODS_BREAD = commonTag("foods/bread");
 
+        /**
+         * The broad tags other mods look in. Nothing in this mod was in any of them before, so a
+         * recipe elsewhere asking for "any food" or "any drink" could not see a single item here.
+         */
+        public static final TagKey<Item> FOODS = commonTag("foods");
+        public static final TagKey<Item> FOODS_PIE = commonTag("foods/pie");
+        public static final TagKey<Item> FOODS_CANDY = commonTag("foods/candy");
+        public static final TagKey<Item> FOODS_FRUIT = commonTag("foods/fruit");
+        public static final TagKey<Item> DRINKS = commonTag("drinks");
+
         /** The five baked pies, so a datapack can treat them as one thing. */
         public static final TagKey<Item> PIES = modTag("pies");
         /** Every soda, drinkable or not. */

@@ -29,10 +29,10 @@ public class CuisineBlocks {
     public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID);
 
     public static final IRegistryObject<CheeseBlock> CHEESE_BLOCK = register("cheese_block", props -> new CheeseBlock(props.mapColor(MapColor.SAND).sound(SoundType.WOOL).strength(0.5F).noOcclusion()));
-    public static final IRegistryObject<CheeseMakerBlock> CHEESE_MAKER = register("cheese_maker", props -> new CheeseMakerBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(2.0F).randomTicks().noOcclusion()));
+    public static final IRegistryObject<CheeseMakerBlock> CHEESE_MAKER = register("cheese_maker", props -> new CheeseMakerBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(2.0F).noOcclusion()));
     public static final IRegistryObject<ButterChurnBlock> BUTTER_CHURN = register("butter_churn", props -> new ButterChurnBlock(props.mapColor(MapColor.WOOD).sound(SoundType.WOOD).strength(2.0F)));
 
-    public static final IRegistryObject<ChocolateBarMouldBlock> CHOCOLATE_BAR_MOULD = register("chocolate_bar_mould", props -> new ChocolateBarMouldBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.0F).randomTicks().noOcclusion()));
+    public static final IRegistryObject<ChocolateBarMouldBlock> CHOCOLATE_BAR_MOULD = register("chocolate_bar_mould", props -> new ChocolateBarMouldBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.0F).noOcclusion()));
     public static final IRegistryObject<Block> CHOCOLATE_BLOCK = register("chocolate_block", props -> new Block(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(1.0F)));
     public static final IRegistryObject<CuisineCakeBlock> CHOCOLATE_CAKE = register("chocolate_cake", props -> new CuisineCakeBlock(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.DESTROY)));
 
@@ -47,32 +47,13 @@ public class CuisineBlocks {
     }
 
     /**
-     * Drops a machine's output above the block the way the 1.12 parts did: slightly randomised, and
-     * with a pickup delay so it does not fly straight back into the hand that punched it.
+     * Hands something a right click produced straight to the player. Everything this mod gives back
+     * for a click goes through here rather than onto the floor; the inventory drops it at their feet
+     * if there is no room.
      */
-    public static void popResult(Level level, BlockPos pos, ItemStack stack) {
-        double x = pos.getX() + level.getRandom().nextDouble() * 0.7D + 0.15D;
-        double y = pos.getY() + level.getRandom().nextDouble() * 0.7D + 0.75D;
-        double z = pos.getZ() + level.getRandom().nextDouble() * 0.7D + 0.15D;
-
-        ItemEntity item = new ItemEntity(level, x, y, z, stack);
-        item.setDefaultPickUpDelay();
-        level.addFreshEntity(item);
-    }
-
-    /**
-     * Takes one bucket of milk (or chocolate, or whatever the recipe asked for) out of the held
-     * stack and hands the player back whatever that item leaves behind - an empty bucket for
-     * vanilla milk, one less milk for a multi-bucket like AssortedTools'.
-     */
-    // NeoForge-only deprecation; its replacement is not on the vanilla jar.
-    @SuppressWarnings("deprecation")
-    public static void consumeContainer(Player player, ItemStack stack) {
-        ItemStackTemplate remainder = stack.getItem().getCraftingRemainder();
-        stack.consume(1, player);
-
-        if (remainder != null) {
-            player.getInventory().placeItemBackInInventory(remainder.create());
+    public static void giveTo(Player player, ItemStack stack) {
+        if (!stack.isEmpty()) {
+            player.getInventory().placeItemBackInInventory(stack);
         }
     }
 

@@ -1,0 +1,33 @@
+{
+  "parent": "assortedcuisine:chocolate",
+  "criteria": {
+    "has_chocolate_cake": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:chocolate_cake"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.chocolate_cake.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "assortedcuisine:chocolate_cake"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.chocolate_cake.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_chocolate_cake"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

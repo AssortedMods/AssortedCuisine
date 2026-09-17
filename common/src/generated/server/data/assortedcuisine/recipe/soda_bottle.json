@@ -6,12 +6,18 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "soda"
+    }
+  ],
   "key": {
     "X": "#c:glass_panes"
   },
   "pattern": [
-    "X  ",
-    "XX ",
+    "X X",
+    "X X",
     "XXX"
   ],
   "result": {

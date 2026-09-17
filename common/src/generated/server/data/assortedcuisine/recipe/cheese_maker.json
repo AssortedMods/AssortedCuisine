@@ -6,12 +6,18 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
   "key": {
     "I": "minecraft:bucket",
     "X": "#c:cobblestones"
   },
   "pattern": [
-    "XX ",
+    "X X",
     "XIX",
     "XXX"
   ],

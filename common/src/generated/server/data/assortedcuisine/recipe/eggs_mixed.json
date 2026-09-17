@@ -6,6 +6,12 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "dairy"
+    }
+  ],
   "ingredients": [
     "assortedcuisine:eggs_unmixed",
     "#c:tools/mixer"

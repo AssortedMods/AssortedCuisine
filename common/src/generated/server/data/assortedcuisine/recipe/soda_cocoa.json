@@ -6,8 +6,14 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "soda"
+    }
+  ],
   "key": {
-    "X": "#c:dyes/brown",
+    "X": "minecraft:cocoa_beans",
     "Y": "assortedcuisine:soda_carbonated_water"
   },
   "pattern": [

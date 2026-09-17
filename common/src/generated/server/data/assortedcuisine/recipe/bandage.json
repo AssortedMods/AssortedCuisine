@@ -6,6 +6,12 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "health"
+    }
+  ],
   "key": {
     "#": "minecraft:white_wool",
     "P": "minecraft:paper"

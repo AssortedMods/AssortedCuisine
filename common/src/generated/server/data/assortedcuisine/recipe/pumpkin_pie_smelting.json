@@ -8,6 +8,12 @@
   "type": "minecraft:smelting",
   "category": "food",
   "experience": 0.35,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "pies"
+    }
+  ],
   "ingredient": "assortedcuisine:raw_pumpkin_pie",
   "result": {
     "id": "assortedcuisine:pumpkin_pie"

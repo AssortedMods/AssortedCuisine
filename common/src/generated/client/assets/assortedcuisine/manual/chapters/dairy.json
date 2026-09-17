@@ -26,6 +26,17 @@
     },
     {
       "type": "assortedlib:recipe",
+      "id": "making",
+      "interval": 60,
+      "recipes": [
+        "assortedcuisine:cheese_making",
+        "assortedcuisine:churning"
+      ],
+      "text": "manual.assortedcuisine.chapter.dairy.making",
+      "title": "manual.assortedcuisine.chapter.dairy.making.title"
+    },
+    {
+      "type": "assortedlib:recipe",
       "id": "cheese",
       "interval": 60,
       "recipes": [

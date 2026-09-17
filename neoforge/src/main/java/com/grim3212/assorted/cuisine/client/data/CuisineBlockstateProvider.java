@@ -1,9 +1,7 @@
 package com.grim3212.assorted.cuisine.client.data;
 
 import com.grim3212.assorted.cuisine.Constants;
-import com.grim3212.assorted.cuisine.common.block.ButterChurnBlock;
-import com.grim3212.assorted.cuisine.common.block.CheeseMakerBlock;
-import com.grim3212.assorted.cuisine.common.block.ChocolateBarMouldBlock;
+import com.grim3212.assorted.cuisine.common.block.CuisineMachineBlock;
 import com.grim3212.assorted.cuisine.common.block.CuisineBlocks;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -128,8 +126,8 @@ public class CuisineBlockstateProvider extends ModelProvider {
         Identifier done = cubeTop(blockModels, "cheese_maker_done", side, blockTexture("cheese_maker_topmilk3"));
 
         blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
-                .with(PropertyDispatch.initial(CheeseMakerBlock.STAGE).generate(stage -> BlockModelGenerators.plainVariant(
-                        stage == 0 ? empty : stage < 8 ? milk1 : stage < CheeseMakerBlock.DONE ? milk2 : done))));
+                .with(PropertyDispatch.initial(CuisineMachineBlock.STAGE).generate(stage -> BlockModelGenerators.plainVariant(
+                        stage == 0 ? empty : stage < 8 ? milk1 : stage < CuisineMachineBlock.DONE ? milk2 : done))));
         blockModels.registerSimpleItemModel(block, empty);
     }
 
@@ -137,9 +135,9 @@ public class CuisineBlockstateProvider extends ModelProvider {
         Block block = CuisineBlocks.BUTTER_CHURN.get();
         Identifier model = cubeTop(blockModels, "butter_churn", blockTexture("butter_churn_side"), blockTexture("butter_churn_top"));
 
-        // The churn looks the same full or empty, so both states share one model.
+        // Every stage shares one model: there is no second churn texture to show milk in it.
         blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
-                .with(PropertyDispatch.initial(ButterChurnBlock.FULL).generate(full -> BlockModelGenerators.plainVariant(model))));
+                .with(PropertyDispatch.initial(CuisineMachineBlock.STAGE).generate(stage -> BlockModelGenerators.plainVariant(model))));
         blockModels.registerSimpleItemModel(block, model);
     }
 
@@ -152,8 +150,8 @@ public class CuisineBlockstateProvider extends ModelProvider {
         Identifier done = trayTop(blockModels, "chocolate_bar_mould_done", side, blockTexture("chocolate_bar_mould_done"));
 
         blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
-                .with(PropertyDispatch.initial(ChocolateBarMouldBlock.STAGE).generate(stage -> BlockModelGenerators.plainVariant(
-                        stage == 0 ? empty : stage < ChocolateBarMouldBlock.DONE ? setting : done))));
+                .with(PropertyDispatch.initial(CuisineMachineBlock.STAGE).generate(stage -> BlockModelGenerators.plainVariant(
+                        stage == 0 ? empty : stage < CuisineMachineBlock.DONE ? setting : done))));
         blockModels.registerSimpleItemModel(block, empty);
     }
 

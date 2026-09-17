@@ -7,12 +7,18 @@
   ],
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "pies"
+    }
+  ],
   "key": {
     "X": "#c:stones"
   },
   "pattern": [
-    "XX",
-    "X "
+    "X X",
+    " X "
   ],
   "result": {
     "id": "assortedcuisine:pan"

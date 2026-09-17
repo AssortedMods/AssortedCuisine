@@ -1,9 +1,51 @@
 {
   "variants": {
-    "full=false": {
+    "stage=0": {
       "model": "assortedcuisine:block/butter_churn"
     },
-    "full=true": {
+    "stage=1": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=10": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=11": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=12": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=13": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=14": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=15": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=2": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=3": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=4": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=5": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=6": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=7": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=8": {
+      "model": "assortedcuisine:block/butter_churn"
+    },
+    "stage=9": {
       "model": "assortedcuisine:block/butter_churn"
     }
   }

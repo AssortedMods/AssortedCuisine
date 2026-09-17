@@ -13,10 +13,10 @@ rebuilt on the modern APIs.
   mould that sets hot chocolate into bars, wrapped bars, chocolate blocks and a chocolate cake.
 * **Pies** - a pie pan and dough, and apple, melon, pumpkin, chocolate and pork pies to fill and
   bake.
-* **Health** - sugar sweets, powered sugar and sweets, bandages and health packs that heal on use.
-* **Soda** - a bottle, a CO2 canister, carbonated water and eleven flavours, each healing a
-  different amount. One of them does not heal you at all.
-* **Dragon fruit** - cacti drop it.
+* **Health** - sugar sweets, powered sugar and sweets, bandages and health packs that heal directly.
+* **Soda** - a bottle, a CO2 canister, carbonated water and eleven flavours. Each heals a different
+  amount, and most carry a short effect of their own. One of them does not heal you at all.
+* **Dragon fruit** - cacti drop it
 
 Recipes take tags wherever the 1.12 version took an ore dictionary name, so another mod's cheese,
 milk bucket or knife works here too.

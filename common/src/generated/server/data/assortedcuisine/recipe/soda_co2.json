@@ -6,14 +6,20 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "soda"
+    }
+  ],
   "key": {
     "O": "minecraft:flint",
     "X": "#c:ingots/iron"
   },
   "pattern": [
-    "X  ",
+    " X ",
     "XOX",
-    "X  "
+    " X "
   ],
   "result": {
     "count": 4,

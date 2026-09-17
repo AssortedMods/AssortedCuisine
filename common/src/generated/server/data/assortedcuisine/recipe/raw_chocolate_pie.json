@@ -15,15 +15,30 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:and",
+      "values": [
+        {
+          "condition": "assortedlib:part_enabled",
+          "part": "pies"
+        },
+        {
+          "condition": "assortedlib:part_enabled",
+          "part": "chocolate"
+        }
+      ]
+    }
+  ],
   "key": {
     "M": "assortedcuisine:chocolate_ball",
     "X": "#c:foods/dough",
     "Y": "assortedcuisine:raw_empty_pie"
   },
   "pattern": [
-    "X  ",
+    " X ",
     "MMM",
-    "Y  "
+    " Y "
   ],
   "result": {
     "id": "assortedcuisine:raw_chocolate_pie"

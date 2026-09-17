@@ -33,6 +33,21 @@
       "trigger": "minecraft:recipe_unlocked"
     }
   },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:or",
+      "values": [
+        {
+          "condition": "assortedlib:part_enabled",
+          "part": "dairy"
+        },
+        {
+          "condition": "assortedlib:part_enabled",
+          "part": "pies"
+        }
+      ]
+    }
+  ],
   "requirements": [
     [
       "has_the_recipe",

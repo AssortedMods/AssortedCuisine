@@ -6,6 +6,12 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "soda"
+    }
+  ],
   "key": {
     "X": "minecraft:jack_o_lantern",
     "Y": "assortedcuisine:soda_carbonated_water"

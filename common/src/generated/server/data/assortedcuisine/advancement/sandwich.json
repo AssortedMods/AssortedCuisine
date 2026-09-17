@@ -1,0 +1,32 @@
+{
+  "parent": "assortedcuisine:cheese",
+  "criteria": {
+    "has_cheese_burger": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedcuisine:cheese_burger"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.sandwich.description"
+    },
+    "icon": {
+      "id": "assortedcuisine:cheese_burger"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.sandwich.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cheese_burger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,31 @@
+{
+  "parent": "assortedcuisine:soda",
+  "criteria": {
+    "drank_spiked_orange": {
+      "conditions": {
+        "item": {
+          "items": "assortedcuisine:soda_spiked_orange"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.spiked.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "assortedcuisine:soda_spiked_orange"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.spiked.title"
+    }
+  },
+  "requirements": [
+    [
+      "drank_spiked_orange"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

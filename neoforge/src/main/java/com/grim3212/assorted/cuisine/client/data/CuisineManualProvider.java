@@ -40,6 +40,8 @@ public class CuisineManualProvider extends LibManualProvider {
         chocolate.recipesById("hot", recipeId("hot_chocolate_smelting")).opens(CuisineItems.HOT_CHOCOLATE.get());
         chocolate.recipes("ball", CuisineItems.CHOCOLATE_BALL.get()).opens(CuisineItems.CHOCOLATE_BALL.get());
         chocolate.recipes("mould", CuisineBlocks.CHOCOLATE_BAR_MOULD.get()).opens(CuisineBlocks.CHOCOLATE_BAR_MOULD.get());
+        // What the mould does once it is placed, which is not a crafting recipe.
+        chocolate.recipesById("moulding", recipeId("chocolate_moulding"));
         chocolate.recipes("bar", CuisineItems.CHOCOLATE_BAR.get()).opens(CuisineItems.CHOCOLATE_BAR.get());
         chocolate.recipes("wrapped", CuisineItems.WRAPPER.get(), CuisineItems.CHOCOLATE_BAR_WRAPPED.get()).every(60)
                 .opens(CuisineItems.WRAPPER.get(), CuisineItems.CHOCOLATE_BAR_WRAPPED.get());
@@ -53,6 +55,8 @@ public class CuisineManualProvider extends LibManualProvider {
         dairy.recipes("butter_churn", CuisineBlocks.BUTTER_CHURN.get())
                 .opens(CuisineBlocks.BUTTER_CHURN.get(), CuisineItems.BUTTER.get());
         dairy.recipes("cheese_maker", CuisineBlocks.CHEESE_MAKER.get()).opens(CuisineBlocks.CHEESE_MAKER.get());
+        // What the two machines do once placed; neither is a crafting recipe.
+        dairy.recipesById("making", recipeId("cheese_making"), recipeId("churning")).every(60);
         dairy.recipes("cheese", CuisineItems.CHEESE.get(), CuisineBlocks.CHEESE_BLOCK.get()).every(60)
                 .opens(CuisineItems.CHEESE.get(), CuisineBlocks.CHEESE_BLOCK.get());
         dairy.recipes("hot_cheese", CuisineItems.HOT_CHEESE.get()).opens(CuisineItems.HOT_CHEESE.get());

@@ -1,18 +1,24 @@
 package com.grim3212.assorted.cuisine.common.item;
 
+import com.grim3212.assorted.cuisine.api.CuisineDamageTypes;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
+
+import java.util.function.Consumer;
 
 /**
  * A bottle of soda. Each flavour is its own item now - 1.12 packed all thirteen into one item's
  * damage value, which modern Minecraft has no equivalent for.
- *
- * <p>A flavour either heals or, in spiked orange's case, hurts; the amount is in half hearts.
  */
 public class SodaItem extends Item {
 
@@ -23,23 +29,49 @@ public class SodaItem extends Item {
         this.healAmount = healAmount;
     }
 
+    /**
+     * Hands off to the consumable so the drinking animation, sound and particles all happen. 1.12
+     * drank it instantly, and so did the port until now: overriding {@code use} outright skipped
+     * the CONSUMABLE component the item was already carrying.
+     */
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        ItemStack stack = player.getItemInHand(hand);
-
+        // A healing soda on full health is not worth the bottle; a harmful one always is.
         if (this.healAmount > 0.0F && player.getHealth() >= player.getMaxHealth()) {
             return InteractionResult.PASS;
         }
 
+        return super.use(level, player, hand);
+    }
+
+    @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         if (level instanceof ServerLevel serverLevel) {
             if (this.healAmount < 0.0F) {
-                player.hurtServer(serverLevel, player.damageSources().generic(), -this.healAmount);
+                entity.hurtServer(serverLevel, CuisineDamageTypes.source(serverLevel, CuisineDamageTypes.SPIKED_SODA), -this.healAmount);
             } else {
-                player.heal(this.healAmount);
+                entity.heal(this.healAmount);
             }
         }
 
-        stack.consume(1, player);
-        return InteractionResult.SUCCESS;
+        return super.finishUsingItem(stack, level, entity);
+    }
+
+    /** Thirteen near-identical bottles need a line saying which one this is. */
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> lines, TooltipFlag flag) {
+        lines.accept(healthLine(this.healAmount));
+    }
+
+    /**
+     * Half hearts as hearts, trimmed so a whole number reads as "5" rather than "5.0".
+     */
+    static Component healthLine(float halfHearts) {
+        float hearts = Math.abs(halfHearts) / 2.0F;
+        String amount = hearts == Math.floor(hearts) ? String.valueOf((int) hearts) : String.valueOf(hearts);
+
+        return halfHearts < 0.0F
+                ? Component.translatable("tooltip.assortedcuisine.hurts", amount).withStyle(ChatFormatting.RED)
+                : Component.translatable("tooltip.assortedcuisine.restores", amount).withStyle(ChatFormatting.GRAY);
     }
 }

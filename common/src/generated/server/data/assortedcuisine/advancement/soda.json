@@ -1,0 +1,32 @@
+{
+  "parent": "assortedcuisine:root",
+  "criteria": {
+    "has_soda": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#assortedcuisine:sodas"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedcuisine.soda.description"
+    },
+    "icon": {
+      "id": "assortedcuisine:soda_carbonated_water"
+    },
+    "title": {
+      "translate": "advancements.assortedcuisine.soda.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_soda"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
