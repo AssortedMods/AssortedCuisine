@@ -39,12 +39,12 @@ public class CuisineItems {
     public static final IRegistryObject<Item> EGGS_COOKED = food("eggs_cooked", 10, 0.8F);
 
     // --- Kitchen tools ---
-    public static final IRegistryObject<Item> KNIFE = register("knife", props -> new KitchenToolItem(props.stacksTo(1).durability(63)));
-    public static final IRegistryObject<Item> WHISK = register("whisk", props -> new KitchenToolItem(props.stacksTo(1).durability(63)));
+    public static final IRegistryObject<Item> KNIFE = register("knife", props -> new KitchenToolItem(props.stacksTo(1).durability(64)));
+    public static final IRegistryObject<Item> WHISK = register("whisk", props -> new KitchenToolItem(props.stacksTo(1).durability(64)));
     public static final IRegistryObject<Item> PAN = register("pan", props -> new Item(props.stacksTo(16)));
 
     // --- Chocolate ---
-    public static final IRegistryObject<Item> MORTAR_AND_PESTLE = register("mortar_and_pestle", props -> new KitchenToolItem(props.stacksTo(1).durability(63)));
+    public static final IRegistryObject<Item> MORTAR_AND_PESTLE = register("mortar_and_pestle", props -> new KitchenToolItem(props.stacksTo(1).durability(64)));
     public static final IRegistryObject<Item> COCOA_DUST = register("cocoa_dust", props -> new Item(props));
     public static final IRegistryObject<Item> CHOCOLATE_BOWL = register("chocolate_bowl", props -> new Item(drink(props.stacksTo(16), 4, 0.3F)));
     public static final IRegistryObject<Item> HOT_CHOCOLATE = register("hot_chocolate", props -> new Item(drink(props.stacksTo(1), 6, 0.6F).craftRemainder(Items.BOWL)));
