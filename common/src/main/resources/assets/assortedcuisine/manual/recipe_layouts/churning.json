@@ -1,5 +1,5 @@
 {
-  "texture": "assortedcuisine:textures/gui/container/churning.png",
+  "texture": "assortedcuisine:textures/gui/container/cuisine_machine.png",
   "u": 0,
   "v": 0,
   "width": 98,
@@ -24,7 +24,8 @@
       "display": {
         "type": "minecraft:item",
         "item": "assortedcuisine:butter_churn"
-      }
+      },
+      "tooltip": "tooltip.assortedcuisine.made_in"
     }
   ]
 }

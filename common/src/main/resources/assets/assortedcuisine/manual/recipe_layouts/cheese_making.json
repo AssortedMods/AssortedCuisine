@@ -1,5 +1,5 @@
 {
-  "texture": "assortedcuisine:textures/gui/container/cheese_making.png",
+  "texture": "assortedcuisine:textures/gui/container/cuisine_machine.png",
   "u": 0,
   "v": 0,
   "width": 98,
@@ -24,7 +24,8 @@
       "display": {
         "type": "minecraft:item",
         "item": "assortedcuisine:cheese_maker"
-      }
+      },
+      "tooltip": "tooltip.assortedcuisine.made_in"
     }
   ]
 }

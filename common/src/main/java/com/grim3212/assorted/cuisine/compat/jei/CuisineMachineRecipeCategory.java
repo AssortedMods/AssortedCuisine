@@ -34,6 +34,13 @@ import java.util.Map;
  */
 public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMachineRecipe> {
 
+    /**
+     * The strip every machine is drawn on, shared with the instruction manual's recipe layouts. The
+     * three processes look the same - a block, an input, an arrow, a result - so one file serves
+     * them all, including the filled arrow parked below the strip.
+     */
+    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/container/cuisine_machine.png");
+
     /** The strip, and the slot and arrow positions baked into it. */
     private static final int WIDTH = 98;
     private static final int STRIP_HEIGHT = 26;
@@ -53,7 +60,6 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
     private final CuisineMachine machine;
     private final ItemStack station;
     private final IGuiHelper guiHelper;
-    private final Identifier texture;
     private final IDrawableStatic background;
     private final IDrawable icon;
     private final Component title;
@@ -65,8 +71,7 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
         this.guiHelper = guiHelper;
         this.type = type;
         this.machine = machine;
-        this.texture = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/container/" + machine.getName() + ".png");
-        this.background = guiHelper.createDrawable(this.texture, 0, 0, WIDTH, STRIP_HEIGHT);
+        this.background = guiHelper.createDrawable(TEXTURE, 0, 0, WIDTH, STRIP_HEIGHT);
         this.station = new ItemStack(catalyst);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, this.station);
         this.title = catalyst.getName();
@@ -125,7 +130,7 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
     /** The filled arrow is parked below the strip; it grows left to right over the recipe's time. */
     private IDrawableAnimated arrow(int processTime) {
         return this.arrows.computeIfAbsent(processTime <= 0 ? this.machine.getDefaultProcessTime() : processTime,
-                ticks -> this.guiHelper.drawableBuilder(this.texture, 0, 32, ARROW_WIDTH, ARROW_HEIGHT)
+                ticks -> this.guiHelper.drawableBuilder(TEXTURE, 0, 32, ARROW_WIDTH, ARROW_HEIGHT)
                         .buildAnimated(ticks, IDrawableAnimated.StartDirection.LEFT, false));
     }
 }

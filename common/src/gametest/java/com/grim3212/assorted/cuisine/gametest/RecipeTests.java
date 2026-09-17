@@ -1,5 +1,7 @@
 package com.grim3212.assorted.cuisine.gametest;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.grim3212.assorted.cuisine.Constants;
 import com.grim3212.assorted.cuisine.api.crafting.CuisineMachine;
 import com.grim3212.assorted.cuisine.api.crafting.CuisineMachineRecipe;
@@ -15,6 +17,10 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
@@ -26,6 +32,13 @@ import java.util.function.Consumer;
  * crafting grid itself takes, so they cover whichever loader hook is doing the work.
  */
 final class RecipeTests {
+
+    /** The one strip all three machines are drawn on, in both the manual and JEI. */
+    private static final String TEXTURE_ID = Constants.MOD_ID + ":textures/gui/container/cuisine_machine.png";
+    private static final String MACHINE_TEXTURE = "/assets/" + TEXTURE_ID.replace(':', '/');
+
+    /** The line the machine slot carries in the book, the same one JEI's catalyst slot uses. */
+    private static final String MADE_IN = "tooltip." + Constants.MOD_ID + ".made_in";
 
     private RecipeTests() {
     }
@@ -62,18 +75,33 @@ final class RecipeTests {
     /**
      * Both the manual and JEI draw a machine process on its own strip. The manual finds it by recipe
      * type and silently falls back to the crafting table when there is none - which is how these
-     * came to be drawn as crafting grids - and JEI reads the same texture, so a missing file breaks
-     * one or both without anything being logged.
+     * came to be drawn as crafting grids - and JEI hardcodes the same texture, so a layout naming a
+     * file that is not there breaks one or both without anything being logged.
      */
     private static void machineTypesHaveTheirOwnGui(GameTestHelper helper) {
-        for (CuisineMachine machine : CuisineMachine.values()) {
-            String layout = "/assets/" + Constants.MOD_ID + "/manual/recipe_layouts/" + machine.getName() + ".json";
-            String texture = "/assets/" + Constants.MOD_ID + "/textures/gui/container/" + machine.getName() + ".png";
+        helper.assertTrue(CuisineMachine.class.getResourceAsStream(MACHINE_TEXTURE) != null,
+                "no " + MACHINE_TEXTURE + ", which both the manual layouts and JEI draw the strip from");
 
-            helper.assertTrue(CuisineMachine.class.getResourceAsStream(layout) != null,
-                    "no manual layout for " + machine.getName() + ", so the manual would draw it as a crafting recipe");
-            helper.assertTrue(CuisineMachine.class.getResourceAsStream(texture) != null,
-                    "no gui texture for " + machine.getName() + ", which both the manual layout and JEI draw");
+        for (CuisineMachine machine : CuisineMachine.values()) {
+            String path = "/assets/" + Constants.MOD_ID + "/manual/recipe_layouts/" + machine.getName() + ".json";
+
+            try (InputStream in = CuisineMachine.class.getResourceAsStream(path)) {
+                helper.assertTrue(in != null,
+                        "no manual layout for " + machine.getName() + ", so the manual would draw it as a crafting recipe");
+
+                JsonObject layout = JsonParser.parseReader(new InputStreamReader(in, StandardCharsets.UTF_8)).getAsJsonObject();
+                helper.assertTrue(TEXTURE_ID.equals(layout.get("texture").getAsString()),
+                        machine.getName() + " is drawn from " + layout.get("texture").getAsString()
+                                + " while JEI draws " + TEXTURE_ID + ", so the book and JEI would not match");
+
+                // Without it the machine is an unexplained item beside an arrow; JEI names it here.
+                JsonObject station = layout.getAsJsonArray("extras").get(0).getAsJsonObject();
+                helper.assertTrue(station.has("tooltip") && MADE_IN.equals(station.get("tooltip").getAsString()),
+                        machine.getName() + " does not put " + MADE_IN + " on its machine slot, so the book "
+                                + "would not say what makes this while JEI does");
+            } catch (IOException e) {
+                helper.fail("could not read " + path + ": " + e.getMessage());
+            }
         }
 
         helper.succeed();

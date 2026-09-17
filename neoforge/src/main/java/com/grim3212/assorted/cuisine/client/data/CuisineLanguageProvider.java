@@ -56,8 +56,11 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("item.assortedcuisine.soda_mushroom", "Mushroom Soda");
         this.add("item.assortedcuisine.soda_slurm", "Slurm");
 
-        // The soda and healing tooltips, so thirteen near-identical bottles can be told apart.
+        // The machine slot in the manual's recipe layouts and on JEI's page, both of which format
+        // it with the machine's own name.
         this.add("tooltip.assortedcuisine.made_in", "Made in %s");
+
+        // The soda and healing tooltips, so thirteen near-identical bottles can be told apart.
         this.add("tooltip.assortedcuisine.restores", "Restores %s hearts");
         this.add("tooltip.assortedcuisine.hurts", "Costs %s hearts");
 
