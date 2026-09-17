@@ -160,7 +160,7 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
     private void chocolate() {
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.TOOLS, CuisineItems.MORTAR_AND_PESTLE.get())
                 .define('X', LibCommonTags.Items.STONE).define('S', LibCommonTags.Items.RODS_WOODEN)
-                .pattern("  S").pattern("X X").pattern(" X ")
+                .pattern("  S").pattern("XSX").pattern(" X ")
                 .unlockedBy("has_cocoa_beans", has(Items.COCOA_BEANS)).save(this.output, key("mortar_and_pestle"));
 
         ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, CuisineItems.COCOA_DUST.get(), 2)
