@@ -35,6 +35,7 @@ public class CuisineManualProvider extends LibManualProvider {
     private void addChocolate() {
         ChapterBuilder chocolate = this.chapter("chocolate").whenPartEnabled(Parts.CHOCOLATE);
 
+        chocolate.recipes("mortar_and_pestle", CuisineItems.MORTAR_AND_PESTLE.get()).opens(CuisineItems.MORTAR_AND_PESTLE.get());
         chocolate.recipes("dust", CuisineItems.COCOA_DUST.get()).opens(CuisineItems.COCOA_DUST.get());
         chocolate.recipes("bowl", CuisineItems.CHOCOLATE_BOWL.get()).opens(CuisineItems.CHOCOLATE_BOWL.get());
         chocolate.recipesById("hot", recipeId("hot_chocolate_smelting")).opens(CuisineItems.HOT_CHOCOLATE.get());

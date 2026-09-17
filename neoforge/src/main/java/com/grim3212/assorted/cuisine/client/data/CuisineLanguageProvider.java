@@ -33,6 +33,7 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("item.assortedcuisine.healthpack_super", "Super Health Pack");
         this.add("item.assortedcuisine.hot_cheese", "Cheese Sandwich");
         this.add("item.assortedcuisine.pan", "Pie Pan");
+        this.add("item.assortedcuisine.mortar_and_pestle", "Mortar and Pestle");
         this.add("item.assortedcuisine.raw_empty_pie", "Unbaked Pie Shell");
         this.add("item.assortedcuisine.raw_apple_pie", "Unbaked Apple Pie");
         this.add("item.assortedcuisine.raw_melon_pie", "Unbaked Melon Pie");
@@ -56,6 +57,7 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("item.assortedcuisine.soda_slurm", "Slurm");
 
         // The soda and healing tooltips, so thirteen near-identical bottles can be told apart.
+        this.add("tooltip.assortedcuisine.made_in", "Made in %s");
         this.add("tooltip.assortedcuisine.restores", "Restores %s hearts");
         this.add("tooltip.assortedcuisine.hurts", "Costs %s hearts");
 
@@ -66,6 +68,7 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("tag.item.assortedcuisine.sodas", "Sodas");
         this.add("tag.item.c.tools.knife", "Knives");
         this.add("tag.item.c.tools.whisk", "Whisks");
+        this.add("tag.item.c.tools.mortar_and_pestle", "Mortars and Pestles");
         this.add("tag.item.c.foods.cheese", "Cheeses");
         this.add("tag.item.c.foods.butter", "Butters");
         this.add("tag.item.c.foods.dough", "Doughs");
@@ -95,10 +98,14 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
     private void addChocolateChapter() {
         this.add("manual.assortedcuisine.chapter.chocolate", "Chocolate");
 
+        this.add("manual.assortedcuisine.chapter.chocolate.mortar_and_pestle.title", "Mortar and Pestle");
+        this.add("manual.assortedcuisine.chapter.chocolate.mortar_and_pestle",
+                "The mortar and pestle grinds cocoa beans. It stays in the crafting grid and wears out a little "
+                        + "with every use.");
+
         this.add("manual.assortedcuisine.chapter.chocolate.dust.title", "Cocoa Dust");
         this.add("manual.assortedcuisine.chapter.chocolate.dust",
-                "Ground down, cocoa beans give cocoa dust, which is the form every chocolate recipe actually "
-                        + "asks for.");
+                "Ground down in a mortar and pestle, cocoa beans give cocoa dust.");
 
         this.add("manual.assortedcuisine.chapter.chocolate.bowl.title", "Chocolate Bowl");
         this.add("manual.assortedcuisine.chapter.chocolate.bowl",
@@ -116,8 +123,9 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
 
         this.add("manual.assortedcuisine.chapter.chocolate.mould.title", "Chocolate Bar Mould");
         this.add("manual.assortedcuisine.chapter.chocolate.mould",
-                "Place the mould and right click it with hot chocolate to pour. It steams while it sets, and "
-                        + "sets twice as fast standing on ice or snow." + BREAK
+                "Place the mould and right click it with hot chocolate to pour." + BREAK
+                        + "It steams while it sets, and every block of ice or snow packed against its sides "
+                        + "cools it faster." + BREAK
                         + "Once it has set, right click the mould for the bars.");
 
         this.add("manual.assortedcuisine.chapter.chocolate.moulding.title", "Setting Bars");

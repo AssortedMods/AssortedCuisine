@@ -2,6 +2,12 @@
   "links": [
     {
       "items": [
+        "assortedcuisine:mortar_and_pestle"
+      ],
+      "page": "assortedcuisine:chocolate/mortar_and_pestle"
+    },
+    {
+      "items": [
         "assortedcuisine:cocoa_dust"
       ],
       "page": "assortedcuisine:chocolate/dust"

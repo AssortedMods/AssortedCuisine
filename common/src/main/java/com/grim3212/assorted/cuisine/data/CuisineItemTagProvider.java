@@ -30,6 +30,7 @@ public class CuisineItemTagProvider extends LibItemTagProvider {
 
         tagger.apply(CuisineTags.Items.KNIVES).add(CuisineItems.KNIFE.get());
         tagger.apply(CuisineTags.Items.WHISKS).add(CuisineItems.WHISK.get());
+        tagger.apply(CuisineTags.Items.MORTARS_AND_PESTLES).add(CuisineItems.MORTAR_AND_PESTLE.get());
 
         tagger.apply(CuisineTags.Items.FOODS_CHEESE).add(CuisineItems.CHEESE.get());
         tagger.apply(CuisineTags.Items.FOODS_BUTTER).add(CuisineItems.BUTTER.get());

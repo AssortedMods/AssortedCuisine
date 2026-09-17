@@ -44,9 +44,10 @@ public class CuisineItems {
     public static final IRegistryObject<Item> PAN = register("pan", props -> new Item(props.stacksTo(16)));
 
     // --- Chocolate ---
+    public static final IRegistryObject<Item> MORTAR_AND_PESTLE = register("mortar_and_pestle", props -> new KitchenToolItem(props.stacksTo(1).durability(63)));
     public static final IRegistryObject<Item> COCOA_DUST = register("cocoa_dust", props -> new Item(props));
-    public static final IRegistryObject<Item> CHOCOLATE_BOWL = register("chocolate_bowl", props -> new ChocolateBowlItem(drinkable(props.stacksTo(16))));
-    public static final IRegistryObject<Item> HOT_CHOCOLATE = register("hot_chocolate", props -> new ChocolateBowlItem(drinkable(props.stacksTo(1)).craftRemainder(Items.BOWL)));
+    public static final IRegistryObject<Item> CHOCOLATE_BOWL = register("chocolate_bowl", props -> new Item(drink(props.stacksTo(16), 4, 0.3F)));
+    public static final IRegistryObject<Item> HOT_CHOCOLATE = register("hot_chocolate", props -> new Item(drink(props.stacksTo(1), 6, 0.6F).craftRemainder(Items.BOWL)));
     public static final IRegistryObject<Item> CHOCOLATE_BALL = food("chocolate_ball", 2, 0.2F);
     public static final IRegistryObject<Item> CHOCOLATE_BAR = food("chocolate_bar", 3, 0.8F);
     public static final IRegistryObject<Item> CHOCOLATE_BAR_WRAPPED = food("chocolate_bar_wrapped", 5, 0.8F);
@@ -93,12 +94,16 @@ public class CuisineItems {
     public static final IRegistryObject<Item> SODA_SPIKED_ORANGE = soda("soda_spiked_orange", -8.0F, effect(MobEffects.POISON, 8, 0));
 
     /**
-     * Drinking it leaves the bowl. Hot chocolate also sets a crafting remainder on top of this:
-     * usingConvertsTo only covers being drunk, and the chocolate mould takes the bowl from a
-     * recipe-shaped path rather than from an eating animation.
+     * A bowl you drink: it feeds you and leaves the bowl behind. 1.12 had these heal outright, which
+     * is how food worked before hunger existed; a modern bowl of something is worth eating instead.
+     *
+     * <p>Hot chocolate also sets a crafting remainder on top of this: usingConvertsTo only covers
+     * being drunk, and the chocolate mould takes the bowl from a recipe-shaped path rather than from
+     * an eating animation.
      */
-    private static Item.Properties drinkable(Item.Properties props) {
-        return props.component(DataComponents.CONSUMABLE, Consumables.defaultDrink().build()).usingConvertsTo(Items.BOWL);
+    private static Item.Properties drink(Item.Properties props, int nutrition, float saturation) {
+        return props.food(new FoodProperties(nutrition, saturation, false), Consumables.defaultDrink().build())
+                .usingConvertsTo(Items.BOWL);
     }
 
     private static Consumable queasy(int durationTicks, float probability) {

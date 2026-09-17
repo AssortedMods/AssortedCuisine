@@ -53,7 +53,7 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
         // Both halves cut with the knife, so either keeps it craftable.
         this.addConditions(or(partEnabled(Parts.DAIRY), partEnabled(Parts.PIES)), ids("knife"));
 
-        this.addConditions(partEnabled(Parts.CHOCOLATE), ids("cocoa_dust", "chocolate_bowl", "hot_chocolate_smelting", "chocolate_bar_mould",
+        this.addConditions(partEnabled(Parts.CHOCOLATE), ids("mortar_and_pestle", "cocoa_dust", "chocolate_bowl", "hot_chocolate_smelting", "chocolate_bar_mould",
                 "chocolate_ball", "chocolate_block", "chocolate_bar", "wrapper", "chocolate_bar_wrapped", "chocolate_cake", "chocolate_moulding"));
 
         this.addConditions(partEnabled(Parts.PIES), ids("dough", "pan", "pumpkin_slice", "raw_empty_pie", "raw_apple_pie", "raw_melon_pie",
@@ -158,9 +158,14 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
     }
 
     private void chocolate() {
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.TOOLS, CuisineItems.MORTAR_AND_PESTLE.get())
+                .define('X', LibCommonTags.Items.STONE).define('S', LibCommonTags.Items.RODS_WOODEN)
+                .pattern("  S").pattern("X X").pattern(" X ")
+                .unlockedBy("has_cocoa_beans", has(Items.COCOA_BEANS)).save(this.output, key("mortar_and_pestle"));
+
         ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, CuisineItems.COCOA_DUST.get(), 2)
-                .requires(Items.COCOA_BEANS)
-                .unlockedBy("has_cocoa_beans", has(Items.COCOA_BEANS)).save(this.output, key("cocoa_dust"));
+                .requires(Items.COCOA_BEANS).requires(CuisineTags.Items.MORTARS_AND_PESTLES)
+                .unlockedBy("has_mortar_and_pestle", has(CuisineTags.Items.MORTARS_AND_PESTLES)).save(this.output, key("cocoa_dust"));
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, CuisineItems.CHOCOLATE_BOWL.get())
                 .define('X', CuisineItems.COCOA_DUST.get()).define('A', Items.SUGAR).define('B', LibCommonTags.Items.BUCKETS_MILK)

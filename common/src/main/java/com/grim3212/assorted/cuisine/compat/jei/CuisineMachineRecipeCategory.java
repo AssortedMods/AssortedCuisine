@@ -14,6 +14,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -36,6 +37,7 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
     /** The strip, and the slot and arrow positions baked into it. */
     private static final int WIDTH = 98;
     private static final int STRIP_HEIGHT = 26;
+    private static final int STATION_X = 5;
     private static final int INPUT_X = 27;
     private static final int OUTPUT_X = 77;
     private static final int SLOT_Y = 5;
@@ -49,6 +51,7 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
 
     private final IRecipeType<CuisineMachineRecipe> type;
     private final CuisineMachine machine;
+    private final ItemStack station;
     private final IGuiHelper guiHelper;
     private final Identifier texture;
     private final IDrawableStatic background;
@@ -64,7 +67,8 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
         this.machine = machine;
         this.texture = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/container/" + machine.getName() + ".png");
         this.background = guiHelper.createDrawable(this.texture, 0, 0, WIDTH, STRIP_HEIGHT);
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(catalyst));
+        this.station = new ItemStack(catalyst);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, this.station);
         this.title = catalyst.getName();
     }
 
@@ -96,6 +100,14 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
     /** No slot backgrounds: the strip already has the frames drawn in the right places. */
     @Override
     public void setRecipe(IRecipeLayoutBuilder layout, CuisineMachineRecipe recipe, IFocusGroup focuses) {
+        // The block that does the work, in its own slot on the left. Saying so in the tooltip is
+        // the whole point of it being here: the page is otherwise silent about where this happens.
+        layout.addSlot(RecipeIngredientRole.CRAFTING_STATION, STATION_X, SLOT_Y)
+                .add(this.station)
+                .addRichTooltipCallback((slot, tooltip) ->
+                        tooltip.add(Component.translatable("tooltip.assortedcuisine.made_in", this.station.getHoverName())
+                                .withStyle(ChatFormatting.GRAY)));
+
         layout.addSlot(RecipeIngredientRole.INPUT, INPUT_X, SLOT_Y).add(recipe.getIngredient());
         layout.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, SLOT_Y).add(recipe.getResultTemplate());
     }

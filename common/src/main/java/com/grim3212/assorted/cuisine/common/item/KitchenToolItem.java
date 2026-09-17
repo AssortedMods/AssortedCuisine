@@ -10,7 +10,8 @@ import net.minecraft.world.item.ItemStackTemplate;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * The knife and the whisk: tools that stay in the crafting grid and wear out a point at a time.
+ * The knife, the whisk and the mortar and pestle: tools that stay in the crafting grid and wear out a
+ * point at a time.
  */
 public class KitchenToolItem extends Item {
 

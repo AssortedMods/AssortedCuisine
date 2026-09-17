@@ -7,11 +7,11 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mortar_and_pestle": {
+    "has_cocoa_beans": {
       "conditions": {
         "items": [
           {
-            "items": "#c:tools/mortar_and_pestle"
+            "items": "minecraft:cocoa_beans"
           }
         ]
       },
@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedcuisine:cocoa_dust"
+        "recipe": "assortedcuisine:mortar_and_pestle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -33,12 +33,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_mortar_and_pestle"
+      "has_cocoa_beans"
     ]
   ],
   "rewards": {
     "recipes": [
-      "assortedcuisine:cocoa_dust"
+      "assortedcuisine:mortar_and_pestle"
     ]
   }
 }

@@ -6,11 +6,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,8 +16,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Pour hot chocolate in, let it set, right click it out as bars. Setting is twice as fast on ice or
- * snow, which is the one reason the mould cares what it is standing on beyond needing support.
+ * Pour hot chocolate in, let it set, right click it out as bars.
  */
 public class ChocolateBarMouldBlock extends CuisineMachineBlock {
 
@@ -35,21 +31,26 @@ public class ChocolateBarMouldBlock extends CuisineMachineBlock {
         return SHAPE;
     }
 
-    @Override
-    protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return level.getBlockState(pos.below()).isFaceSturdy(level, pos.below(), Direction.UP);
-    }
-
-    @Override
-    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess tickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
-        return direction == Direction.DOWN && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : state;
-    }
-
-    /** Standing it on something cold sets the chocolate in half the time. */
+    /**
+     * A tick of work per tick, and one more for every cold block packed against its sides. Ringed
+     * with ice on all four it sets five times as fast, which is the reason to build the ring.
+     */
     @Override
     protected int speedMultiplier(Level level, BlockPos pos) {
-        BlockState below = level.getBlockState(pos.below());
-        return below.is(BlockTags.ICE) || below.is(Blocks.SNOW) || below.is(Blocks.SNOW_BLOCK) ? 2 : 1;
+        int speed = 1;
+
+        for (Direction side : Direction.Plane.HORIZONTAL) {
+            if (isCold(level.getBlockState(pos.relative(side)))) {
+                speed++;
+            }
+        }
+
+        return speed;
+    }
+
+    /** Every kind of ice and snow. */
+    private static boolean isCold(BlockState state) {
+        return state.is(BlockTags.ICE) || state.is(BlockTags.SNOW);
     }
 
     /** It went in hot, so it steams while it cools. */

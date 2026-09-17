@@ -8,6 +8,15 @@
   "pages": [
     {
       "type": "assortedlib:recipe",
+      "id": "mortar_and_pestle",
+      "recipes": [
+        "assortedcuisine:mortar_and_pestle"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.mortar_and_pestle",
+      "title": "manual.assortedcuisine.chapter.chocolate.mortar_and_pestle.title"
+    },
+    {
+      "type": "assortedlib:recipe",
       "id": "dust",
       "recipes": [
         "assortedcuisine:cocoa_dust"

@@ -18,6 +18,8 @@ public class CuisineTags {
         public static final TagKey<Item> KNIVES = commonTag("tools/knife");
         /** Anything that can whisk - this mod's whisk, or another mod's equivalent. */
         public static final TagKey<Item> WHISKS = commonTag("tools/whisk");
+        /** Anything that can grind - this mod's mortar and pestle, or another mod's equivalent. */
+        public static final TagKey<Item> MORTARS_AND_PESTLES = commonTag("tools/mortar_and_pestle");
 
         public static final TagKey<Item> FOODS_CHEESE = commonTag("foods/cheese");
         public static final TagKey<Item> FOODS_BUTTER = commonTag("foods/butter");

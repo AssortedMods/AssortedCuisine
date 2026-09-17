@@ -5,19 +5,24 @@
       "part": "chocolate"
     }
   ],
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
       "part": "chocolate"
     }
   ],
-  "ingredients": [
-    "minecraft:cocoa_beans",
-    "#c:tools/mortar_and_pestle"
+  "key": {
+    "S": "#c:rods/wooden",
+    "X": "#c:stones"
+  },
+  "pattern": [
+    "  S",
+    "X X",
+    " X "
   ],
   "result": {
-    "count": 2,
-    "id": "assortedcuisine:cocoa_dust"
+    "id": "assortedcuisine:mortar_and_pestle"
   }
 }

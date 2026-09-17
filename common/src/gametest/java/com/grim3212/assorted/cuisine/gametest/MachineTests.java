@@ -135,8 +135,6 @@ final class MachineTests {
     }
 
     private static void chocolateMouldMakesBars(GameTestHelper helper) {
-        // The mould needs something solid under it or it pops off.
-        helper.setBlock(CENTRE.below(), Blocks.STONE);
         helper.setBlock(CENTRE, CuisineBlocks.CHOCOLATE_BAR_MOULD.get());
         ServerPlayer player = survivalPlayer(helper, new ItemStack(CuisineItems.HOT_CHOCOLATE.get()));
         BlockPos pos = helper.absolutePos(CENTRE);
@@ -150,25 +148,42 @@ final class MachineTests {
         helper.succeed();
     }
 
-    /** Standing on ice is the one thing the mould cares about beyond having support. */
+    /**
+     * Cold blocks against the mould's sides each speed it up, so a ringed mould beats a bare one and
+     * a fully ringed one beats a half ringed one. Ice underneath is not counted any more - that is
+     * where the hopper goes.
+     */
     private static void chocolateMouldIsFasterOnIce(GameTestHelper helper) {
-        BlockPos warm = CENTRE;
-        BlockPos cold = CENTRE.east(2);
+        BlockPos bare = CENTRE;
+        BlockPos some = CENTRE.east(3);
+        BlockPos ringed = CENTRE.east(6);
 
-        helper.setBlock(warm.below(), Blocks.STONE);
-        helper.setBlock(cold.below(), Blocks.ICE);
-        helper.setBlock(warm, CuisineBlocks.CHOCOLATE_BAR_MOULD.get());
-        helper.setBlock(cold, CuisineBlocks.CHOCOLATE_BAR_MOULD.get());
+        for (BlockPos pos : new BlockPos[]{bare, some, ringed}) {
+            helper.setBlock(pos, CuisineBlocks.CHOCOLATE_BAR_MOULD.get());
+        }
 
-        ServerPlayer player = survivalPlayer(helper, new ItemStack(CuisineItems.HOT_CHOCOLATE.get(), 2));
-        rightClick(player, helper.getLevel(), player.getMainHandItem(), helper.absolutePos(warm));
-        rightClick(player, helper.getLevel(), player.getMainHandItem(), helper.absolutePos(cold));
+        // Ice below must not count, or the old behaviour would still be passing this.
+        helper.setBlock(bare.below(), Blocks.ICE);
 
-        runMachine(helper, warm, 40);
-        runMachine(helper, cold, 40);
+        helper.setBlock(some.north(), Blocks.ICE);
+        for (Direction side : Direction.Plane.HORIZONTAL) {
+            helper.setBlock(ringed.relative(side), Blocks.ICE);
+        }
 
-        helper.assertTrue(machine(helper, cold).stage() > machine(helper, warm).stage(),
-                "the mould on ice did not set faster than the one on stone");
+        ServerPlayer player = survivalPlayer(helper, new ItemStack(CuisineItems.HOT_CHOCOLATE.get(), 3));
+        for (BlockPos pos : new BlockPos[]{bare, some, ringed}) {
+            rightClick(player, helper.getLevel(), player.getMainHandItem(), helper.absolutePos(pos));
+            runMachine(helper, pos, 30);
+        }
+
+        int bareStage = machine(helper, bare).stage();
+        int someStage = machine(helper, some).stage();
+        int ringedStage = machine(helper, ringed).stage();
+
+        helper.assertTrue(someStage > bareStage,
+                "one ice block beside the mould did not help: bare " + bareStage + ", one " + someStage);
+        helper.assertTrue(ringedStage > someStage,
+                "a full ring did not beat a single block: one " + someStage + ", ringed " + ringedStage);
         helper.succeed();
     }
 
