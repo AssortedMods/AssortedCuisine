@@ -1,5 +1,6 @@
 package com.grim3212.assorted.cuisine.gametest;
 
+import com.grim3212.assorted.cuisine.Constants;
 import com.grim3212.assorted.cuisine.api.crafting.CuisineMachine;
 import com.grim3212.assorted.cuisine.api.crafting.CuisineMachineRecipe;
 import com.grim3212.assorted.cuisine.common.item.CuisineItems;
@@ -33,6 +34,7 @@ final class RecipeTests {
         out.accept("bread_slice_wears_the_knife", RecipeTests::breadSliceWearsTheKnife);
         out.accept("spent_knife_is_not_returned", RecipeTests::spentKnifeIsNotReturned);
         out.accept("machine_recipes_load_without_complaint", RecipeTests::machineRecipesLoadWithoutComplaint);
+        out.accept("machine_types_have_their_own_gui", RecipeTests::machineTypesHaveTheirOwnGui);
     }
 
     /**
@@ -52,6 +54,26 @@ final class RecipeTests {
             Recipe<?> recipe = holder.value();
             helper.assertFalse(!recipe.isSpecial() && recipe.placementInfo().isImpossibleToPlace(),
                     holder.id().identifier() + " would be warned about and ignored when recipes load");
+        }
+
+        helper.succeed();
+    }
+
+    /**
+     * Both the manual and JEI draw a machine process on its own strip. The manual finds it by recipe
+     * type and silently falls back to the crafting table when there is none - which is how these
+     * came to be drawn as crafting grids - and JEI reads the same texture, so a missing file breaks
+     * one or both without anything being logged.
+     */
+    private static void machineTypesHaveTheirOwnGui(GameTestHelper helper) {
+        for (CuisineMachine machine : CuisineMachine.values()) {
+            String layout = "/assets/" + Constants.MOD_ID + "/manual/recipe_layouts/" + machine.getName() + ".json";
+            String texture = "/assets/" + Constants.MOD_ID + "/textures/gui/container/" + machine.getName() + ".png";
+
+            helper.assertTrue(CuisineMachine.class.getResourceAsStream(layout) != null,
+                    "no manual layout for " + machine.getName() + ", so the manual would draw it as a crafting recipe");
+            helper.assertTrue(CuisineMachine.class.getResourceAsStream(texture) != null,
+                    "no gui texture for " + machine.getName() + ", which both the manual layout and JEI draw");
         }
 
         helper.succeed();

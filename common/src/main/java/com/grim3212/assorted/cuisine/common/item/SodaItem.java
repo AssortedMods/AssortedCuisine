@@ -1,6 +1,8 @@
 package com.grim3212.assorted.cuisine.common.item;
 
 import com.grim3212.assorted.cuisine.api.CuisineDamageTypes;
+import com.grim3212.assorted.lib.core.item.ItemDescription;
+import com.grim3212.assorted.lib.core.item.LibDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -10,11 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
-
-import java.util.function.Consumer;
 
 /**
  * A bottle of soda. Each flavour is its own item now - 1.12 packed all thirteen into one item's
@@ -25,7 +23,8 @@ public class SodaItem extends Item {
     private final float healAmount;
 
     public SodaItem(float healAmount, Properties props) {
-        super(props);
+        // Thirteen near-identical bottles need a line saying which one this is.
+        super(props.component(LibDataComponents.DESCRIPTION.get(), new ItemDescription(healthLine(healAmount))));
         this.healAmount = healAmount;
     }
 
@@ -55,12 +54,6 @@ public class SodaItem extends Item {
         }
 
         return super.finishUsingItem(stack, level, entity);
-    }
-
-    /** Thirteen near-identical bottles need a line saying which one this is. */
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> lines, TooltipFlag flag) {
-        lines.accept(healthLine(this.healAmount));
     }
 
     /**

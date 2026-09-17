@@ -1,5 +1,6 @@
 package com.grim3212.assorted.cuisine.compat.jei;
 
+import com.grim3212.assorted.cuisine.Constants;
 import com.grim3212.assorted.cuisine.api.crafting.CuisineMachine;
 import com.grim3212.assorted.cuisine.api.crafting.CuisineMachineRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -17,6 +18,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 
@@ -24,20 +26,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * One JEI page for one machine: what goes in, an arrow that runs for as long as the recipe takes,
- * and what comes out. The three machines have no container screen between them, so the category
- * paints itself out of JEI's own slot and arrow drawables rather than a GUI texture.
+ * One JEI page for one machine, drawn on the same strip the instruction manual uses: the block that
+ * does the work, what goes in, an arrow that fills over the time the recipe takes, and what comes
+ * out. Sharing the texture is the point - a player who has seen the page in the book should
+ * recognise it here.
  */
 public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMachineRecipe> {
 
-    private static final int WIDTH = 92;
-    private static final int HEIGHT = 34;
+    /** The strip, and the slot and arrow positions baked into it. */
+    private static final int WIDTH = 98;
+    private static final int STRIP_HEIGHT = 26;
+    private static final int INPUT_X = 27;
+    private static final int OUTPUT_X = 77;
     private static final int SLOT_Y = 5;
+    private static final int ARROW_X = 48;
+    private static final int ARROW_Y = 5;
+    private static final int ARROW_WIDTH = 24;
+    private static final int ARROW_HEIGHT = 16;
+
+    /** Room under the strip for the time in seconds. */
+    private static final int HEIGHT = STRIP_HEIGHT + 11;
 
     private final IRecipeType<CuisineMachineRecipe> type;
     private final CuisineMachine machine;
     private final IGuiHelper guiHelper;
-    private final IDrawableStatic slot;
+    private final Identifier texture;
+    private final IDrawableStatic background;
     private final IDrawable icon;
     private final Component title;
 
@@ -48,7 +62,8 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
         this.guiHelper = guiHelper;
         this.type = type;
         this.machine = machine;
-        this.slot = guiHelper.getSlotDrawable();
+        this.texture = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/container/" + machine.getName() + ".png");
+        this.background = guiHelper.createDrawable(this.texture, 0, 0, WIDTH, STRIP_HEIGHT);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(catalyst));
         this.title = catalyst.getName();
     }
@@ -78,28 +93,27 @@ public class CuisineMachineRecipeCategory implements IRecipeCategory<CuisineMach
         return this.icon;
     }
 
+    /** No slot backgrounds: the strip already has the frames drawn in the right places. */
     @Override
     public void setRecipe(IRecipeLayoutBuilder layout, CuisineMachineRecipe recipe, IFocusGroup focuses) {
-        layout.addSlot(RecipeIngredientRole.INPUT, 1, SLOT_Y + 1)
-                .setBackground(this.slot, -1, -1)
-                .add(recipe.getIngredient());
-
-        layout.addSlot(RecipeIngredientRole.OUTPUT, 71, SLOT_Y + 1)
-                .setBackground(this.slot, -1, -1)
-                .add(recipe.getResultTemplate());
+        layout.addSlot(RecipeIngredientRole.INPUT, INPUT_X, SLOT_Y).add(recipe.getIngredient());
+        layout.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, SLOT_Y).add(recipe.getResultTemplate());
     }
 
     @Override
     public void draw(CuisineMachineRecipe recipe, IRecipeSlotsView slots, GuiGraphicsExtractor graphics, double mouseX, double mouseY) {
-        this.arrow(recipe.getProcessTime()).draw(graphics, 26, SLOT_Y + 4);
+        this.background.draw(graphics, 0, 0);
+        this.arrow(recipe.getProcessTime()).draw(graphics, ARROW_X, ARROW_Y);
 
         Font font = Minecraft.getInstance().font;
         Component time = Component.translatable("gui.jei.category.smelting.time.seconds", recipe.getProcessTime() / 20);
-        graphics.text(font, time, (WIDTH - font.width(time)) / 2, HEIGHT - 9, 0xFF808080, false);
+        graphics.text(font, time, (WIDTH - font.width(time)) / 2, STRIP_HEIGHT + 2, 0xFF808080, false);
     }
 
+    /** The filled arrow is parked below the strip; it grows left to right over the recipe's time. */
     private IDrawableAnimated arrow(int processTime) {
         return this.arrows.computeIfAbsent(processTime <= 0 ? this.machine.getDefaultProcessTime() : processTime,
-                this.guiHelper::createAnimatedRecipeArrow);
+                ticks -> this.guiHelper.drawableBuilder(this.texture, 0, 32, ARROW_WIDTH, ARROW_HEIGHT)
+                        .buildAnimated(ticks, IDrawableAnimated.StartDirection.LEFT, false));
     }
 }

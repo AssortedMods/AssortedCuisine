@@ -151,7 +151,7 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, CuisineItems.CHOCOLATE_BOWL.get())
                 .define('X', CuisineItems.COCOA_DUST.get()).define('A', Items.SUGAR).define('B', LibCommonTags.Items.BUCKETS_MILK)
-                .pattern(" X ").pattern("XAX").pattern("B  ")
+                .pattern(" X ").pattern("XAX").pattern(" B ")
                 .unlockedBy("has_cocoa_dust", has(CuisineItems.COCOA_DUST.get())).save(this.output, key("chocolate_bowl"));
 
         smelt(CuisineItems.CHOCOLATE_BOWL.get(), CuisineItems.HOT_CHOCOLATE.get(), 0.3F, "hot_chocolate");

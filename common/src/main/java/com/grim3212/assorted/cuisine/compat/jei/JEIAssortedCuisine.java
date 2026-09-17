@@ -9,13 +9,17 @@ import com.grim3212.assorted.lib.crafting.SyncedRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IRecipeManager;
 import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -33,10 +37,24 @@ public class JEIAssortedCuisine implements IModPlugin {
 
     private static final Map<CuisineMachine, IRecipeType<CuisineMachineRecipe>> TYPES = new EnumMap<>(CuisineMachine.class);
 
+    /**
+     * What JEI has been handed, so a later sync knows what to take back out. Only ever touched from
+     * the client thread: plugin loading and packet handling both run there.
+     */
+    private static final Map<CuisineMachine, List<CuisineMachineRecipe>> SHOWN = new EnumMap<>(CuisineMachine.class);
+
+    /** Replaced wholesale on each sync, so identity spots a fresh one. */
+    private static RecipeMap shownFrom = RecipeMap.EMPTY;
+
+    private static @Nullable IJeiRuntime runtime;
+
     static {
         for (CuisineMachine machine : CuisineMachine.values()) {
             TYPES.put(machine, IRecipeType.create(Constants.MOD_ID, machine.getName(), CuisineMachineRecipe.class));
+            SHOWN.put(machine, List.of());
         }
+
+        SyncedRecipes.addUpdateListener(JEIAssortedCuisine::onRecipesUpdated);
     }
 
     @Override
@@ -55,15 +73,17 @@ public class JEIAssortedCuisine implements IModPlugin {
 
     /**
      * From {@link SyncedRecipes}: there is no recipe manager on the client, so these arrive with the
-     * login packet for the types {@code CuisineRecipeTypes} asked to have sent.
+     * login packet. They routinely arrive <em>after</em> this runs, which is why the listing is
+     * redone in {@link #onRecipesUpdated()} rather than only being read once here.
      */
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        for (CuisineMachine machine : CuisineMachine.values()) {
-            List<CuisineMachineRecipe> recipes = SyncedRecipes.byType(CuisineRecipeTypes.type(machine)).stream()
-                    .map(RecipeHolder::value)
-                    .toList();
+        shownFrom = SyncedRecipes.recipes();
 
+        for (CuisineMachine machine : CuisineMachine.values()) {
+            List<CuisineMachineRecipe> recipes = recipesFor(machine);
+
+            SHOWN.put(machine, recipes);
             registration.addRecipes(TYPES.get(machine), recipes);
         }
     }
@@ -73,6 +93,54 @@ public class JEIAssortedCuisine implements IModPlugin {
         for (CuisineMachine machine : CuisineMachine.values()) {
             registration.addCraftingStation(TYPES.get(machine), block(machine));
         }
+    }
+
+    @Override
+    public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
+        runtime = jeiRuntime;
+        // The sync may have landed between registerRecipes and here, in which case what JEI holds
+        // is already out of date.
+        onRecipesUpdated();
+    }
+
+    @Override
+    public void onRuntimeUnavailable() {
+        runtime = null;
+    }
+
+    /**
+     * Replaces the listed recipes after a sync. They can arrive after {@link #registerRecipes}, and
+     * a reload sends them again; the lists are replaced wholesale, so identity spots a new set.
+     */
+    private static void onRecipesUpdated() {
+        IJeiRuntime jeiRuntime = runtime;
+
+        if (jeiRuntime == null) {
+            return;
+        }
+
+        RecipeMap current = SyncedRecipes.recipes();
+
+        if (current == shownFrom) {
+            return;
+        }
+
+        shownFrom = current;
+        IRecipeManager recipeManager = jeiRuntime.getRecipeManager();
+
+        for (CuisineMachine machine : CuisineMachine.values()) {
+            recipeManager.hideRecipes(TYPES.get(machine), SHOWN.get(machine));
+
+            List<CuisineMachineRecipe> recipes = recipesFor(machine);
+            SHOWN.put(machine, recipes);
+            recipeManager.addRecipes(TYPES.get(machine), recipes);
+        }
+    }
+
+    private static List<CuisineMachineRecipe> recipesFor(CuisineMachine machine) {
+        return SyncedRecipes.byType(CuisineRecipeTypes.type(machine)).stream()
+                .map(RecipeHolder::value)
+                .toList();
     }
 
     private static Block block(CuisineMachine machine) {

@@ -1,0 +1,10 @@
+{
+  "texture": "assortedcuisine:textures/gui/container/cheese_making.png",
+  "u": 0,
+  "v": 0,
+  "width": 98,
+  "height": 26,
+  "columns": 1,
+  "inputs": [[27, 5]],
+  "result": [77, 5]
+}

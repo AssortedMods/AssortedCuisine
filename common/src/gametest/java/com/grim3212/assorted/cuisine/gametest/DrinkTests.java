@@ -1,6 +1,7 @@
 package com.grim3212.assorted.cuisine.gametest;
 
 import com.grim3212.assorted.cuisine.common.item.CuisineItems;
+import com.grim3212.assorted.lib.core.item.LibDataComponents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.animal.pig.Pig;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -34,6 +36,7 @@ final class DrinkTests {
         out.accept("spiked_soda_hurts", DrinkTests::spikedSodaHurts);
         out.accept("healing_item_takes_time", DrinkTests::healingItemTakesTime);
         out.accept("healing_item_spares_a_full_player", DrinkTests::healingItemSparesAFullPlayer);
+        out.accept("drinks_and_healing_items_describe_their_healing", DrinkTests::describeTheirHealing);
     }
 
     private static void sodaIsDrunkNotSwallowed(GameTestHelper helper) {
@@ -108,5 +111,15 @@ final class DrinkTests {
         ServerPlayer player = survivalPlayer(helper, held);
         player.setHealth(player.getMaxHealth() / 2.0F);
         return player;
+    }
+
+    /** The heal line comes from a default description component, not an item tooltip override. */
+    private static void describeTheirHealing(GameTestHelper helper) {
+        List<String> restores = List.of("tooltip.assortedcuisine.restores");
+        helper.assertValueEqual(tooltipKeys(helper, new ItemStack(CuisineItems.SODA_APPLE.get()), LibDataComponents.DESCRIPTION.get()), restores, "an apple soda's tooltip");
+        helper.assertValueEqual(tooltipKeys(helper, new ItemStack(CuisineItems.BANDAGE.get()), LibDataComponents.DESCRIPTION.get()), restores, "a bandage's tooltip");
+        helper.assertValueEqual(tooltipKeys(helper, new ItemStack(CuisineItems.SODA_SPIKED_ORANGE.get()), LibDataComponents.DESCRIPTION.get()),
+                List.of("tooltip.assortedcuisine.hurts"), "a spiked orange soda's tooltip");
+        helper.succeed();
     }
 }
