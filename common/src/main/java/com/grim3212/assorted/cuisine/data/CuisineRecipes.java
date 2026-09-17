@@ -48,7 +48,7 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
     @Override
     public void registerConditions() {
-        this.addConditions(partEnabled(Parts.DAIRY), ids("butter_churn", "cheese_maker", "mixer", "cheese_block", "cheese", "bread_slice",
+        this.addConditions(partEnabled(Parts.DAIRY), ids("butter_churn", "cheese_maker", "whisk", "cheese_block", "cheese", "bread_slice",
                 "cheese_burger", "hot_cheese", "eggs_unmixed", "eggs_mixed", "eggs_cooked_smelting", "cheese_making", "churning"));
         // Both halves cut with the knife, so either keeps it craftable.
         this.addConditions(or(partEnabled(Parts.DAIRY), partEnabled(Parts.PIES)), ids("knife"));
@@ -60,6 +60,8 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
                 "raw_pumpkin_pie", "raw_pork_pie", "apple_pie_smelting", "melon_pie_smelting", "pumpkin_pie_smelting", "pork_pie_smelting"));
         // The filling is a chocolate ball.
         this.addConditions(and(partEnabled(Parts.PIES), partEnabled(Parts.CHOCOLATE)), ids("raw_chocolate_pie", "chocolate_pie_smelting"));
+
+        this.addConditions(partEnabled(Parts.DRAGON_FRUIT), ids("dragon_fruit"));
 
         this.addConditions(partEnabled(Parts.HEALTH), ids("sweets", "powered_sugar", "powered_sweets", "bandage", "healthpack", "healthpack_super"));
 
@@ -73,6 +75,7 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
         dairy();
         chocolate();
+        dragonFruit();
         pies();
         health();
         soda();
@@ -94,10 +97,10 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
                 .pattern("X  ").pattern(" W ").pattern("  W")
                 .unlockedBy("has_iron", has(LibCommonTags.Items.INGOTS_IRON)).save(this.output, key("knife"));
 
-        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.TOOLS, CuisineItems.MIXER.get())
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.TOOLS, CuisineItems.WHISK.get())
                 .define('X', LibCommonTags.Items.INGOTS_IRON)
                 .pattern("X  ").pattern(" XX").pattern(" X ")
-                .unlockedBy("has_iron", has(LibCommonTags.Items.INGOTS_IRON)).save(this.output, key("mixer"));
+                .unlockedBy("has_iron", has(LibCommonTags.Items.INGOTS_IRON)).save(this.output, key("whisk"));
 
         // A block of cheese is nine pieces, either way round.
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.BUILDING_BLOCKS, CuisineBlocks.CHEESE_BLOCK.get())
@@ -130,8 +133,8 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
                 .unlockedBy("has_butter", has(CuisineTags.Items.FOODS_BUTTER)).save(this.output, key("eggs_unmixed"));
 
         ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.FOOD, CuisineItems.EGGS_MIXED.get())
-                .requires(CuisineItems.EGGS_UNMIXED.get()).requires(CuisineTags.Items.MIXERS)
-                .unlockedBy("has_mixer", has(CuisineTags.Items.MIXERS)).save(this.output, key("eggs_mixed"));
+                .requires(CuisineItems.EGGS_UNMIXED.get()).requires(CuisineTags.Items.WHISKS)
+                .unlockedBy("has_whisk", has(CuisineTags.Items.WHISKS)).save(this.output, key("eggs_mixed"));
 
         smelt(CuisineItems.EGGS_MIXED.get(), CuisineItems.EGGS_COOKED.get(), 0.35F, "eggs_cooked");
 
@@ -142,6 +145,16 @@ public class CuisineRecipes extends ConditionalRecipeProvider {
 
         CuisineMachineRecipeBuilder.recipe(CuisineMachine.BUTTER_CHURN, Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.BUCKETS_MILK)), new ItemStackTemplate(CuisineItems.BUTTER.get(), 2))
                 .unlockedBy("has_butter_churn", has(CuisineBlocks.BUTTER_CHURN.get())).save(this.output, key("churning"));
+    }
+
+    /**
+     * Cutting a cactus open for its fruit. It costs the whole cactus, not just a point off the
+     * knife: the block has to be broken and spent, or one plant would feed you forever.
+     */
+    private void dragonFruit() {
+        ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.FOOD, CuisineItems.DRAGON_FRUIT.get())
+                .requires(Items.CACTUS).requires(CuisineTags.Items.KNIVES)
+                .unlockedBy("has_knife", has(CuisineTags.Items.KNIVES)).save(this.output, key("dragon_fruit"));
     }
 
     private void chocolate() {

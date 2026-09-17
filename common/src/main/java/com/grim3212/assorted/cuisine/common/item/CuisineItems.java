@@ -40,7 +40,7 @@ public class CuisineItems {
 
     // --- Kitchen tools ---
     public static final IRegistryObject<Item> KNIFE = register("knife", props -> new KitchenToolItem(props.stacksTo(1).durability(63)));
-    public static final IRegistryObject<Item> MIXER = register("mixer", props -> new KitchenToolItem(props.stacksTo(1).durability(63)));
+    public static final IRegistryObject<Item> WHISK = register("whisk", props -> new KitchenToolItem(props.stacksTo(1).durability(63)));
     public static final IRegistryObject<Item> PAN = register("pan", props -> new Item(props.stacksTo(16)));
 
     // --- Chocolate ---

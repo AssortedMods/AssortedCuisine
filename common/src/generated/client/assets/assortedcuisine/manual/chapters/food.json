@@ -67,12 +67,12 @@
           "part": "dairy"
         }
       ],
-      "id": "mixer",
+      "id": "whisk",
       "recipes": [
-        "assortedcuisine:mixer"
+        "assortedcuisine:whisk"
       ],
-      "text": "manual.assortedcuisine.chapter.food.mixer",
-      "title": "manual.assortedcuisine.chapter.food.mixer.title"
+      "text": "manual.assortedcuisine.chapter.food.whisk",
+      "title": "manual.assortedcuisine.chapter.food.whisk.title"
     }
   ],
   "sort_order": 20

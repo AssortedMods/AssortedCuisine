@@ -8,7 +8,7 @@ rebuilt on the modern APIs.
 
 * **Dairy** - a butter churn and a cheese maker that take a bucket of milk and give back butter or a
   block of cheese; cheese, bread slices, cheese burgers and sandwiches; cracked, mixed and
-  scrambled eggs; a knife and a mixer that wear out a point at a time instead of being used up.
+  scrambled eggs; a knife and a whisk that wear out a point at a time instead of being used up.
 * **Chocolate** - cocoa dust ground from vanilla cocoa beans, bowls of chocolate hot and cold, a
   mould that sets hot chocolate into bars, wrapped bars, chocolate blocks and a chocolate cake.
 * **Pies** - a pie pan and dough, and apple, melon, pumpkin, chocolate and pork pies to fill and
@@ -16,7 +16,7 @@ rebuilt on the modern APIs.
 * **Health** - sugar sweets, powered sugar and sweets, bandages and health packs that heal directly.
 * **Soda** - a bottle, a CO2 canister, carbonated water and eleven flavours. Each heals a different
   amount, and most carry a short effect of their own. One of them does not heal you at all.
-* **Dragon fruit** - cacti drop it
+* **Dragon fruit** - cacti sometimes drop it, and a cactus cut open with a knife always gives one
 
 Recipes take tags wherever the 1.12 version took an ore dictionary name, so another mod's cheese,
 milk bucket or knife works here too.

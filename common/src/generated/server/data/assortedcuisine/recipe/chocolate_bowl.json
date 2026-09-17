@@ -20,7 +20,7 @@
   "pattern": [
     " X ",
     "XAX",
-    "B  "
+    " B "
   ],
   "result": {
     "id": "assortedcuisine:chocolate_bowl"

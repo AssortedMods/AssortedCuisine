@@ -212,13 +212,6 @@ public class CuisineMachineBlockEntity extends BlockEntity implements WorldlyCon
 
     /**
      * What one of {@code stack} leaves behind, asked per stack rather than per item.
-     *
-     * <p>{@code Item#getCraftingRemainder} is the item's fixed answer, which for a plain milk
-     * bucket is right and for a multi-use one is not: Assorted Tools' buckets hand back the same
-     * bucket with one less milk in it, and that only comes from the loader's per-stack hook. Both
-     * loaders patch {@code defaultCraftingReminder} to reach that hook, so going through it is what
-     * the crafting grid itself does - see the knife in {@code RecipeTests}. Asking the item directly
-     * destroyed anything whose remainder depends on its contents.
      */
     public static ItemStack remainderFor(ItemStack stack) {
         if (stack.isEmpty()) {

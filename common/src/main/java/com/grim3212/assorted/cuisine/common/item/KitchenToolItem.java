@@ -10,11 +10,7 @@ import net.minecraft.world.item.ItemStackTemplate;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * The knife and the mixer: tools that stay in the crafting grid and wear out a point at a time.
- *
- * <p>Item.Properties#craftRemainder only takes a fixed ItemStackTemplate, which cannot express
- * "the same tool, one point more worn", so the wear rides along as a component patch. Both loaders
- * ask the item per stack; returning null once it is spent is what destroys it.
+ * The knife and the whisk: tools that stay in the crafting grid and wear out a point at a time.
  */
 public class KitchenToolItem extends Item {
 

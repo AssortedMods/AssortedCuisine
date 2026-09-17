@@ -14,6 +14,15 @@
       "text": "manual.assortedcuisine.chapter.dragon_fruit.cactus",
       "title": "manual.assortedcuisine.chapter.dragon_fruit.cactus.title",
       "width": 69
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "cutting",
+      "recipes": [
+        "assortedcuisine:dragon_fruit"
+      ],
+      "text": "manual.assortedcuisine.chapter.dragon_fruit.cutting",
+      "title": "manual.assortedcuisine.chapter.dragon_fruit.cutting.title"
     }
   ],
   "sort_order": 30

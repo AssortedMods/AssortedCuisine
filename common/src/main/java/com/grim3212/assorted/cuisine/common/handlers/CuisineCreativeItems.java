@@ -50,7 +50,7 @@ public class CuisineCreativeItems {
         }
 
         if (config.dairyEnabled.get()) {
-            items.add(CuisineItems.MIXER.get());
+            items.add(CuisineItems.WHISK.get());
             items.add(CuisineItems.BREAD_SLICE.get());
             items.add(CuisineItems.CHEESE_BURGER.get());
             items.add(CuisineItems.HOT_CHEESE.get());

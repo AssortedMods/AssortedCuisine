@@ -75,13 +75,14 @@ public class CuisineManualProvider extends LibManualProvider {
         food.recipes("knife", CuisineItems.KNIFE.get())
                 .when(anyOf(partEnabled(Parts.DAIRY), partEnabled(Parts.PIES)))
                 .opens(CuisineItems.KNIFE.get());
-        food.recipes("mixer", CuisineItems.MIXER.get()).whenPartEnabled(Parts.DAIRY).opens(CuisineItems.MIXER.get());
+        food.recipes("whisk", CuisineItems.WHISK.get()).whenPartEnabled(Parts.DAIRY).opens(CuisineItems.WHISK.get());
     }
 
     private void addDragonFruit() {
         ChapterBuilder dragonFruit = this.chapter("dragon_fruit").whenPartEnabled(Parts.DRAGON_FRUIT);
 
         dragonFruit.image("cactus", picture("dragon_fruit"), 69, 104).opens(CuisineItems.DRAGON_FRUIT.get());
+        dragonFruit.recipes("cutting", CuisineItems.DRAGON_FRUIT.get());
     }
 
     private void addPies() {

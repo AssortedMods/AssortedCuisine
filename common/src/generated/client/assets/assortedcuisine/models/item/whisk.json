@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "assortedcuisine:item/mixer"
+    "layer0": "assortedcuisine:item/whisk"
   }
 }

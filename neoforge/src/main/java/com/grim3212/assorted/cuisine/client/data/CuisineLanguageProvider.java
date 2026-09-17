@@ -65,7 +65,7 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("tag.item.assortedcuisine.pies", "Pies");
         this.add("tag.item.assortedcuisine.sodas", "Sodas");
         this.add("tag.item.c.tools.knife", "Knives");
-        this.add("tag.item.c.tools.mixer", "Mixers");
+        this.add("tag.item.c.tools.whisk", "Whisks");
         this.add("tag.item.c.foods.cheese", "Cheeses");
         this.add("tag.item.c.foods.butter", "Butters");
         this.add("tag.item.c.foods.dough", "Doughs");
@@ -189,9 +189,9 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
                 "The knife slices bread and pumpkins. It stays in the crafting grid and wears out a little "
                         + "with every cut.");
 
-        this.add("manual.assortedcuisine.chapter.food.mixer.title", "Mixer");
-        this.add("manual.assortedcuisine.chapter.food.mixer",
-                "The mixer whisks eggs, and wears out the same way the knife does.");
+        this.add("manual.assortedcuisine.chapter.food.whisk.title", "Whisk");
+        this.add("manual.assortedcuisine.chapter.food.whisk",
+                "The whisk beats eggs, and wears out the same way the knife does.");
     }
 
     private void addDragonFruitChapter() {
@@ -200,6 +200,10 @@ public class CuisineLanguageProvider extends LibLanguageProvider {
         this.add("manual.assortedcuisine.chapter.dragon_fruit.cactus.title", "Dragon Fruit");
         this.add("manual.assortedcuisine.chapter.dragon_fruit.cactus",
                 "Cacti sometimes drop dragon fruit when they break. It is a small meal.");
+
+        this.add("manual.assortedcuisine.chapter.dragon_fruit.cutting.title", "Cutting One Open");
+        this.add("manual.assortedcuisine.chapter.dragon_fruit.cutting",
+                "Waiting on the drop is slow, so cut one open instead. A cactus and a knife give a fruit every time."); 
     }
 
     private void addPiesChapter() {

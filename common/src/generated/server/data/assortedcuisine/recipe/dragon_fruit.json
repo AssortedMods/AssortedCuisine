@@ -2,21 +2,21 @@
   "neoforge:conditions": [
     {
       "type": "assortedlib:part_enabled",
-      "part": "dairy"
+      "part": "dragonfruit"
     }
   ],
   "type": "minecraft:crafting_shapeless",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
-      "part": "dairy"
+      "part": "dragonfruit"
     }
   ],
   "ingredients": [
-    "assortedcuisine:eggs_unmixed",
-    "#c:tools/whisk"
+    "minecraft:cactus",
+    "#c:tools/knife"
   ],
   "result": {
-    "id": "assortedcuisine:eggs_mixed"
+    "id": "assortedcuisine:dragon_fruit"
   }
 }

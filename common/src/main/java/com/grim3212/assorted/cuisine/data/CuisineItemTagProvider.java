@@ -29,7 +29,7 @@ public class CuisineItemTagProvider extends LibItemTagProvider {
         Function<TagKey<Item>, ItemTagger> tagger = (tag) -> new ItemTagger(appender.apply(tag));
 
         tagger.apply(CuisineTags.Items.KNIVES).add(CuisineItems.KNIFE.get());
-        tagger.apply(CuisineTags.Items.MIXERS).add(CuisineItems.MIXER.get());
+        tagger.apply(CuisineTags.Items.WHISKS).add(CuisineItems.WHISK.get());
 
         tagger.apply(CuisineTags.Items.FOODS_CHEESE).add(CuisineItems.CHEESE.get());
         tagger.apply(CuisineTags.Items.FOODS_BUTTER).add(CuisineItems.BUTTER.get());

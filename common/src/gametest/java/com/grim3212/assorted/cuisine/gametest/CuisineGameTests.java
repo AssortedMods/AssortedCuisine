@@ -20,7 +20,7 @@ public final class CuisineGameTests {
         SmokeTests.register(out);
         MachineTests.register(out);
         DrinkTests.register(out);
-        HarvestTests.register(out);
+        CompostTests.register(out);
         AutomationTests.register(out);
         RecipeTests.register(out);
         PartTests.register(out);

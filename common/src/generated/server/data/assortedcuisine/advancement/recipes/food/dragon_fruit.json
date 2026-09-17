@@ -2,43 +2,43 @@
   "neoforge:conditions": [
     {
       "type": "assortedlib:part_enabled",
-      "part": "dairy"
+      "part": "dragonfruit"
     }
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "assortedcuisine:eggs_mixed"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_whisk": {
+    "has_knife": {
       "conditions": {
         "items": [
           {
-            "items": "#c:tools/whisk"
+            "items": "#c:tools/knife"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedcuisine:dragon_fruit"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
-      "part": "dairy"
+      "part": "dragonfruit"
     }
   ],
   "requirements": [
     [
       "has_the_recipe",
-      "has_whisk"
+      "has_knife"
     ]
   ],
   "rewards": {
     "recipes": [
-      "assortedcuisine:eggs_mixed"
+      "assortedcuisine:dragon_fruit"
     ]
   }
 }
