@@ -44,6 +44,7 @@ final class RecipeTests {
     }
 
     static void register(BiConsumer<String, Consumer<GameTestHelper>> out) {
+        out.accept("jei_plugin_is_registered_on_fabric", RecipeTests::jeiPluginIsRegisteredOnFabric);
         out.accept("bread_slice_wears_the_knife", RecipeTests::breadSliceWearsTheKnife);
         out.accept("spent_knife_is_not_returned", RecipeTests::spentKnifeIsNotReturned);
         out.accept("machine_recipes_load_without_complaint", RecipeTests::machineRecipesLoadWithoutComplaint);
@@ -143,5 +144,14 @@ final class RecipeTests {
     private static ItemStack remainderAt(CraftingRecipe recipe, CraftingInput input, int slot) {
         NonNullList<ItemStack> remaining = recipe.getRemainingItems(input);
         return remaining.get(slot);
+    }
+
+    /**
+     * JEI finds a plugin by annotation on NeoForge but by entrypoint on Fabric, so the annotation
+     * alone leaves the pages missing on one loader only.
+     */
+    private static void jeiPluginIsRegisteredOnFabric(GameTestHelper helper) {
+        com.grim3212.assorted.lib.test.TestSupport.assertJeiPluginIsRegistered(helper, "assortedcuisine", "com.grim3212.assorted.cuisine.compat.jei.JEIAssortedCuisine");
+        helper.succeed();
     }
 }

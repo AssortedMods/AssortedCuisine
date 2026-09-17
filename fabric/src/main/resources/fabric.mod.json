@@ -19,6 +19,9 @@
     ],
     "client": [
       "com.grim3212.assorted.cuisine.AssortedCuisineFabricClient"
+    ],
+    "jei_mod_plugin": [
+      "com.grim3212.assorted.cuisine.compat.jei.JEIAssortedCuisine"
     ]
   },
   "depends": {
