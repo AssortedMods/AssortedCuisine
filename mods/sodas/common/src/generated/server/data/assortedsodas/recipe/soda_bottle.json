@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": "#c:glass_panes"
+  },
+  "pattern": [
+    "X X",
+    "X X",
+    "XXX"
+  ],
+  "result": {
+    "id": "assortedsodas:soda_bottle"
+  }
+}

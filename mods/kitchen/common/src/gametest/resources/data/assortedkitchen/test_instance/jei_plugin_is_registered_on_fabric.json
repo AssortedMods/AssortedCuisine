@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedkitchen:jei_plugin_is_registered_on_fabric",
+  "structure": "assortedkitchen:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_carbonated_water": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedsodas:soda_carbonated_water"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedsodas:soda_golden_apple"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_carbonated_water"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedsodas:soda_golden_apple"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": "minecraft:red_mushroom",
+    "Y": "assortedsodas:soda_carbonated_water"
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "result": {
+    "id": "assortedsodas:soda_mushroom"
+  }
+}

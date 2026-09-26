@@ -1,0 +1,17 @@
+{
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "id": "packs",
+      "interval": 60,
+      "recipes": [
+        "assortedhealth:bandage",
+        "assortedhealth:healthpack",
+        "assortedhealth:healthpack_super"
+      ],
+      "text": "manual.assortedcuisine.chapter.health.packs",
+      "title": "manual.assortedcuisine.chapter.health.packs.title"
+    }
+  ],
+  "sort_order": 7
+}

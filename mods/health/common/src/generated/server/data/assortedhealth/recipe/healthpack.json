@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "minecraft:white_wool",
+    "S": "minecraft:sugar"
+  },
+  "pattern": [
+    " # ",
+    "#S#",
+    " # "
+  ],
+  "result": {
+    "id": "assortedhealth:healthpack"
+  }
+}

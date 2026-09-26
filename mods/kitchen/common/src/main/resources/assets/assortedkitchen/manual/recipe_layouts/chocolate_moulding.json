@@ -1,0 +1,31 @@
+{
+  "texture": "assortedkitchen:textures/gui/container/cuisine_machine.png",
+  "u": 0,
+  "v": 0,
+  "width": 98,
+  "height": 26,
+  "columns": 1,
+  "inputs": [
+    [
+      27,
+      5
+    ]
+  ],
+  "result": [
+    77,
+    5
+  ],
+  "extras": [
+    {
+      "position": [
+        5,
+        5
+      ],
+      "display": {
+        "type": "minecraft:item",
+        "item": "assortedkitchen:chocolate_bar_mould"
+      },
+      "tooltip": "tooltip.assortedkitchen.made_in"
+    }
+  ]
+}

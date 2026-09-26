@@ -1,0 +1,10 @@
+{
+  "icon": [
+    "assortedkitchen:cheese",
+    "assortedkitchen:cheese_burger",
+    "assortedsodas:soda_orange",
+    "assortedhealth:healthpack",
+    "assorteddragonfruit:dragon_fruit"
+  ],
+  "sort_order": 40
+}

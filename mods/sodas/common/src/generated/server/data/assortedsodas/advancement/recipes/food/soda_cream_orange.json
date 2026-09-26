@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_soda_orange": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedsodas:soda_orange"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedsodas:soda_cream_orange"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_soda_orange"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedsodas:soda_cream_orange"
+    ]
+  }
+}

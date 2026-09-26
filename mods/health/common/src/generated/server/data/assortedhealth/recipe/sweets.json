@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:paper"
+  ],
+  "result": {
+    "count": 8,
+    "id": "assortedhealth:sweets"
+  }
+}
