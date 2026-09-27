@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "assortedkitchen:chocolate_ball",
+    "X": "#c:foods/dough",
+    "Y": "assortedkitchen:raw_empty_pie"
+  },
+  "pattern": [
+    " X ",
+    "MMM",
+    " Y "
+  ],
+  "result": {
+    "id": "assortedkitchen:raw_chocolate_pie"
+  }
+}

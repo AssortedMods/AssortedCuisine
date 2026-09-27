@@ -1,0 +1,7 @@
+{
+  "type": "assortedkitchen:cheese_making",
+  "ingredient": "#c:buckets/milk",
+  "result": {
+    "id": "assortedkitchen:cheese_block"
+  }
+}

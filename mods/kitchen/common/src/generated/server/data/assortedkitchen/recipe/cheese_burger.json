@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "#c:foods/cheese",
+    "C": "#c:foods/bread",
+    "O": "minecraft:cooked_beef"
+  },
+  "pattern": [
+    " C ",
+    "AOA",
+    " C "
+  ],
+  "result": {
+    "id": "assortedkitchen:cheese_burger"
+  }
+}

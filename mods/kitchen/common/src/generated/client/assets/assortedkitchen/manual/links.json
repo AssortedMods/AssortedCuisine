@@ -1,0 +1,158 @@
+{
+  "links": [
+    {
+      "items": [
+        "assortedkitchen:mortar_and_pestle"
+      ],
+      "page": "assortedcuisine:chocolate/mortar_and_pestle"
+    },
+    {
+      "items": [
+        "assortedkitchen:cocoa_dust"
+      ],
+      "page": "assortedcuisine:chocolate/dust"
+    },
+    {
+      "items": [
+        "assortedkitchen:chocolate_bowl"
+      ],
+      "page": "assortedcuisine:chocolate/bowl"
+    },
+    {
+      "items": [
+        "assortedkitchen:hot_chocolate"
+      ],
+      "page": "assortedcuisine:chocolate/hot"
+    },
+    {
+      "items": [
+        "assortedkitchen:chocolate_ball"
+      ],
+      "page": "assortedcuisine:chocolate/ball"
+    },
+    {
+      "blocks": [
+        "assortedkitchen:chocolate_bar_mould"
+      ],
+      "page": "assortedcuisine:chocolate/mould"
+    },
+    {
+      "items": [
+        "assortedkitchen:chocolate_bar"
+      ],
+      "page": "assortedcuisine:chocolate/bar"
+    },
+    {
+      "items": [
+        "assortedkitchen:wrapper",
+        "assortedkitchen:chocolate_bar_wrapped"
+      ],
+      "page": "assortedcuisine:chocolate/wrapped"
+    },
+    {
+      "blocks": [
+        "assortedkitchen:chocolate_block"
+      ],
+      "page": "assortedcuisine:chocolate/storage"
+    },
+    {
+      "blocks": [
+        "assortedkitchen:chocolate_cake"
+      ],
+      "page": "assortedcuisine:chocolate/cake"
+    },
+    {
+      "blocks": [
+        "assortedkitchen:butter_churn"
+      ],
+      "items": [
+        "assortedkitchen:butter"
+      ],
+      "page": "assortedcuisine:dairy/butter_churn"
+    },
+    {
+      "blocks": [
+        "assortedkitchen:cheese_maker"
+      ],
+      "page": "assortedcuisine:dairy/cheese_maker"
+    },
+    {
+      "blocks": [
+        "assortedkitchen:cheese_block"
+      ],
+      "items": [
+        "assortedkitchen:cheese"
+      ],
+      "page": "assortedcuisine:dairy/cheese"
+    },
+    {
+      "items": [
+        "assortedkitchen:hot_cheese"
+      ],
+      "page": "assortedcuisine:dairy/hot_cheese"
+    },
+    {
+      "items": [
+        "assortedkitchen:eggs_unmixed",
+        "assortedkitchen:eggs_mixed",
+        "assortedkitchen:eggs_cooked"
+      ],
+      "page": "assortedcuisine:food/eggs"
+    },
+    {
+      "items": [
+        "assortedkitchen:bread_slice",
+        "assortedkitchen:cheese_burger"
+      ],
+      "page": "assortedcuisine:food/sandwiches"
+    },
+    {
+      "items": [
+        "assortedkitchen:knife"
+      ],
+      "page": "assortedcuisine:food/knife"
+    },
+    {
+      "items": [
+        "assortedkitchen:whisk"
+      ],
+      "page": "assortedcuisine:food/whisk"
+    },
+    {
+      "items": [
+        "assortedkitchen:pan",
+        "assortedkitchen:dough",
+        "assortedkitchen:pumpkin_slice"
+      ],
+      "page": "assortedcuisine:pies/ingredients"
+    },
+    {
+      "items": [
+        "assortedkitchen:raw_empty_pie",
+        "assortedkitchen:raw_apple_pie",
+        "assortedkitchen:raw_pumpkin_pie",
+        "assortedkitchen:raw_melon_pie",
+        "assortedkitchen:raw_pork_pie"
+      ],
+      "page": "assortedcuisine:pies/raw"
+    },
+    {
+      "blocks": [
+        "assortedkitchen:apple_pie",
+        "assortedkitchen:pumpkin_pie",
+        "assortedkitchen:melon_pie",
+        "assortedkitchen:pork_pie"
+      ],
+      "page": "assortedcuisine:pies/baking"
+    },
+    {
+      "blocks": [
+        "assortedkitchen:chocolate_pie"
+      ],
+      "items": [
+        "assortedkitchen:raw_chocolate_pie"
+      ],
+      "page": "assortedcuisine:pies/chocolate"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "#c:foods/cheese",
+    "C": "#c:foods/bread"
+  },
+  "pattern": [
+    " C ",
+    "AAA",
+    " C "
+  ],
+  "result": {
+    "id": "assortedkitchen:hot_cheese"
+  }
+}

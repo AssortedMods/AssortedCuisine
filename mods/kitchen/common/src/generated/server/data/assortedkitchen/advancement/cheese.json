@@ -1,0 +1,32 @@
+{
+  "parent": "assortedcuisine:root",
+  "criteria": {
+    "has_cheese_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedkitchen:cheese_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedkitchen.cheese.description"
+    },
+    "icon": {
+      "id": "assortedkitchen:cheese_block"
+    },
+    "title": {
+      "translate": "advancements.assortedkitchen.cheese.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cheese_block"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

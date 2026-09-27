@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "minecraft:sugar",
+    "B": "#c:buckets/milk",
+    "X": "assortedkitchen:cocoa_dust"
+  },
+  "pattern": [
+    " X ",
+    "XAX",
+    " B "
+  ],
+  "result": {
+    "id": "assortedkitchen:chocolate_bowl"
+  }
+}

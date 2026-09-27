@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chocolate_bar_mould": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedkitchen:chocolate_bar_mould"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedkitchen:chocolate_moulding"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chocolate_bar_mould"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedkitchen:chocolate_moulding"
+    ]
+  }
+}

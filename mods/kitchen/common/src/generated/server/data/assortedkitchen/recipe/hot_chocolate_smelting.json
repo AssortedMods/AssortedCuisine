@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 0.3,
+  "ingredient": "assortedkitchen:chocolate_bowl",
+  "result": {
+    "id": "assortedkitchen:hot_chocolate"
+  }
+}

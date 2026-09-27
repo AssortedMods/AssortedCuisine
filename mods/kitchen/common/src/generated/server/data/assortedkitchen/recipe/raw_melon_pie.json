@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "minecraft:melon_slice",
+    "X": "#c:foods/dough",
+    "Y": "assortedkitchen:raw_empty_pie"
+  },
+  "pattern": [
+    " X ",
+    "MMM",
+    " Y "
+  ],
+  "result": {
+    "id": "assortedkitchen:raw_melon_pie"
+  }
+}

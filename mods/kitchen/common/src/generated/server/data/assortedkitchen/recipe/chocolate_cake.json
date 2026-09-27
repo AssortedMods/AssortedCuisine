@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": "assortedkitchen:chocolate_ball",
+    "E": "#c:eggs",
+    "S": "minecraft:sugar",
+    "W": "minecraft:wheat",
+    "X": "#c:buckets/milk"
+  },
+  "pattern": [
+    "BXB",
+    "SES",
+    "WWW"
+  ],
+  "result": {
+    "id": "assortedkitchen:chocolate_cake"
+  }
+}

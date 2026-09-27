@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "minecraft:porkchop",
+    "X": "#c:foods/dough",
+    "Y": "assortedkitchen:raw_empty_pie"
+  },
+  "pattern": [
+    " X ",
+    "MMM",
+    " Y "
+  ],
+  "result": {
+    "id": "assortedkitchen:raw_pork_pie"
+  }
+}

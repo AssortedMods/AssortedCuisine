@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 0.35,
+  "ingredient": "assortedkitchen:eggs_mixed",
+  "result": {
+    "id": "assortedkitchen:eggs_cooked"
+  }
+}

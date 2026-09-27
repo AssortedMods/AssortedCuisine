@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "assortedkitchen:pan",
+    "X": "#c:foods/dough"
+  },
+  "pattern": [
+    "X",
+    "M"
+  ],
+  "result": {
+    "id": "assortedkitchen:raw_empty_pie"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "id": "ingredients",
+      "interval": 60,
+      "recipes": [
+        "assortedkitchen:pan",
+        "assortedkitchen:dough",
+        "assortedkitchen:pumpkin_slice"
+      ],
+      "text": "manual.assortedcuisine.chapter.pies.ingredients",
+      "title": "manual.assortedcuisine.chapter.pies.ingredients.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "raw",
+      "interval": 60,
+      "recipes": [
+        "assortedkitchen:raw_empty_pie",
+        "assortedkitchen:raw_apple_pie",
+        "assortedkitchen:raw_pumpkin_pie",
+        "assortedkitchen:raw_melon_pie",
+        "assortedkitchen:raw_pork_pie"
+      ],
+      "text": "manual.assortedcuisine.chapter.pies.raw",
+      "title": "manual.assortedcuisine.chapter.pies.raw.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "baking",
+      "interval": 60,
+      "recipes": [
+        "assortedkitchen:apple_pie_smelting",
+        "assortedkitchen:pumpkin_pie_smelting",
+        "assortedkitchen:melon_pie_smelting",
+        "assortedkitchen:pork_pie_smelting"
+      ],
+      "text": "manual.assortedcuisine.chapter.pies.baking",
+      "title": "manual.assortedcuisine.chapter.pies.baking.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "chocolate",
+      "interval": 60,
+      "recipes": [
+        "assortedkitchen:raw_chocolate_pie",
+        "assortedkitchen:chocolate_pie_smelting"
+      ],
+      "text": "manual.assortedcuisine.chapter.pies.chocolate",
+      "title": "manual.assortedcuisine.chapter.pies.chocolate.title"
+    }
+  ],
+  "sort_order": 4
+}
