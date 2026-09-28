@@ -20,5 +20,6 @@ public final class SodasGameTests {
         AliasTests.register(out);
         MigrationTests.register(out);
         DrinkTests.register(out);
+        FamilyTests.register(out);
     }
 }

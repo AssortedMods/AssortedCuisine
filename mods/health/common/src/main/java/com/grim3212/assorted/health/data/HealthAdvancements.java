@@ -1,7 +1,6 @@
 package com.grim3212.assorted.health.data;
 
 import com.grim3212.assorted.health.Constants;
-import com.grim3212.assorted.health.Family;
 import com.grim3212.assorted.health.api.HealthTags;
 import com.grim3212.assorted.health.common.item.HealthItems;
 import net.minecraft.advancements.Advancement;
@@ -39,14 +38,14 @@ public class HealthAdvancements implements AdvancementSubProvider {
 
         // Every part writes this root the same; its icon is swapped for the first of the family's that is installed.
         AdvancementHolder root = Advancement.Builder.advancement()
-                .display(HealthItems.HEALTHPACK.get(), Component.translatable("advancements." + Family.ID + ".root.title"),
-                        Component.translatable("advancements." + Family.ID + ".root.description"),
+                .display(HealthItems.HEALTHPACK.get(), Component.translatable("advancements." + Constants.FAMILY_ID + ".root.title"),
+                        Component.translatable("advancements." + Constants.FAMILY_ID + ".root.description"),
                         Identifier.withDefaultNamespace("block/pumpkin_top"), AdvancementType.TASK, false, false, false)
                 .addCriterion("food", hasTag(HealthTags.Items.FOODS))
                 .addCriterion("drink", hasTag(HealthTags.Items.DRINKS))
                 .addCriterion("tool", hasTag(HealthTags.Items.KNIVES))
                 .requirements(AdvancementRequirements.Strategy.OR)
-                .save(out, Identifier.fromNamespaceAndPath(Family.ID, "root").toString());
+                .save(out, Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root").toString());
 
         task("field_medic", root, HealthItems.HEALTHPACK_SUPER.get())
                 .addCriterion("has_healthpack_super", has(HealthItems.HEALTHPACK_SUPER.get()))

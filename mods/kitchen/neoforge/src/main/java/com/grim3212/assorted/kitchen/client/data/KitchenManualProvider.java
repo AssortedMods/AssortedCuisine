@@ -1,12 +1,10 @@
 package com.grim3212.assorted.kitchen.client.data;
 
 import com.grim3212.assorted.kitchen.Constants;
-import com.grim3212.assorted.kitchen.Family;
 import com.grim3212.assorted.kitchen.common.block.KitchenBlocks;
 import com.grim3212.assorted.kitchen.common.item.KitchenItems;
 import com.grim3212.assorted.lib.data.LibManualProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
 
 /**
  * This part's chapters of the Assorted Cuisine section, which every part shares; the explicit chapter orders keep the
@@ -15,13 +13,11 @@ import net.minecraft.resources.Identifier;
 public class KitchenManualProvider extends LibManualProvider {
 
     public KitchenManualProvider(PackOutput output) {
-        super(output, Constants.MOD_ID, Family.ID);
+        super(output, Constants.MOD_ID, Constants.FAMILY_ID);
     }
 
     @Override
     protected void addChapters() {
-        this.section(Family.MANUAL_ORDER, Family.ICONS.toArray(Identifier[]::new));
-
         this.addChocolate();
         this.addDairy();
         this.addFood();

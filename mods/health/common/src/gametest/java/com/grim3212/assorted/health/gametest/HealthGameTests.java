@@ -21,5 +21,6 @@ public final class HealthGameTests {
         MigrationTests.register(out);
         HealingTests.register(out);
         CompostTests.register(out);
+        FamilyTests.register(out);
     }
 }

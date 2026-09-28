@@ -1,7 +1,6 @@
 package com.grim3212.assorted.sodas.data;
 
 import com.grim3212.assorted.sodas.Constants;
-import com.grim3212.assorted.sodas.Family;
 import com.grim3212.assorted.sodas.api.SodasTags;
 import com.grim3212.assorted.sodas.common.item.SodasItems;
 import net.minecraft.advancements.Advancement;
@@ -41,14 +40,14 @@ public class SodasAdvancements implements AdvancementSubProvider {
 
         // Every part writes this root the same; its icon is swapped for the first of the family's that is installed.
         AdvancementHolder root = Advancement.Builder.advancement()
-                .display(SodasItems.SODA_ORANGE.get(), Component.translatable("advancements." + Family.ID + ".root.title"),
-                        Component.translatable("advancements." + Family.ID + ".root.description"),
+                .display(SodasItems.SODA_ORANGE.get(), Component.translatable("advancements." + Constants.FAMILY_ID + ".root.title"),
+                        Component.translatable("advancements." + Constants.FAMILY_ID + ".root.description"),
                         Identifier.withDefaultNamespace("block/pumpkin_top"), AdvancementType.TASK, false, false, false)
                 .addCriterion("food", hasTag(SodasTags.Items.FOODS))
                 .addCriterion("drink", hasTag(SodasTags.Items.DRINKS))
                 .addCriterion("tool", hasTag(SodasTags.Items.KNIVES))
                 .requirements(AdvancementRequirements.Strategy.OR)
-                .save(out, Identifier.fromNamespaceAndPath(Family.ID, "root").toString());
+                .save(out, Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root").toString());
 
         AdvancementHolder soda = task("soda", root, SodasItems.SODA_CARBONATED_WATER.get())
                 .addCriterion("has_soda", hasTag(SodasTags.Items.SODAS))

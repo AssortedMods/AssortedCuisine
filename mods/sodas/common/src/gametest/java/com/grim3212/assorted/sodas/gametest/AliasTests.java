@@ -2,7 +2,7 @@ package com.grim3212.assorted.sodas.gametest;
 
 import com.google.gson.JsonParser;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
-import com.grim3212.assorted.sodas.Family;
+import com.grim3212.assorted.sodas.Constants;
 import com.grim3212.assorted.sodas.common.item.SodasItems;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.gametest.framework.GameTestHelper;
@@ -33,6 +33,6 @@ final class AliasTests {
     }
 
     private static Identifier old(Identifier id) {
-        return Identifier.fromNamespaceAndPath(Family.ID, id.getPath());
+        return Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, id.getPath());
     }
 }

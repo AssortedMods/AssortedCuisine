@@ -1,7 +1,9 @@
 package com.grim3212.assorted.dragonfruit.common.handlers;
 
+import com.grim3212.assorted.dragonfruit.Constants;
 import com.grim3212.assorted.dragonfruit.DragonFruitCommonMod;
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
+import com.grim3212.assorted.lib.conditions.LibParts;
 import com.grim3212.assorted.lib.events.LootTableModifyEvent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -19,6 +21,10 @@ public class LootTableHandlers {
     private static final Identifier CACTUS = Identifier.withDefaultNamespace("blocks/cactus");
 
     public static void init(LootTableModifyEvent event) {
+        if (!LibParts.isEnabled(Constants.MOD_ID)) {
+            return;
+        }
+
         if (!event.getId().equals(CACTUS)) {
             return;
         }

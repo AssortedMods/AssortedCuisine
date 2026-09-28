@@ -1,7 +1,6 @@
 package com.grim3212.assorted.dragonfruit.client.data;
 
 import com.grim3212.assorted.dragonfruit.Constants;
-import com.grim3212.assorted.dragonfruit.Family;
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
 import com.grim3212.assorted.lib.data.LibManualProvider;
 import net.minecraft.data.PackOutput;
@@ -14,13 +13,11 @@ import net.minecraft.resources.Identifier;
 public class DragonFruitManualProvider extends LibManualProvider {
 
     public DragonFruitManualProvider(PackOutput output) {
-        super(output, Constants.MOD_ID, Family.ID);
+        super(output, Constants.MOD_ID, Constants.FAMILY_ID);
     }
 
     @Override
     protected void addChapters() {
-        this.section(Family.MANUAL_ORDER, Family.ICONS.toArray(Identifier[]::new));
-
         ChapterBuilder dragonFruit = this.chapter("dragon_fruit", 3);
         dragonFruit.image("cactus", picture("dragon_fruit"), 69, 104).opens(DragonFruitItems.DRAGON_FRUIT.get());
         dragonFruit.recipes("cutting", DragonFruitItems.DRAGON_FRUIT.get());

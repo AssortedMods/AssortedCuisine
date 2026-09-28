@@ -23,5 +23,6 @@ public final class KitchenGameTests {
         RecipeTests.register(out);
         AliasTests.register(out);
         MigrationTests.register(out);
+        FamilyTests.register(out);
     }
 }

@@ -1,7 +1,6 @@
 package com.grim3212.assorted.health.common.item;
 
 import com.grim3212.assorted.health.Constants;
-import com.grim3212.assorted.health.Family;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
 import net.minecraft.core.component.DataComponents;
@@ -15,7 +14,7 @@ import java.util.function.Function;
 
 public class HealthItems {
 
-    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Family.ID);
+    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
 
     public static final IRegistryObject<Item> SWEETS = food("sweets", 2, 0.1F);
     public static final IRegistryObject<Item> POWERED_SUGAR = register("powered_sugar", props -> new Item(props));

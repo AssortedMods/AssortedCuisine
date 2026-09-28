@@ -1,6 +1,6 @@
 package com.grim3212.assorted.health.gametest;
 
-import com.grim3212.assorted.health.Family;
+import com.grim3212.assorted.health.Constants;
 import com.grim3212.assorted.health.common.item.HealthItems;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.Identifier;
@@ -20,7 +20,7 @@ final class MigrationTests {
 
     // The family's first three icons, the kitchen's cheese and cheese burger and the orange soda, are not installed here.
     private static void advancementRootFallsBackToTheHealthpack(GameTestHelper helper) {
-        Identifier root = Identifier.fromNamespaceAndPath(Family.ID, "root");
+        Identifier root = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root");
         helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().getIcon().item().value() == HealthItems.HEALTHPACK.get(),
                 "the Assorted Cuisine advancement root is not drawn with the health pack, the first of the family's icons installed");
         helper.succeed();

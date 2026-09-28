@@ -1,7 +1,6 @@
 package com.grim3212.assorted.kitchen.common.block;
 
 import com.grim3212.assorted.kitchen.Constants;
-import com.grim3212.assorted.kitchen.Family;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
 import net.minecraft.core.registries.Registries;
@@ -26,8 +25,8 @@ import java.util.function.Supplier;
 
 public class KitchenBlocks {
 
-    public static final RegistryProvider<Block> BLOCKS = RegistryProvider.create(Registries.BLOCK, Constants.MOD_ID).aliasFrom(Family.ID);
-    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Family.ID);
+    public static final RegistryProvider<Block> BLOCKS = RegistryProvider.create(Registries.BLOCK, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
+    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
 
     public static final IRegistryObject<CheeseBlock> CHEESE_BLOCK = register("cheese_block", props -> new CheeseBlock(props.mapColor(MapColor.SAND).sound(SoundType.WOOL).strength(0.5F).noOcclusion()));
     public static final IRegistryObject<CheeseMakerBlock> CHEESE_MAKER = register("cheese_maker", props -> new CheeseMakerBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(2.0F).noOcclusion()));

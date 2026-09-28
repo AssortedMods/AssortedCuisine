@@ -1,7 +1,6 @@
 package com.grim3212.assorted.dragonfruit.common.item;
 
 import com.grim3212.assorted.dragonfruit.Constants;
-import com.grim3212.assorted.dragonfruit.Family;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
 import net.minecraft.core.registries.Registries;
@@ -14,7 +13,7 @@ import java.util.function.Function;
 
 public class DragonFruitItems {
 
-    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Family.ID);
+    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
 
     public static final IRegistryObject<Item> DRAGON_FRUIT = food("dragon_fruit", 4, 0.3F);
 

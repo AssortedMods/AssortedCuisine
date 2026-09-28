@@ -1,6 +1,6 @@
 package com.grim3212.assorted.sodas.gametest;
 
-import com.grim3212.assorted.sodas.Family;
+import com.grim3212.assorted.sodas.Constants;
 import com.grim3212.assorted.sodas.common.item.SodasItems;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.Identifier;
@@ -20,7 +20,7 @@ final class MigrationTests {
 
     // The family's first two icons, the kitchen's cheese and cheese burger, are not installed here.
     private static void advancementRootFallsBackToTheOrangeSoda(GameTestHelper helper) {
-        Identifier root = Identifier.fromNamespaceAndPath(Family.ID, "root");
+        Identifier root = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root");
         helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().getIcon().item().value() == SodasItems.SODA_ORANGE.get(),
                 "the Assorted Cuisine advancement root is not drawn with the orange soda, the first of the family's icons installed");
         helper.succeed();

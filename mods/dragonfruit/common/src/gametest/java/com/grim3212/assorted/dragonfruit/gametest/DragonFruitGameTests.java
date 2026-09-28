@@ -20,5 +20,6 @@ public final class DragonFruitGameTests {
         AliasTests.register(out);
         MigrationTests.register(out);
         CompostTests.register(out);
+        FamilyTests.register(out);
     }
 }

@@ -3,7 +3,6 @@ package com.grim3212.assorted.sodas.common.item;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
 import com.grim3212.assorted.sodas.Constants;
-import com.grim3212.assorted.sodas.Family;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -23,7 +22,7 @@ import java.util.function.Function;
 
 public class SodasItems {
 
-    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Family.ID);
+    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
 
     // The bottle and the CO2 canister are ingredients rather than drinks, so they are plain items.
     public static final IRegistryObject<Item> SODA_BOTTLE = register("soda_bottle", props -> new Item(props.stacksTo(16)));

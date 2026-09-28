@@ -1,7 +1,7 @@
 package com.grim3212.assorted.kitchen.gametest;
 
 import com.google.gson.JsonParser;
-import com.grim3212.assorted.kitchen.Family;
+import com.grim3212.assorted.kitchen.Constants;
 import com.grim3212.assorted.kitchen.common.block.KitchenBlocks;
 import com.grim3212.assorted.kitchen.common.block.blockentity.KitchenBlockEntityTypes;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
@@ -46,6 +46,6 @@ final class AliasTests {
     }
 
     private static Identifier old(Identifier id) {
-        return Identifier.fromNamespaceAndPath(Family.ID, id.getPath());
+        return Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, id.getPath());
     }
 }

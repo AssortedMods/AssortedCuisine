@@ -1,7 +1,6 @@
 package com.grim3212.assorted.dragonfruit.data;
 
 import com.grim3212.assorted.dragonfruit.Constants;
-import com.grim3212.assorted.dragonfruit.Family;
 import com.grim3212.assorted.dragonfruit.api.DragonFruitTags;
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
 import net.minecraft.advancements.Advancement;
@@ -39,14 +38,14 @@ public class DragonFruitAdvancements implements AdvancementSubProvider {
 
         // Every part writes this root the same; its icon is swapped for the first of the family's that is installed.
         AdvancementHolder root = Advancement.Builder.advancement()
-                .display(DragonFruitItems.DRAGON_FRUIT.get(), Component.translatable("advancements." + Family.ID + ".root.title"),
-                        Component.translatable("advancements." + Family.ID + ".root.description"),
+                .display(DragonFruitItems.DRAGON_FRUIT.get(), Component.translatable("advancements." + Constants.FAMILY_ID + ".root.title"),
+                        Component.translatable("advancements." + Constants.FAMILY_ID + ".root.description"),
                         Identifier.withDefaultNamespace("block/pumpkin_top"), AdvancementType.TASK, false, false, false)
                 .addCriterion("food", hasTag(DragonFruitTags.Items.FOODS))
                 .addCriterion("drink", hasTag(DragonFruitTags.Items.DRINKS))
                 .addCriterion("tool", hasTag(DragonFruitTags.Items.KNIVES))
                 .requirements(AdvancementRequirements.Strategy.OR)
-                .save(out, Identifier.fromNamespaceAndPath(Family.ID, "root").toString());
+                .save(out, Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root").toString());
 
         task("dragon_fruit", root, DragonFruitItems.DRAGON_FRUIT.get())
                 .addCriterion("has_dragon_fruit", has(DragonFruitItems.DRAGON_FRUIT.get()))

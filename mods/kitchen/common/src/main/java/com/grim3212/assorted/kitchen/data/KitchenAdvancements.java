@@ -1,7 +1,6 @@
 package com.grim3212.assorted.kitchen.data;
 
 import com.grim3212.assorted.kitchen.Constants;
-import com.grim3212.assorted.kitchen.Family;
 import com.grim3212.assorted.kitchen.api.KitchenTags;
 import com.grim3212.assorted.kitchen.common.block.KitchenBlocks;
 import com.grim3212.assorted.kitchen.common.item.KitchenItems;
@@ -39,8 +38,8 @@ public class KitchenAdvancements implements AdvancementSubProvider {
 
         // Every part writes this root the same but for the placeholder icon, which AdvancementIcons swaps at load.
         AdvancementHolder root = Advancement.Builder.advancement()
-                .display(KitchenItems.CHEESE_BURGER.get(), Component.translatable("advancements." + Family.ID + ".root.title"),
-                        Component.translatable("advancements." + Family.ID + ".root.description"),
+                .display(KitchenItems.CHEESE_BURGER.get(), Component.translatable("advancements." + Constants.FAMILY_ID + ".root.title"),
+                        Component.translatable("advancements." + Constants.FAMILY_ID + ".root.description"),
                         Identifier.withDefaultNamespace("block/pumpkin_top"), AdvancementType.TASK, false, false, false)
                 // Any one of the three is enough to open the tab, so no branch is a prerequisite
                 // for seeing the rest.
@@ -48,7 +47,7 @@ public class KitchenAdvancements implements AdvancementSubProvider {
                 .addCriterion("drink", hasTag(KitchenTags.Items.DRINKS))
                 .addCriterion("tool", hasTag(KitchenTags.Items.KNIVES))
                 .requirements(AdvancementRequirements.Strategy.OR)
-                .save(out, Identifier.fromNamespaceAndPath(Family.ID, "root").toString());
+                .save(out, Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root").toString());
 
         this.dairy(root, out);
         this.chocolate(root, out);

@@ -2,10 +2,8 @@ package com.grim3212.assorted.sodas.client.data;
 
 import com.grim3212.assorted.lib.data.LibManualProvider;
 import com.grim3212.assorted.sodas.Constants;
-import com.grim3212.assorted.sodas.Family;
 import com.grim3212.assorted.sodas.common.item.SodasItems;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
 
 /**
  * This part's chapter of the Assorted Cuisine section, which every part shares; the explicit chapter order keeps
@@ -14,13 +12,11 @@ import net.minecraft.resources.Identifier;
 public class SodasManualProvider extends LibManualProvider {
 
     public SodasManualProvider(PackOutput output) {
-        super(output, Constants.MOD_ID, Family.ID);
+        super(output, Constants.MOD_ID, Constants.FAMILY_ID);
     }
 
     @Override
     protected void addChapters() {
-        this.section(Family.MANUAL_ORDER, Family.ICONS.toArray(Identifier[]::new));
-
         ChapterBuilder soda = this.chapter("soda", 5);
 
         soda.recipes("carbonated", SodasItems.SODA_BOTTLE.get(), SodasItems.SODA_CO2.get(), SodasItems.SODA_CARBONATED_WATER.get()).every(60)
