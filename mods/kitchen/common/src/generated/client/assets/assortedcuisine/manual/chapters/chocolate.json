@@ -53,21 +53,21 @@
     },
     {
       "type": "assortedlib:recipe",
-      "id": "mould",
+      "id": "mold",
       "recipes": [
-        "assortedkitchen:chocolate_bar_mould"
+        "assortedkitchen:chocolate_bar_mold"
       ],
-      "text": "manual.assortedcuisine.chapter.chocolate.mould",
-      "title": "manual.assortedcuisine.chapter.chocolate.mould.title"
+      "text": "manual.assortedcuisine.chapter.chocolate.mold",
+      "title": "manual.assortedcuisine.chapter.chocolate.mold.title"
     },
     {
       "type": "assortedlib:recipe",
-      "id": "moulding",
+      "id": "molding",
       "recipes": [
-        "assortedkitchen:chocolate_moulding"
+        "assortedkitchen:chocolate_molding"
       ],
-      "text": "manual.assortedcuisine.chapter.chocolate.moulding",
-      "title": "manual.assortedcuisine.chapter.chocolate.moulding.title"
+      "text": "manual.assortedcuisine.chapter.chocolate.molding",
+      "title": "manual.assortedcuisine.chapter.chocolate.molding.title"
     },
     {
       "type": "assortedlib:recipe",

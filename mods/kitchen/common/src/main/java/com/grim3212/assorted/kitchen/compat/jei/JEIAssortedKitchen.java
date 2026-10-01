@@ -147,7 +147,7 @@ public class JEIAssortedKitchen implements IModPlugin {
         return switch (machine) {
             case CHEESE_MAKER -> KitchenBlocks.CHEESE_MAKER.get();
             case BUTTER_CHURN -> KitchenBlocks.BUTTER_CHURN.get();
-            case CHOCOLATE_MOULD -> KitchenBlocks.CHOCOLATE_BAR_MOULD.get();
+            case CHOCOLATE_MOLD -> KitchenBlocks.CHOCOLATE_BAR_MOLD.get();
         };
     }
 }

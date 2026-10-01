@@ -138,14 +138,14 @@ public class KitchenRecipes extends ConditionalRecipeProvider {
 
         smelt(KitchenItems.CHOCOLATE_BOWL.get(), KitchenItems.HOT_CHOCOLATE.get(), 0.3F, "hot_chocolate");
 
-        // The mould, as a recipe rather than a hardcoded hot chocolate check.
-        KitchenMachineRecipeBuilder.recipe(KitchenMachine.CHOCOLATE_MOULD, Ingredient.of(KitchenItems.HOT_CHOCOLATE.get()), new ItemStackTemplate(KitchenItems.CHOCOLATE_BAR.get(), 2))
-                .unlockedBy("has_chocolate_bar_mould", has(KitchenBlocks.CHOCOLATE_BAR_MOULD.get())).save(this.output, key("chocolate_moulding"));
+        // The mold, as a recipe rather than a hardcoded hot chocolate check.
+        KitchenMachineRecipeBuilder.recipe(KitchenMachine.CHOCOLATE_MOLD, Ingredient.of(KitchenItems.HOT_CHOCOLATE.get()), new ItemStackTemplate(KitchenItems.CHOCOLATE_BAR.get(), 2))
+                .unlockedBy("has_chocolate_bar_mold", has(KitchenBlocks.CHOCOLATE_BAR_MOLD.get())).save(this.output, key("chocolate_molding"));
 
-        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.DECORATIONS, KitchenBlocks.CHOCOLATE_BAR_MOULD.get())
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.DECORATIONS, KitchenBlocks.CHOCOLATE_BAR_MOLD.get())
                 .define('I', LibCommonTags.Items.STONE).define('X', LibCommonTags.Items.COBBLESTONE)
                 .pattern(" I ").pattern(" I ").pattern("XXX")
-                .unlockedBy("has_hot_chocolate", has(KitchenItems.HOT_CHOCOLATE.get())).save(this.output, key("chocolate_bar_mould"));
+                .unlockedBy("has_hot_chocolate", has(KitchenItems.HOT_CHOCOLATE.get())).save(this.output, key("chocolate_bar_mold"));
 
         ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.FOOD, KitchenItems.CHOCOLATE_BALL.get(), 2)
                 .requires(KitchenItems.HOT_CHOCOLATE.get())

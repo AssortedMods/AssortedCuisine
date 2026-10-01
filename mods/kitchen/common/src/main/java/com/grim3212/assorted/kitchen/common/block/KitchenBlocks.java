@@ -1,6 +1,7 @@
 package com.grim3212.assorted.kitchen.common.block;
 
 import com.grim3212.assorted.kitchen.Constants;
+import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
 import net.minecraft.core.registries.Registries;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -32,7 +34,7 @@ public class KitchenBlocks {
     public static final IRegistryObject<CheeseMakerBlock> CHEESE_MAKER = register("cheese_maker", props -> new CheeseMakerBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(2.0F).noOcclusion()));
     public static final IRegistryObject<ButterChurnBlock> BUTTER_CHURN = register("butter_churn", props -> new ButterChurnBlock(props.mapColor(MapColor.WOOD).sound(SoundType.WOOD).strength(2.0F)));
 
-    public static final IRegistryObject<ChocolateBarMouldBlock> CHOCOLATE_BAR_MOULD = register("chocolate_bar_mould", props -> new ChocolateBarMouldBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.0F).noOcclusion()));
+    public static final IRegistryObject<ChocolateBarMoldBlock> CHOCOLATE_BAR_MOLD = register("chocolate_bar_mold", props -> new ChocolateBarMoldBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.0F).noOcclusion()));
     public static final IRegistryObject<Block> CHOCOLATE_BLOCK = register("chocolate_block", props -> new Block(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(1.0F)));
     public static final IRegistryObject<KitchenCakeBlock> CHOCOLATE_CAKE = register("chocolate_cake", props -> new KitchenCakeBlock(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.DESTROY)));
 
@@ -41,6 +43,16 @@ public class KitchenBlocks {
     public static final IRegistryObject<KitchenCakeBlock> PUMPKIN_PIE = registerPie("pumpkin_pie");
     public static final IRegistryObject<KitchenCakeBlock> CHOCOLATE_PIE = registerPie("chocolate_pie");
     public static final IRegistryObject<KitchenCakeBlock> PORK_PIE = registerPie("pork_pie");
+
+    /** The mold was spelled chocolate_bar_mould in Assorted Cuisine 1.x. */
+    static {
+        Identifier mold = CHOCOLATE_BAR_MOLD.getId();
+        for (String namespace : List.of(Constants.FAMILY_ID, Constants.MOD_ID)) {
+            Identifier mould = Identifier.fromNamespaceAndPath(namespace, "chocolate_bar_mould");
+            Services.REGISTRY_FACTORY.alias(Registries.BLOCK, mould, mold);
+            Services.REGISTRY_FACTORY.alias(Registries.ITEM, mould, mold);
+        }
+    }
 
     private static IRegistryObject<KitchenCakeBlock> registerPie(String name) {
         return register(name, props -> new KitchenCakeBlock(props.mapColor(MapColor.SAND).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.DESTROY)));

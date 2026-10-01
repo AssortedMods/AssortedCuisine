@@ -32,7 +32,7 @@ final class DrinkTests {
     static void register(BiConsumer<String, Consumer<GameTestHelper>> out) {
         out.accept("soda_is_drunk_not_swallowed", DrinkTests::sodaIsDrunkNotSwallowed);
         out.accept("soda_heals_when_finished", DrinkTests::sodaHealsWhenFinished);
-        out.accept("soda_flavour_applies_its_effect", DrinkTests::sodaFlavourAppliesItsEffect);
+        out.accept("soda_flavor_applies_its_effect", DrinkTests::sodaFlavorAppliesItsEffect);
         out.accept("spiked_soda_hurts", DrinkTests::spikedSodaHurts);
         out.accept("sodas_describe_their_healing", DrinkTests::describeTheirHealing);
     }
@@ -59,8 +59,8 @@ final class DrinkTests {
         helper.succeed();
     }
 
-    /** Ten flavours that only differed by a number now differ by what they do to you. */
-    private static void sodaFlavourAppliesItsEffect(GameTestHelper helper) {
+    /** Ten flavors that only differed by a number now differ by what they do to you. */
+    private static void sodaFlavorAppliesItsEffect(GameTestHelper helper) {
         ServerPlayer player = hurtPlayer(helper, new ItemStack(SodasItems.SODA_COCOA.get()));
 
         player.getMainHandItem().finishUsingItem(helper.getLevel(), player);

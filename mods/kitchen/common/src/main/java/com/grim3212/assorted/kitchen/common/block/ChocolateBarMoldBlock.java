@@ -18,12 +18,12 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Pour hot chocolate in, let it set, right click it out as bars.
  */
-public class ChocolateBarMouldBlock extends KitchenMachineBlock {
+public class ChocolateBarMoldBlock extends KitchenMachineBlock {
 
     private static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);
 
-    public ChocolateBarMouldBlock(Properties props) {
-        super(KitchenMachine.CHOCOLATE_MOULD, props);
+    public ChocolateBarMoldBlock(Properties props) {
+        super(KitchenMachine.CHOCOLATE_MOLD, props);
     }
 
     @Override

@@ -63,7 +63,7 @@ public class KitchenItems {
      * is how food worked before hunger existed; a modern bowl of something is worth eating instead.
      *
      * <p>Hot chocolate also sets a crafting remainder on top of this: usingConvertsTo only covers
-     * being drunk, and the chocolate mould takes the bowl from a recipe-shaped path rather than from
+     * being drunk, and the chocolate mold takes the bowl from a recipe-shaped path rather than from
      * an eating animation.
      */
     private static Item.Properties drink(Item.Properties props, int nutrition, float saturation) {

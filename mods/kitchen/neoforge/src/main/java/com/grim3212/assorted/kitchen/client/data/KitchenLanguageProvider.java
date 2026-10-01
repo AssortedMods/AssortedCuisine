@@ -93,15 +93,15 @@ public class KitchenLanguageProvider extends LibLanguageProvider {
                 "Hot chocolate rolled into balls is the quickest thing here to eat, and what the cake is "
                         + "built from.");
 
-        this.add("manual.assortedcuisine.chapter.chocolate.mould.title", "Chocolate Bar Mould");
-        this.add("manual.assortedcuisine.chapter.chocolate.mould",
-                "Place the mould and right click it with hot chocolate to pour." + BREAK
+        this.add("manual.assortedcuisine.chapter.chocolate.mold.title", "Chocolate Bar Mold");
+        this.add("manual.assortedcuisine.chapter.chocolate.mold",
+                "Place the mold and right click it with hot chocolate to pour." + BREAK
                         + "It steams while it sets, and every block of ice or snow packed against its sides "
                         + "cools it faster." + BREAK
-                        + "Once it has set, right click the mould for the bars.");
+                        + "Once it has set, right click the mold for the bars.");
 
-        this.add("manual.assortedcuisine.chapter.chocolate.moulding.title", "Setting Bars");
-        this.add("manual.assortedcuisine.chapter.chocolate.moulding",
+        this.add("manual.assortedcuisine.chapter.chocolate.molding.title", "Setting Bars");
+        this.add("manual.assortedcuisine.chapter.chocolate.molding",
                 "One bowl of hot chocolate sets into two bars.");
 
         this.add("manual.assortedcuisine.chapter.chocolate.bar.title", "Chocolate Bars");
@@ -155,7 +155,7 @@ public class KitchenLanguageProvider extends LibLanguageProvider {
 
         this.add("manual.assortedcuisine.chapter.food.eggs.title", "Eggs");
         this.add("manual.assortedcuisine.chapter.food.eggs",
-                "Crack eggs into a pan, mix them, then cook them in a furnace. Raw eggs are not worth eating, "
+                "Crack eggs into a bowl with some butter, mix them, then cook them in a furnace. Raw eggs are not worth eating, "
                         + "and the game will let you try anyway." + BREAK
                         + "Cooked eggs are filling and heal well, which is most of the reason to keep butter "
                         + "around.");

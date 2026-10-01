@@ -15,7 +15,7 @@ public class KitchenBlockEntityTypes {
     /** One type for all three machines: they store the same thing and only tick at different rates. */
     public static final IRegistryObject<BlockEntityType<KitchenMachineBlockEntity>> MACHINE = BLOCK_ENTITIES.register("machine",
             () -> Services.PLATFORM.createBlockEntityType(KitchenMachineBlockEntity::new,
-                    KitchenBlocks.CHEESE_MAKER.get(), KitchenBlocks.BUTTER_CHURN.get(), KitchenBlocks.CHOCOLATE_BAR_MOULD.get()));
+                    KitchenBlocks.CHEESE_MAKER.get(), KitchenBlocks.BUTTER_CHURN.get(), KitchenBlocks.CHOCOLATE_BAR_MOLD.get()));
 
     public static void init() {
     }

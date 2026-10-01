@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 /**
- * A bottle of soda. Each flavour is its own item now - 1.12 packed all thirteen into one item's
+ * A bottle of soda. Each flavor is its own item now - 1.12 packed all thirteen into one item's
  * damage value, which modern Minecraft has no equivalent for.
  */
 public class SodaItem extends Item {

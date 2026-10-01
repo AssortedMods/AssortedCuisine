@@ -88,9 +88,9 @@ final class AutomationTests {
         KitchenMachineBlockEntity entity = machine(helper, CENTRE);
 
         helper.assertFalse(entity.canPlaceItem(SLOT_INPUT, new ItemStack(Items.COBBLESTONE)), "the cheese maker accepted cobblestone");
-        // Hot chocolate is a machine ingredient, but the mould's, not this one's.
+        // Hot chocolate is a machine ingredient, but the mold's, not this one's.
         helper.assertFalse(entity.canPlaceItem(SLOT_INPUT, new ItemStack(com.grim3212.assorted.kitchen.common.item.KitchenItems.HOT_CHOCOLATE.get())),
-                "the cheese maker accepted the chocolate mould's ingredient");
+                "the cheese maker accepted the chocolate mold's ingredient");
         helper.succeed();
     }
 

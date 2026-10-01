@@ -27,7 +27,7 @@ public class KitchenBlockTagProvider extends LibBlockTagProvider {
         // The stone-built machines want a pickaxe; everything else here comes off by hand.
         tagger.apply(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(KitchenBlocks.CHEESE_MAKER.get())
-                .add(KitchenBlocks.CHOCOLATE_BAR_MOULD.get());
+                .add(KitchenBlocks.CHOCOLATE_BAR_MOLD.get());
 
         tagger.apply(BlockTags.MINEABLE_WITH_AXE)
                 .add(KitchenBlocks.BUTTER_CHURN.get());

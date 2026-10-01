@@ -45,9 +45,10 @@ public class HealthLanguageProvider extends LibLanguageProvider {
 
         this.add("manual.assortedcuisine.chapter.sugar.sweets.title", "Sweets");
         this.add("manual.assortedcuisine.chapter.sugar.sweets",
-                "Powdered sugar makes sweets, and powdered sweets make the stronger kind. Neither is a meal, "
-                        + "but both stack deep and eat quickly." + BREAK
-                        + "Powdered sweets are also what the super health pack is built on.");
+                "Sugar and paper make sweets, and powered sugar and paper make powered sweets, the stronger "
+                        + "kind. Neither is a meal, but both stack deep and eat quickly." + BREAK
+                        + "Powered sugar is sugar with a little redstone, and it is also what the super health pack "
+                        + "is built on.");
 
         this.add("manual.assortedcuisine.chapter.health", "Healing");
 
@@ -57,7 +58,7 @@ public class HealthLanguageProvider extends LibLanguageProvider {
                         + "want halfway through a fight - but each takes a moment to apply, and being hit "
                         + "interrupts it." + BREAK
                         + "The bandage is the cheap one, the health pack the middle, and the super pack needs "
-                        + "powdered sweets from the previous chapter.");
+                        + "powered sugar from the previous chapter.");
     }
 
     /** The Assorted Cuisine root, which every part with advancements writes the same, and this part's own. */

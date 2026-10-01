@@ -38,8 +38,8 @@ final class MachineTests {
         out.accept("machine_survives_a_reload", MachineTests::machineSurvivesAReload);
         out.accept("butter_churn_makes_butter", MachineTests::butterChurnMakesButter);
         out.accept("butter_churn_hand_turn_helps", MachineTests::butterChurnHandTurnHelps);
-        out.accept("chocolate_mould_makes_bars", MachineTests::chocolateMouldMakesBars);
-        out.accept("chocolate_mould_is_faster_on_ice", MachineTests::chocolateMouldIsFasterOnIce);
+        out.accept("chocolate_mold_makes_bars", MachineTests::chocolateMoldMakesBars);
+        out.accept("chocolate_mold_is_faster_on_ice", MachineTests::chocolateMoldIsFasterOnIce);
     }
 
     private static void cheeseMakerMakesCheese(GameTestHelper helper) {
@@ -134,8 +134,8 @@ final class MachineTests {
         helper.succeed();
     }
 
-    private static void chocolateMouldMakesBars(GameTestHelper helper) {
-        helper.setBlock(CENTRE, KitchenBlocks.CHOCOLATE_BAR_MOULD.get());
+    private static void chocolateMoldMakesBars(GameTestHelper helper) {
+        helper.setBlock(CENTRE, KitchenBlocks.CHOCOLATE_BAR_MOLD.get());
         ServerPlayer player = survivalPlayer(helper, new ItemStack(KitchenItems.HOT_CHOCOLATE.get()));
         BlockPos pos = helper.absolutePos(CENTRE);
 
@@ -143,23 +143,23 @@ final class MachineTests {
         runMachine(helper, CENTRE, 2000);
         rightClick(player, helper.getLevel(), ItemStack.EMPTY, pos);
 
-        helper.assertTrue(countInInventory(player, KitchenItems.CHOCOLATE_BAR.get()) == 2, "a finished mould did not give two bars");
+        helper.assertTrue(countInInventory(player, KitchenItems.CHOCOLATE_BAR.get()) == 2, "a finished mold did not give two bars");
         helper.assertTrue(countInInventory(player, Items.BOWL) == 1, "the empty bowl did not come back");
         helper.succeed();
     }
 
     /**
-     * Cold blocks against the mould's sides each speed it up, so a ringed mould beats a bare one and
+     * Cold blocks against the mold's sides each speed it up, so a ringed mold beats a bare one and
      * a fully ringed one beats a half ringed one. Ice underneath is not counted any more - that is
      * where the hopper goes.
      */
-    private static void chocolateMouldIsFasterOnIce(GameTestHelper helper) {
+    private static void chocolateMoldIsFasterOnIce(GameTestHelper helper) {
         BlockPos bare = CENTRE;
         BlockPos some = CENTRE.east(3);
         BlockPos ringed = CENTRE.east(6);
 
         for (BlockPos pos : new BlockPos[]{bare, some, ringed}) {
-            helper.setBlock(pos, KitchenBlocks.CHOCOLATE_BAR_MOULD.get());
+            helper.setBlock(pos, KitchenBlocks.CHOCOLATE_BAR_MOLD.get());
         }
 
         // Ice below must not count, or the old behaviour would still be passing this.
@@ -181,7 +181,7 @@ final class MachineTests {
         int ringedStage = machine(helper, ringed).stage();
 
         helper.assertTrue(someStage > bareStage,
-                "one ice block beside the mould did not help: bare " + bareStage + ", one " + someStage);
+                "one ice block beside the mold did not help: bare " + bareStage + ", one " + someStage);
         helper.assertTrue(ringedStage > someStage,
                 "a full ring did not beat a single block: one " + someStage + ", ringed " + ringedStage);
         helper.succeed();

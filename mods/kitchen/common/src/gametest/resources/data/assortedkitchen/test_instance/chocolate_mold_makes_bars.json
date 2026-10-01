@@ -1,7 +1,7 @@
 {
   "type": "minecraft:function",
   "environment": "minecraft:default",
-  "function": "assortedkitchen:chocolate_mould_makes_bars",
+  "function": "assortedkitchen:chocolate_mold_makes_bars",
   "structure": "assortedkitchen:test_box",
   "max_ticks": 1,
   "setup_ticks": 0,

@@ -71,8 +71,8 @@
     }
   ],
   "textures": {
-    "particle": "assortedkitchen:block/chocolate_bar_mould_cooking",
+    "particle": "assortedkitchen:block/chocolate_bar_mold_cooking",
     "side": "minecraft:block/furnace_side",
-    "top": "assortedkitchen:block/chocolate_bar_mould_cooking"
+    "top": "assortedkitchen:block/chocolate_bar_mold_cooking"
   }
 }

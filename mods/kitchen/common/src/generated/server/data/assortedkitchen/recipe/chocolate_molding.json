@@ -5,7 +5,7 @@
       "part": "assortedkitchen"
     }
   ],
-  "type": "assortedkitchen:chocolate_moulding",
+  "type": "assortedkitchen:chocolate_molding",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",

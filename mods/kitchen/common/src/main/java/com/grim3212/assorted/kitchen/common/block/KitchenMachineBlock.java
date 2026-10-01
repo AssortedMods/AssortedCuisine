@@ -30,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * A block you put one item into, wait at, and take something else out of. The cheese maker, the
- * butter churn and the chocolate mould are all this block with a different {@link KitchenMachine}.
+ * butter churn and the chocolate mold are all this block with a different {@link KitchenMachine}.
  *
  * <p>What goes in and what comes out is a datapack recipe, so a pack can add goat cheese without a
  * new block. Progress lives in the block entity and is mirrored into {@link #STAGE} for the model
@@ -157,7 +157,7 @@ public abstract class KitchenMachineBlock extends Block implements EntityBlock {
         return InteractionResult.PASS;
     }
 
-    /** How many ticks of progress one tick is worth here; the mould reads the block below it. */
+    /** How many ticks of progress one tick is worth here; the mold reads the block below it. */
     protected int speedMultiplier(Level level, BlockPos pos) {
         return 1;
     }

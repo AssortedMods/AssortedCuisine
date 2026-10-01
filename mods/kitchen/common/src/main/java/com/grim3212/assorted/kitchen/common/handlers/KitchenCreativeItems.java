@@ -38,7 +38,7 @@ public class KitchenCreativeItems {
         items.add(KitchenItems.COCOA_DUST.get());
         items.add(KitchenItems.CHOCOLATE_BOWL.get());
         items.add(KitchenItems.HOT_CHOCOLATE.get());
-        items.add(KitchenBlocks.CHOCOLATE_BAR_MOULD.get());
+        items.add(KitchenBlocks.CHOCOLATE_BAR_MOLD.get());
         items.add(KitchenItems.CHOCOLATE_BAR.get());
         items.add(KitchenItems.WRAPPER.get());
         items.add(KitchenItems.CHOCOLATE_BAR_WRAPPED.get());

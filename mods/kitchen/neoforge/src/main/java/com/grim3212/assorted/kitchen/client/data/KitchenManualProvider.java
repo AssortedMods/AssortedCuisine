@@ -32,9 +32,9 @@ public class KitchenManualProvider extends LibManualProvider {
         chocolate.recipes("bowl", KitchenItems.CHOCOLATE_BOWL.get()).opens(KitchenItems.CHOCOLATE_BOWL.get());
         chocolate.recipesById("hot", recipeId("hot_chocolate_smelting")).opens(KitchenItems.HOT_CHOCOLATE.get());
         chocolate.recipes("ball", KitchenItems.CHOCOLATE_BALL.get()).opens(KitchenItems.CHOCOLATE_BALL.get());
-        chocolate.recipes("mould", KitchenBlocks.CHOCOLATE_BAR_MOULD.get()).opens(KitchenBlocks.CHOCOLATE_BAR_MOULD.get());
-        // What the mould does once it is placed, which is not a crafting recipe.
-        chocolate.recipesById("moulding", recipeId("chocolate_moulding"));
+        chocolate.recipes("mold", KitchenBlocks.CHOCOLATE_BAR_MOLD.get()).opens(KitchenBlocks.CHOCOLATE_BAR_MOLD.get());
+        // What the mold does once it is placed, which is not a crafting recipe.
+        chocolate.recipesById("molding", recipeId("chocolate_molding"));
         chocolate.recipes("bar", KitchenItems.CHOCOLATE_BAR.get()).opens(KitchenItems.CHOCOLATE_BAR.get());
         chocolate.recipes("wrapped", KitchenItems.WRAPPER.get(), KitchenItems.CHOCOLATE_BAR_WRAPPED.get()).every(60)
                 .opens(KitchenItems.WRAPPER.get(), KitchenItems.CHOCOLATE_BAR_WRAPPED.get());

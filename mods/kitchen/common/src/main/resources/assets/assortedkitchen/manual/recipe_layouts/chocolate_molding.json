@@ -23,7 +23,7 @@
       ],
       "display": {
         "type": "minecraft:item",
-        "item": "assortedkitchen:chocolate_bar_mould"
+        "item": "assortedkitchen:chocolate_bar_mold"
       },
       "tooltip": "tooltip.assortedkitchen.made_in"
     }

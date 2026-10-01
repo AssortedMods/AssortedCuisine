@@ -1,8 +1,8 @@
 {
   "type": "minecraft:function",
   "environment": "minecraft:default",
-  "function": "assortedsodas:soda_flavour_applies_its_effect",
-  "structure": "assortedsodas:test_box",
+  "function": "assortedkitchen:chocolate_mold_is_faster_on_ice",
+  "structure": "assortedkitchen:test_box",
   "max_ticks": 1,
   "setup_ticks": 0,
   "required": true

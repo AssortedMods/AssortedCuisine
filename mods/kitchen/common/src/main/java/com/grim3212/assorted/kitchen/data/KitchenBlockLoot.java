@@ -19,7 +19,7 @@ public class KitchenBlockLoot extends LibBlockLootProvider {
         this.dropSelf(KitchenBlocks.CHEESE_BLOCK.get());
         this.dropSelf(KitchenBlocks.CHEESE_MAKER.get());
         this.dropSelf(KitchenBlocks.BUTTER_CHURN.get());
-        this.dropSelf(KitchenBlocks.CHOCOLATE_BAR_MOULD.get());
+        this.dropSelf(KitchenBlocks.CHOCOLATE_BAR_MOLD.get());
         this.dropSelf(KitchenBlocks.CHOCOLATE_BLOCK.get());
 
         // Cake and pies drop nothing once placed, like vanilla cake.

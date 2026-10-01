@@ -54,11 +54,11 @@ public class SodasAdvancements implements AdvancementSubProvider {
                 .save(out, id("soda"));
 
         Advancement.Builder every = challenge("every_soda", soda, SodasItems.SODA_GOLDEN_APPLE.get());
-        for (ItemLike flavour : new ItemLike[]{SodasItems.SODA_CARBONATED_WATER.get(), SodasItems.SODA_APPLE.get(),
+        for (ItemLike flavor : new ItemLike[]{SodasItems.SODA_CARBONATED_WATER.get(), SodasItems.SODA_APPLE.get(),
                 SodasItems.SODA_GOLDEN_APPLE.get(), SodasItems.SODA_DIAMOND.get(), SodasItems.SODA_COCOA.get(),
                 SodasItems.SODA_ORANGE.get(), SodasItems.SODA_CREAM_ORANGE.get(), SodasItems.SODA_ROOT_BEER.get(),
                 SodasItems.SODA_MUSHROOM.get(), SodasItems.SODA_SLURM.get()}) {
-            every.addCriterion("has_" + name(flavour), has(flavour));
+            every.addCriterion("has_" + name(flavor), has(flavor));
         }
         every.save(out, id("every_soda"));
 

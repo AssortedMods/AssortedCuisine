@@ -38,7 +38,7 @@ public class KitchenBlockstateProvider extends ModelProvider {
     /** The inside face a pie shows once it has been bitten into. */
     private static final TextureSlot INSIDE = TextureSlot.create("inside");
 
-    /** A tray on the floor, eight pixels tall: the cheese block and the chocolate mould. */
+    /** A tray on the floor, eight pixels tall: the cheese block and the chocolate mold. */
     private static final ModelTemplate TRAY_ALL = ExtendedModelTemplateBuilder.builder()
             .parent(MC_BLOCK)
             .requiredTextureSlot(TextureSlot.PARTICLE)
@@ -91,7 +91,7 @@ public class KitchenBlockstateProvider extends ModelProvider {
         tray(blockModels, KitchenBlocks.CHEESE_BLOCK.get());
         cheeseMaker(blockModels);
         butterChurn(blockModels);
-        chocolateBarMould(blockModels);
+        chocolateBarMold(blockModels);
 
         cake(blockModels, KitchenBlocks.CHOCOLATE_CAKE.get(), "chocolate_cake_bottom", "chocolate_cake_side", "chocolate_cake_top", "chocolate_cake_sidecut");
         pie(blockModels, KitchenBlocks.APPLE_PIE.get(), "apple_pie");
@@ -141,13 +141,13 @@ public class KitchenBlockstateProvider extends ModelProvider {
         blockModels.registerSimpleItemModel(block, model);
     }
 
-    private void chocolateBarMould(BlockModelGenerators blockModels) {
-        Block block = KitchenBlocks.CHOCOLATE_BAR_MOULD.get();
+    private void chocolateBarMold(BlockModelGenerators blockModels) {
+        Block block = KitchenBlocks.CHOCOLATE_BAR_MOLD.get();
         Material side = new Material(Identifier.withDefaultNamespace("block/furnace_side"));
 
-        Identifier empty = trayTop(blockModels, "chocolate_bar_mould", side, blockTexture("chocolate_bar_mould"));
-        Identifier setting = trayTop(blockModels, "chocolate_bar_mould_cooking", side, blockTexture("chocolate_bar_mould_cooking"));
-        Identifier done = trayTop(blockModels, "chocolate_bar_mould_done", side, blockTexture("chocolate_bar_mould_done"));
+        Identifier empty = trayTop(blockModels, "chocolate_bar_mold", side, blockTexture("chocolate_bar_mold"));
+        Identifier setting = trayTop(blockModels, "chocolate_bar_mold_cooking", side, blockTexture("chocolate_bar_mold_cooking"));
+        Identifier done = trayTop(blockModels, "chocolate_bar_mold_done", side, blockTexture("chocolate_bar_mold_done"));
 
         blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
                 .with(PropertyDispatch.initial(KitchenMachineBlock.STAGE).generate(stage -> BlockModelGenerators.plainVariant(

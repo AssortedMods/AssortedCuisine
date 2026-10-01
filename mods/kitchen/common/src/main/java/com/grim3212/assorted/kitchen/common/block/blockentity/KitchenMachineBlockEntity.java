@@ -31,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /**
- * What the cheese maker, the butter churn and the chocolate mould all need: an input to work on, an
+ * What the cheese maker, the butter churn and the chocolate mold all need: an input to work on, an
  * output to take away, and somewhere for the bucket or bowl the recipe left behind.
  */
 public class KitchenMachineBlockEntity extends BlockEntity implements WorldlyContainer {

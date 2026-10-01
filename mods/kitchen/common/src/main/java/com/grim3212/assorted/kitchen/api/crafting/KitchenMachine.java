@@ -16,7 +16,7 @@ public enum KitchenMachine {
     CHEESE_MAKER("cheese_making", 600),
     /** The churn also takes progress from being turned by hand; see {@code ButterChurnBlock}. */
     BUTTER_CHURN("churning", 400),
-    CHOCOLATE_MOULD("chocolate_moulding", 400);
+    CHOCOLATE_MOLD("chocolate_molding", 400);
 
     private final String name;
     private final int defaultProcessTime;

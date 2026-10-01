@@ -7,11 +7,11 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hot_chocolate": {
+    "has_chocolate_bar_mold": {
       "conditions": {
         "items": [
           {
-            "items": "assortedkitchen:hot_chocolate"
+            "items": "assortedkitchen:chocolate_bar_mold"
           }
         ]
       },
@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:chocolate_bar_mould"
+        "recipe": "assortedkitchen:chocolate_molding"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -33,12 +33,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_hot_chocolate"
+      "has_chocolate_bar_mold"
     ]
   ],
   "rewards": {
     "recipes": [
-      "assortedkitchen:chocolate_bar_mould"
+      "assortedkitchen:chocolate_molding"
     ]
   }
 }

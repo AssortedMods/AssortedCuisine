@@ -55,16 +55,16 @@ public class SodasRecipes extends ConditionalRecipeProvider {
                 .pattern("X").pattern("Y").pattern("Z")
                 .unlockedBy("has_soda_bottle", has(SodasItems.SODA_BOTTLE.get())).save(this.output, key("soda_carbonated_water"));
 
-        // Every flavour is carbonated water plus the thing it tastes of.
-        flavour(SodasItems.SODA_APPLE.get(), Ingredient.of(Items.APPLE), "soda_apple");
-        flavour(SodasItems.SODA_GOLDEN_APPLE.get(), Ingredient.of(Items.GOLDEN_APPLE), "soda_golden_apple");
-        flavour(SodasItems.SODA_SLURM.get(), Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.SLIMEBALLS)), "soda_slurm");
-        flavour(SodasItems.SODA_SPIKED_ORANGE.get(), Ingredient.of(Items.JACK_O_LANTERN), "soda_spiked_orange");
-        flavour(SodasItems.SODA_ROOT_BEER.get(), Ingredient.of(Items.WHEAT_SEEDS), "soda_root_beer");
-        flavour(SodasItems.SODA_ORANGE.get(), Ingredient.of(Items.PUMPKIN), "soda_orange");
-        flavour(SodasItems.SODA_DIAMOND.get(), Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.GEMS_DIAMOND)), "soda_diamond");
-        flavour(SodasItems.SODA_COCOA.get(), Ingredient.of(Items.COCOA_BEANS), "soda_cocoa");
-        flavour(SodasItems.SODA_MUSHROOM.get(), Ingredient.of(Items.RED_MUSHROOM), "soda_mushroom");
+        // Every flavor is carbonated water plus the thing it tastes of.
+        flavor(SodasItems.SODA_APPLE.get(), Ingredient.of(Items.APPLE), "soda_apple");
+        flavor(SodasItems.SODA_GOLDEN_APPLE.get(), Ingredient.of(Items.GOLDEN_APPLE), "soda_golden_apple");
+        flavor(SodasItems.SODA_SLURM.get(), Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.SLIMEBALLS)), "soda_slurm");
+        flavor(SodasItems.SODA_SPIKED_ORANGE.get(), Ingredient.of(Items.JACK_O_LANTERN), "soda_spiked_orange");
+        flavor(SodasItems.SODA_ROOT_BEER.get(), Ingredient.of(Items.WHEAT_SEEDS), "soda_root_beer");
+        flavor(SodasItems.SODA_ORANGE.get(), Ingredient.of(Items.PUMPKIN), "soda_orange");
+        flavor(SodasItems.SODA_DIAMOND.get(), Ingredient.of(this.items.getOrThrow(LibCommonTags.Items.GEMS_DIAMOND)), "soda_diamond");
+        flavor(SodasItems.SODA_COCOA.get(), Ingredient.of(Items.COCOA_BEANS), "soda_cocoa");
+        flavor(SodasItems.SODA_MUSHROOM.get(), Ingredient.of(Items.RED_MUSHROOM), "soda_mushroom");
 
         // Cream orange is the one built on another soda rather than on plain carbonated water.
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, SodasItems.SODA_CREAM_ORANGE.get())
@@ -73,9 +73,9 @@ public class SodasRecipes extends ConditionalRecipeProvider {
                 .unlockedBy("has_soda_orange", has(SodasItems.SODA_ORANGE.get())).save(this.output, key("soda_cream_orange"));
     }
 
-    private void flavour(ItemLike result, Ingredient flavour, String name) {
+    private void flavor(ItemLike result, Ingredient flavor, String name) {
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.FOOD, result)
-                .define('X', flavour).define('Y', SodasItems.SODA_CARBONATED_WATER.get())
+                .define('X', flavor).define('Y', SodasItems.SODA_CARBONATED_WATER.get())
                 .pattern("X").pattern("Y")
                 .unlockedBy("has_carbonated_water", has(SodasItems.SODA_CARBONATED_WATER.get())).save(this.output, key(name));
     }

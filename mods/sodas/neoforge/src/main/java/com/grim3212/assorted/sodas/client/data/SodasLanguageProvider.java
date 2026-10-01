@@ -60,11 +60,11 @@ public class SodasLanguageProvider extends LibLanguageProvider {
         this.add("manual.assortedcuisine.chapter.soda.carbonated.title", "Carbonated Water");
         this.add("manual.assortedcuisine.chapter.soda.carbonated",
                 "Every soda starts the same way: a soda bottle, some carbon dioxide, and water to carbonate. "
-                        + "Get that far and the flavour is the easy part.");
+                        + "Get that far and the flavor is the easy part.");
 
-        this.add("manual.assortedcuisine.chapter.soda.types.title", "Flavours");
+        this.add("manual.assortedcuisine.chapter.soda.types.title", "Flavors");
         this.add("manual.assortedcuisine.chapter.soda.types",
-                "Ten flavours, and they do not heal the same. Slurm and root beer are light, apple and the two "
+                "Ten flavors, and they do not heal the same. Slurm and root beer are light, apple and the two "
                         + "oranges are ordinary, and cocoa, golden apple and diamond are worth saving." + BREAK
                         + "Spiked orange is the exception. It hurts whoever drinks it, which is the whole point "
                         + "of handing one to somebody else.");
@@ -76,7 +76,7 @@ public class SodasLanguageProvider extends LibLanguageProvider {
         this.add("advancements.assortedcuisine.root.description", "Cook something worth eating");
 
         this.advancement("soda", "Fizzy Lifting", "Bottle your first soda");
-        this.advancement("every_soda", "Taste Test", "Collect all ten drinkable flavours");
+        this.advancement("every_soda", "Taste Test", "Collect all ten drinkable flavors");
         this.advancement("spiked", "Hold My Drink", "Find out what is in a spiked orange soda");
     }
 

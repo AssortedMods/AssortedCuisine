@@ -10,11 +10,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "assortedkitchen:chocolate_bar_mould"
+          "name": "assortedkitchen:chocolate_bar_mold"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "assortedkitchen:blocks/chocolate_bar_mould"
+  "random_sequence": "assortedkitchen:blocks/chocolate_bar_mold"
 }
