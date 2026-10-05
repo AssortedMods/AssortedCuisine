@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedsodas"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedsodas"
+    }
+  ],
+  "key": {
+    "X": "minecraft:golden_apple",
+    "Y": "assortedsodas:soda_carbonated_water"
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "result": {
+    "id": "assortedsodas:soda_golden_apple"
+  }
+}

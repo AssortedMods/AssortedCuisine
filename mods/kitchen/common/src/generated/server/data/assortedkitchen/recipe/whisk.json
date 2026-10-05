@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "key": {
+    "X": "#c:ingots/iron"
+  },
+  "pattern": [
+    "X  ",
+    " XX",
+    " X "
+  ],
+  "result": {
+    "id": "assortedkitchen:whisk"
+  }
+}

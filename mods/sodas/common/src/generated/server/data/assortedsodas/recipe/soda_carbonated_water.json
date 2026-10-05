@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedsodas"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedsodas"
+    }
+  ],
+  "key": {
+    "X": "assortedsodas:soda_co2",
+    "Y": "minecraft:water_bucket",
+    "Z": "assortedsodas:soda_bottle"
+  },
+  "pattern": [
+    "X",
+    "Y",
+    "Z"
+  ],
+  "result": {
+    "id": "assortedsodas:soda_carbonated_water"
+  }
+}

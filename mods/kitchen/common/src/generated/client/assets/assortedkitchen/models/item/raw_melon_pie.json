@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "assortedkitchen:item/raw_melon_pie"
+  }
+}

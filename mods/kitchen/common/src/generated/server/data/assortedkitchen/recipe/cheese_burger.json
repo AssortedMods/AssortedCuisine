@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "key": {
+    "A": "#c:foods/cheese",
+    "C": "#c:foods/bread",
+    "O": "minecraft:cooked_beef"
+  },
+  "pattern": [
+    " C ",
+    "AOA",
+    " C "
+  ],
+  "result": {
+    "id": "assortedkitchen:cheese_burger"
+  }
+}

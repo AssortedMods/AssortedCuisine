@@ -1,0 +1,20 @@
+{
+  "links": [
+    {
+      "items": [
+        "assortedhealth:powered_sugar",
+        "assortedhealth:sweets",
+        "assortedhealth:powered_sweets"
+      ],
+      "page": "assortedcuisine:sugar/sweets"
+    },
+    {
+      "items": [
+        "assortedhealth:bandage",
+        "assortedhealth:healthpack",
+        "assortedhealth:healthpack_super"
+      ],
+      "page": "assortedcuisine:health/packs"
+    }
+  ]
+}

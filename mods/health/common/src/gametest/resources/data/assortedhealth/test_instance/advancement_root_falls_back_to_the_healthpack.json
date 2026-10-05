@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedhealth:advancement_root_falls_back_to_the_healthpack",
+  "structure": "assortedhealth:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

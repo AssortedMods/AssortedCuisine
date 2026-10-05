@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedkitchen:dropper_loads_a_machine",
+  "structure": "assortedkitchen:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

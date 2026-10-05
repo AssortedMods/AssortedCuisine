@@ -1,0 +1,32 @@
+{
+  "parent": "assortedcuisine:root",
+  "criteria": {
+    "has_chocolate_bar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assortedkitchen:chocolate_bar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedkitchen.chocolate.description"
+    },
+    "icon": {
+      "id": "assortedkitchen:chocolate_bar"
+    },
+    "title": {
+      "translate": "advancements.assortedkitchen.chocolate.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_chocolate_bar"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

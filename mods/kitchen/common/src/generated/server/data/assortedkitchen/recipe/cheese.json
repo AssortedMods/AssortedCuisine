@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "ingredients": [
+    "assortedkitchen:cheese_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "assortedkitchen:cheese"
+  }
+}

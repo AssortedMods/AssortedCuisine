@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assorteddragonfruit"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assorteddragonfruit"
+    }
+  ],
+  "ingredients": [
+    "minecraft:cactus",
+    "#c:tools/knife"
+  ],
+  "result": {
+    "id": "assorteddragonfruit:dragon_fruit"
+  }
+}

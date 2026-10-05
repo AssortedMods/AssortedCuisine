@@ -1,0 +1,32 @@
+{
+  "parent": "assortedcuisine:root",
+  "criteria": {
+    "has_pie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#assortedkitchen:pies"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.assortedkitchen.pie.description"
+    },
+    "icon": {
+      "id": "assortedkitchen:apple_pie"
+    },
+    "title": {
+      "translate": "advancements.assortedkitchen.pie.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_pie"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

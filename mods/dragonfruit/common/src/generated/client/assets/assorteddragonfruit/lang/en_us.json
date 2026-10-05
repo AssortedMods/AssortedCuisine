@@ -1,0 +1,15 @@
+{
+  "advancements.assortedcuisine.root.description": "Cook something worth eating",
+  "advancements.assortedcuisine.root.title": "Assorted Cuisine",
+  "advancements.assorteddragonfruit.dragon_fruit.description": "Take dragon fruit from a cactus",
+  "advancements.assorteddragonfruit.dragon_fruit.title": "Fruit of the Desert",
+  "item.assorteddragonfruit.dragon_fruit": "Dragon Fruit",
+  "itemGroup.assortedcuisine": "Assorted Cuisine",
+  "manual.assortedcuisine.chapter.dragon_fruit": "Dragon Fruit",
+  "manual.assortedcuisine.chapter.dragon_fruit.cactus": "Cacti sometimes drop dragon fruit when they break. It is a small meal.",
+  "manual.assortedcuisine.chapter.dragon_fruit.cactus.title": "Dragon Fruit",
+  "manual.assortedcuisine.chapter.dragon_fruit.cutting": "Waiting on the drop is slow, so cut one open instead. A cactus and a knife give a fruit every time.",
+  "manual.assortedcuisine.chapter.dragon_fruit.cutting.title": "Cutting One Open",
+  "manual.assortedcuisine.description": "Cocoa, chocolate, dairy and everything else this mod gives you to cook, bottle and eat.",
+  "manual.assortedcuisine.title": "Assorted Cuisine"
+}

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:function",
-  "environment": "minecraft:default",
-  "function": "assortedcuisine:healing_item_takes_time",
-  "structure": "assortedcuisine:test_box",
-  "max_ticks": 1,
-  "setup_ticks": 0,
-  "required": true
-}

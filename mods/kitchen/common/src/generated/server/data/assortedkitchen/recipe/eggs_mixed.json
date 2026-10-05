@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "ingredients": [
+    "assortedkitchen:eggs_unmixed",
+    "#c:tools/whisk"
+  ],
+  "result": {
+    "id": "assortedkitchen:eggs_mixed"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assorteddragonfruit"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:image",
+      "height": 104,
+      "id": "cactus",
+      "image": "assorteddragonfruit:textures/gui/manual/dragon_fruit.png",
+      "text": "manual.assortedcuisine.chapter.dragon_fruit.cactus",
+      "title": "manual.assortedcuisine.chapter.dragon_fruit.cactus.title",
+      "width": 69
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "cutting",
+      "recipes": [
+        "assorteddragonfruit:dragon_fruit"
+      ],
+      "text": "manual.assortedcuisine.chapter.dragon_fruit.cutting",
+      "title": "manual.assortedcuisine.chapter.dragon_fruit.cutting.title"
+    }
+  ],
+  "sort_order": 3
+}

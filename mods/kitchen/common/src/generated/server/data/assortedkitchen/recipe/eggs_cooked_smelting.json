@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 0.35,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "ingredient": "assortedkitchen:eggs_mixed",
+  "result": {
+    "id": "assortedkitchen:eggs_cooked"
+  }
+}

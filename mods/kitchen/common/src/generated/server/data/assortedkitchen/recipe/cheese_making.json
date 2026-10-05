@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "assortedkitchen:cheese_making",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "ingredient": "#c:buckets/milk",
+  "result": {
+    "id": "assortedkitchen:cheese_block"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 0.3,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "ingredient": "assortedkitchen:chocolate_bowl",
+  "result": {
+    "id": "assortedkitchen:hot_chocolate"
+  }
+}

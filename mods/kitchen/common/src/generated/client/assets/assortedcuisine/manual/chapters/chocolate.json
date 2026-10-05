@@ -1,0 +1,111 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "id": "mortar_and_pestle",
+      "recipes": [
+        "assortedkitchen:mortar_and_pestle"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.mortar_and_pestle",
+      "title": "manual.assortedcuisine.chapter.chocolate.mortar_and_pestle.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "dust",
+      "recipes": [
+        "assortedkitchen:cocoa_dust"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.dust",
+      "title": "manual.assortedcuisine.chapter.chocolate.dust.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "bowl",
+      "recipes": [
+        "assortedkitchen:chocolate_bowl"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.bowl",
+      "title": "manual.assortedcuisine.chapter.chocolate.bowl.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "hot",
+      "recipes": [
+        "assortedkitchen:hot_chocolate_smelting"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.hot",
+      "title": "manual.assortedcuisine.chapter.chocolate.hot.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "ball",
+      "recipes": [
+        "assortedkitchen:chocolate_ball"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.ball",
+      "title": "manual.assortedcuisine.chapter.chocolate.ball.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "mold",
+      "recipes": [
+        "assortedkitchen:chocolate_bar_mold"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.mold",
+      "title": "manual.assortedcuisine.chapter.chocolate.mold.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "molding",
+      "recipes": [
+        "assortedkitchen:chocolate_molding"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.molding",
+      "title": "manual.assortedcuisine.chapter.chocolate.molding.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "bar",
+      "recipes": [
+        "assortedkitchen:chocolate_bar"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.bar",
+      "title": "manual.assortedcuisine.chapter.chocolate.bar.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "wrapped",
+      "interval": 60,
+      "recipes": [
+        "assortedkitchen:wrapper",
+        "assortedkitchen:chocolate_bar_wrapped"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.wrapped",
+      "title": "manual.assortedcuisine.chapter.chocolate.wrapped.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "storage",
+      "recipes": [
+        "assortedkitchen:chocolate_block"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.storage",
+      "title": "manual.assortedcuisine.chapter.chocolate.storage.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "cake",
+      "recipes": [
+        "assortedkitchen:chocolate_cake"
+      ],
+      "text": "manual.assortedcuisine.chapter.chocolate.cake",
+      "title": "manual.assortedcuisine.chapter.chocolate.cake.title"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedhealth"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedhealth"
+    }
+  ],
+  "ingredients": [
+    "assortedhealth:powered_sugar",
+    "minecraft:paper"
+  ],
+  "result": {
+    "count": 8,
+    "id": "assortedhealth:powered_sweets"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedkitchen:bread_slice_wears_the_knife",
+  "structure": "assortedkitchen:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

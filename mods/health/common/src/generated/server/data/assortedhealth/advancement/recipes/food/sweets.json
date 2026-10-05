@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedhealth"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sugar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:sugar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedhealth:sweets"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedhealth"
+    }
+  ],
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sugar"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedhealth:sweets"
+    ]
+  }
+}

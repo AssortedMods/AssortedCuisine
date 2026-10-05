@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "key": {
+    "B": "assortedkitchen:chocolate_ball",
+    "E": "#c:eggs",
+    "S": "minecraft:sugar",
+    "W": "minecraft:wheat",
+    "X": "#c:buckets/milk"
+  },
+  "pattern": [
+    "BXB",
+    "SES",
+    "WWW"
+  ],
+  "result": {
+    "id": "assortedkitchen:chocolate_cake"
+  }
+}

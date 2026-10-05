@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedsodas"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedsodas"
+    }
+  ],
+  "key": {
+    "X": "#c:buckets/milk",
+    "Y": "assortedsodas:soda_orange"
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "result": {
+    "id": "assortedsodas:soda_cream_orange"
+  }
+}

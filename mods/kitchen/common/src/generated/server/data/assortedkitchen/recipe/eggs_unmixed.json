@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedkitchen"
+    }
+  ],
+  "key": {
+    "I": "#c:foods/butter",
+    "M": "minecraft:bowl",
+    "X": "#c:eggs"
+  },
+  "pattern": [
+    "XIX",
+    " M "
+  ],
+  "result": {
+    "id": "assortedkitchen:eggs_unmixed"
+  }
+}

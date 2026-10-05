@@ -1,0 +1,50 @@
+package com.grim3212.assorted.kitchen.api;
+
+import com.grim3212.assorted.kitchen.Constants;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+
+/**
+ * The tags this mod defines and the common ones it fills. Recipes take tags rather than items
+ * wherever the 1.12 version took an ore dictionary name, so another mod's cheese works here too.
+ */
+public class KitchenTags {
+
+    public static class Items {
+
+        /** Anything that can slice - the knife, or another mod's equivalent. */
+        public static final TagKey<Item> KNIVES = commonTag("tools/knife");
+        /** Anything that can whisk - this mod's whisk, or another mod's equivalent. */
+        public static final TagKey<Item> WHISKS = commonTag("tools/whisk");
+        /** Anything that can grind - this mod's mortar and pestle, or another mod's equivalent. */
+        public static final TagKey<Item> MORTARS_AND_PESTLES = commonTag("tools/mortar_and_pestle");
+
+        public static final TagKey<Item> FOODS_CHEESE = commonTag("foods/cheese");
+        public static final TagKey<Item> FOODS_BUTTER = commonTag("foods/butter");
+        public static final TagKey<Item> FOODS_DOUGH = commonTag("foods/dough");
+        public static final TagKey<Item> FOODS_COOKED_EGG = commonTag("foods/cooked_egg");
+        public static final TagKey<Item> FOODS_BREAD = commonTag("foods/bread");
+
+        /**
+         * The broad tags other mods look in. Nothing in this mod was in any of them before, so a
+         * recipe elsewhere asking for "any food" or "any drink" could not see a single item here.
+         */
+        public static final TagKey<Item> FOODS = commonTag("foods");
+        public static final TagKey<Item> FOODS_PIE = commonTag("foods/pie");
+        public static final TagKey<Item> FOODS_CANDY = commonTag("foods/candy");
+        public static final TagKey<Item> DRINKS = commonTag("drinks");
+
+        /** The five baked pies, so a datapack can treat them as one thing. */
+        public static final TagKey<Item> PIES = modTag("pies");
+
+        private static TagKey<Item> commonTag(String name) {
+            return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", name));
+        }
+
+        private static TagKey<Item> modTag(String name) {
+            return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Constants.MOD_ID, name));
+        }
+    }
+}

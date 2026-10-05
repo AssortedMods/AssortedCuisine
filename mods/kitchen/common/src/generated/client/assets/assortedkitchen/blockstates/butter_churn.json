@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=1": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=10": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=11": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=12": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=13": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=14": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=15": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=2": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=3": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=4": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=5": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=6": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=7": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=8": {
+      "model": "assortedkitchen:block/butter_churn"
+    },
+    "stage=9": {
+      "model": "assortedkitchen:block/butter_churn"
+    }
+  }
+}

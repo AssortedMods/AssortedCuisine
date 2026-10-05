@@ -1,0 +1,42 @@
+package com.grim3212.assorted.dragonfruit.common.handlers;
+
+import com.grim3212.assorted.dragonfruit.Constants;
+import com.grim3212.assorted.dragonfruit.DragonFruitCommonMod;
+import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
+import com.grim3212.assorted.lib.conditions.LibParts;
+import com.grim3212.assorted.lib.events.LootTableModifyEvent;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+
+/**
+ * Cactus drops dragon fruit. 1.12 did this by intercepting the harvest event; a loot pool is the
+ * modern equivalent and a datapack can turn it off.
+ */
+public class LootTableHandlers {
+
+    private static final Identifier CACTUS = Identifier.withDefaultNamespace("blocks/cactus");
+
+    public static void init(LootTableModifyEvent event) {
+        if (!LibParts.isEnabled(Constants.MOD_ID)) {
+            return;
+        }
+
+        if (!event.getId().equals(CACTUS)) {
+            return;
+        }
+
+        double chance = DragonFruitCommonMod.COMMON_CONFIG.dragonFruitChance.get();
+        if (chance <= 0.0D) {
+            return;
+        }
+
+        event.getContext().addPool(LootPool.lootPool()
+                .add(LootItem.lootTableItem(DragonFruitItems.DRAGON_FRUIT.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                .when(LootItemRandomChanceCondition.randomChance((float) chance)));
+    }
+}
