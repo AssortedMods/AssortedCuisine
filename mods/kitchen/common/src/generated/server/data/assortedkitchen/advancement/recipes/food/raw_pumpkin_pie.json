@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:raw_pumpkin_pie"
+        "recipes": "assortedkitchen:raw_pumpkin_pie"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

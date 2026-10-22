@@ -21,7 +21,7 @@ final class MigrationTests {
     // The family's first three icons, the kitchen's cheese and cheese burger and the orange soda, are not installed here.
     private static void advancementRootFallsBackToTheHealthpack(GameTestHelper helper) {
         Identifier root = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root");
-        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().getIcon().item().value() == HealthItems.HEALTHPACK.get(),
+        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().icon().item().value() == HealthItems.HEALTHPACK.get(),
                 "the Assorted Cuisine advancement root is not drawn with the health pack, the first of the family's icons installed");
         helper.succeed();
     }

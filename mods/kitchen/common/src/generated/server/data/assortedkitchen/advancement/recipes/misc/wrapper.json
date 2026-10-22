@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:wrapper"
+        "recipes": "assortedkitchen:wrapper"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

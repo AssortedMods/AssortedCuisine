@@ -1,8 +1,9 @@
 package com.grim3212.assorted.dragonfruit.gametest;
 
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -18,7 +19,7 @@ final class CompostTests {
     }
 
     private static void dragonFruitIsCompostable(GameTestHelper helper) {
-        helper.assertTrue(ComposterBlock.COMPOSTABLES.containsKey(DragonFruitItems.DRAGON_FRUIT.get()), "dragon fruit is not compostable");
+        helper.assertTrue(new ItemStack(DragonFruitItems.DRAGON_FRUIT.get()).has(DataComponents.COMPOSTABLE), "dragon fruit is not compostable");
         helper.succeed();
     }
 }

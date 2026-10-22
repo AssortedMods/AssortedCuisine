@@ -3,6 +3,7 @@ package com.grim3212.assorted.kitchen;
 import com.grim3212.assorted.kitchen.common.block.KitchenBlocks;
 import com.grim3212.assorted.kitchen.common.block.blockentity.KitchenBlockEntityTypes;
 import com.grim3212.assorted.kitchen.common.crafting.KitchenRecipeTypes;
+import com.grim3212.assorted.kitchen.common.handlers.KitchenCompostables;
 import com.grim3212.assorted.kitchen.common.handlers.KitchenCreativeItems;
 import com.grim3212.assorted.kitchen.common.item.KitchenItems;
 import com.grim3212.assorted.lib.family.Families;
@@ -32,5 +33,7 @@ public class KitchenCommonMod {
         MovedIds.inherit(Constants.FAMILY_ID, Constants.MOD_ID);
         // The advancement root every part shares: its icon is the first installed of the family's.
         AdvancementIcons.register(Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root"), () -> Families.icons(Constants.FAMILY_ID));
+
+        KitchenCompostables.init();
     }
 }

@@ -2,6 +2,7 @@ package com.grim3212.assorted.sodas;
 
 import com.grim3212.assorted.lib.data.ForgeBlockTagProvider;
 import com.grim3212.assorted.lib.data.ForgeItemTagProvider;
+import com.grim3212.assorted.lib.data.ForgeRegistryEntries;
 import com.grim3212.assorted.sodas.client.data.SodasItemModelProvider;
 import com.grim3212.assorted.sodas.client.data.SodasLanguageProvider;
 import com.grim3212.assorted.sodas.client.data.SodasManualProvider;
@@ -11,13 +12,11 @@ import com.grim3212.assorted.sodas.data.SodasItemTagProvider;
 import com.grim3212.assorted.sodas.data.SodasRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.advancements.AdvancementProvider;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(Constants.MOD_ID)
@@ -40,13 +39,11 @@ public class AssortedSodasNeoForge {
      */
     private void gatherServerData(final GatherDataEvent.Server event) {
         PackOutput packOutput = event.getGenerator().getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getWorldLookupProvider();
 
         ForgeBlockTagProvider blockTagProvider = event.addProvider(new ForgeBlockTagProvider(packOutput, lookupProvider, Constants.MOD_ID, new SodasBlockTagProvider(packOutput, lookupProvider)));
         event.addProvider(new ForgeItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), Constants.MOD_ID, new SodasItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter())));
-        // Recipe providers are not data providers any more - the Runner owns the output.
-        event.addProvider(new SodasRecipes.Runner(packOutput, lookupProvider));
-        event.addProvider(new AdvancementProvider(packOutput, lookupProvider, List.of(new SodasAdvancements())));
+        ForgeRegistryEntries.of(Constants.MOD_ID).recipes(SodasRecipes::new).advancements(SodasAdvancements::new).addTo(event);
     }
 
     /** Client datagen: models, the language file and the manual, written into common for both loaders. */

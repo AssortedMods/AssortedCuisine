@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedhealth:healthpack_super"
+        "recipes": "assortedhealth:healthpack_super"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

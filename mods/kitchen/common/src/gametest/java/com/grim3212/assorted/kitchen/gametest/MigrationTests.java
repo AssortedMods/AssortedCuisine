@@ -21,7 +21,7 @@ final class MigrationTests {
     // Cheese is the first of the family's icons, so it wins over the placeholder whichever part's root loaded.
     private static void advancementRootIsDrawnWithTheCheese(GameTestHelper helper) {
         Identifier root = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root");
-        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().getIcon().item().value() == KitchenItems.CHEESE.get(),
+        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().icon().item().value() == KitchenItems.CHEESE.get(),
                 "the Assorted Cuisine advancement root is not drawn with the cheese, the first of the family's icons");
         helper.succeed();
     }

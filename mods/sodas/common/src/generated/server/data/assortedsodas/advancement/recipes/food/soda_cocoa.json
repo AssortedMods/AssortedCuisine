@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedsodas:soda_cocoa"
+        "recipes": "assortedsodas:soda_cocoa"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

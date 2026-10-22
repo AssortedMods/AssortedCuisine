@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:pan"
+        "recipes": "assortedkitchen:pan"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

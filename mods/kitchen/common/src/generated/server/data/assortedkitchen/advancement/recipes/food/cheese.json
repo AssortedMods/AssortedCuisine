@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:cheese"
+        "recipes": "assortedkitchen:cheese"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

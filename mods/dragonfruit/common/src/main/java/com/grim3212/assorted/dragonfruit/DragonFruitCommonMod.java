@@ -1,5 +1,6 @@
 package com.grim3212.assorted.dragonfruit;
 
+import com.grim3212.assorted.dragonfruit.common.handlers.DragonFruitCompostables;
 import com.grim3212.assorted.dragonfruit.common.handlers.DragonFruitCreativeItems;
 import com.grim3212.assorted.dragonfruit.common.handlers.LootTableHandlers;
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
@@ -34,5 +35,7 @@ public class DragonFruitCommonMod {
         MovedIds.inherit(Constants.FAMILY_ID, Constants.MOD_ID);
         // The advancement root every part shares: its icon is the first installed of the family's.
         AdvancementIcons.register(Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root"), () -> Families.icons(Constants.FAMILY_ID));
+
+        DragonFruitCompostables.init();
     }
 }

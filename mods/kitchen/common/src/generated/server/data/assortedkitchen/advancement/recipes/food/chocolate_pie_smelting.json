@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:chocolate_pie_smelting"
+        "recipes": "assortedkitchen:chocolate_pie_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

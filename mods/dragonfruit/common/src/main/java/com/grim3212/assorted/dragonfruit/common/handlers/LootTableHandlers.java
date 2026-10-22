@@ -10,7 +10,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 /**
  * Cactus drops dragon fruit. 1.12 did this by intercepting the harvest event; a loot pool is the
@@ -36,7 +36,7 @@ public class LootTableHandlers {
 
         event.getContext().addPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(DragonFruitItems.DRAGON_FRUIT.get())
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2))))
                 .when(LootItemRandomChanceCondition.randomChance((float) chance)));
     }
 }

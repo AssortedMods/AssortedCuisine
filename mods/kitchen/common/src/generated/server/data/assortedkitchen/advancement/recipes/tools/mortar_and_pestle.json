@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:mortar_and_pestle"
+        "recipes": "assortedkitchen:mortar_and_pestle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

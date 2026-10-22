@@ -7,14 +7,11 @@ import com.grim3212.assorted.lib.registry.RegistryProvider;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.Level;
-import net.minecraft.core.BlockPos;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -36,7 +33,7 @@ public class KitchenBlocks {
 
     public static final IRegistryObject<ChocolateBarMoldBlock> CHOCOLATE_BAR_MOLD = register("chocolate_bar_mold", props -> new ChocolateBarMoldBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.0F).noOcclusion()));
     public static final IRegistryObject<Block> CHOCOLATE_BLOCK = register("chocolate_block", props -> new Block(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(1.0F)));
-    public static final IRegistryObject<KitchenCakeBlock> CHOCOLATE_CAKE = register("chocolate_cake", props -> new KitchenCakeBlock(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.DESTROY)));
+    public static final IRegistryObject<KitchenCakeBlock> CHOCOLATE_CAKE = register("chocolate_cake", props -> new KitchenCakeBlock(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.POPPED)));
 
     public static final IRegistryObject<KitchenCakeBlock> APPLE_PIE = registerPie("apple_pie");
     public static final IRegistryObject<KitchenCakeBlock> MELON_PIE = registerPie("melon_pie");
@@ -55,7 +52,7 @@ public class KitchenBlocks {
     }
 
     private static IRegistryObject<KitchenCakeBlock> registerPie(String name) {
-        return register(name, props -> new KitchenCakeBlock(props.mapColor(MapColor.SAND).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.DESTROY)));
+        return register(name, props -> new KitchenCakeBlock(props.mapColor(MapColor.SAND).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.POPPED)));
     }
 
     /**
@@ -65,7 +62,8 @@ public class KitchenBlocks {
      */
     public static void giveTo(Player player, ItemStack stack) {
         if (!stack.isEmpty()) {
-            player.getInventory().placeItemBackInInventory(stack);
+            // The click has already swung the arm on the client, so the swing a full inventory's drop makes is predicted.
+            player.getInventory().placeItemBackInInventory(stack, Prediction.PREDICTED);
         }
     }
 

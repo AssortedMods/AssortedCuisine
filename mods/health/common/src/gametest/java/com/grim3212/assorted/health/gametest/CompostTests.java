@@ -1,8 +1,9 @@
 package com.grim3212.assorted.health.gametest;
 
 import com.grim3212.assorted.health.common.item.HealthItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -18,8 +19,8 @@ final class CompostTests {
     }
 
     private static void sweetsAreCompostable(GameTestHelper helper) {
-        helper.assertTrue(ComposterBlock.COMPOSTABLES.containsKey(HealthItems.SWEETS.get()), "sweets are not compostable");
-        helper.assertTrue(ComposterBlock.COMPOSTABLES.containsKey(HealthItems.POWERED_SWEETS.get()), "powered sweets are not compostable");
+        helper.assertTrue(new ItemStack(HealthItems.SWEETS.get()).has(DataComponents.COMPOSTABLE), "sweets are not compostable");
+        helper.assertTrue(new ItemStack(HealthItems.POWERED_SWEETS.get()).has(DataComponents.COMPOSTABLE), "powered sweets are not compostable");
         helper.succeed();
     }
 }

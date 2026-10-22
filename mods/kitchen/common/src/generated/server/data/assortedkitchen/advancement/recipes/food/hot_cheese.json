@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:hot_cheese"
+        "recipes": "assortedkitchen:hot_cheese"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

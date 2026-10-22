@@ -9,7 +9,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:chocolate_bar_wrapped"
+        "recipes": "assortedkitchen:chocolate_bar_wrapped"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

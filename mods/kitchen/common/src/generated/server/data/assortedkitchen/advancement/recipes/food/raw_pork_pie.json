@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:raw_pork_pie"
+        "recipes": "assortedkitchen:raw_pork_pie"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

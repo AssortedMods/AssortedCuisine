@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:butter_churn"
+        "recipes": "assortedkitchen:butter_churn"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

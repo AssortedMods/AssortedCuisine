@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedsodas:soda_spiked_orange"
+        "recipes": "assortedsodas:soda_spiked_orange"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

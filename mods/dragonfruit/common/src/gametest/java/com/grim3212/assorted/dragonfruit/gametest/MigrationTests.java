@@ -21,7 +21,7 @@ final class MigrationTests {
     // Every icon of the family before the dragon fruit, the last of them, belongs to a part not installed here.
     private static void advancementRootFallsBackToTheDragonFruit(GameTestHelper helper) {
         Identifier root = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root");
-        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().getIcon().item().value() == DragonFruitItems.DRAGON_FRUIT.get(),
+        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().icon().item().value() == DragonFruitItems.DRAGON_FRUIT.get(),
                 "the Assorted Cuisine advancement root is not drawn with the dragon fruit, the first of the family's icons installed");
         helper.succeed();
     }

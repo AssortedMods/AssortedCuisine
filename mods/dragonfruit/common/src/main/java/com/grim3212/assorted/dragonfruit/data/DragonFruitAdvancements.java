@@ -7,49 +7,55 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
+import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.advancements.predicates.ItemPredicate;
 import net.minecraft.advancements.triggers.Criterion;
 import net.minecraft.advancements.triggers.InventoryChangeTrigger;
+import net.minecraft.core.ClientAsset;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.data.tags.TagAppender;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.ItemLike;
 
-import java.util.function.Consumer;
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
  * This part's advancement, under the Assorted Cuisine root that every part with advancements writes the same. The
  * root names only common tags, so it loads whichever parts are installed and opens on any of their food or drink.
  */
-public class DragonFruitAdvancements implements AdvancementSubProvider {
+public class DragonFruitAdvancements extends AdvancementSubProvider {
 
-    private HolderGetter<Item> items;
+    private final HolderGetter<Item> items;
+
+    public DragonFruitAdvancements(BootstrapContext<Advancement> output) {
+        super(output);
+        this.items = output.lookup(Registries.ITEM);
+    }
 
     @Override
-    public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> out) {
-        this.items = registries.lookupOrThrow(Registries.ITEM);
-
+    public void generate() {
         // Every part writes this root the same; its icon is swapped for the first of the family's that is installed.
         AdvancementHolder root = Advancement.Builder.advancement()
-                .display(DragonFruitItems.DRAGON_FRUIT.get(), Component.translatable("advancements." + Constants.FAMILY_ID + ".root.title"),
+                .display(new DisplayInfo(new ItemStackTemplate(DragonFruitItems.DRAGON_FRUIT.get().asItem()), Component.translatable("advancements." + Constants.FAMILY_ID + ".root.title"),
                         Component.translatable("advancements." + Constants.FAMILY_ID + ".root.description"),
-                        Identifier.withDefaultNamespace("block/pumpkin_top"), AdvancementType.TASK, false, false, false)
+                        Optional.of(new ClientAsset.ResourceTexture(Identifier.withDefaultNamespace("block/pumpkin_top"))), AdvancementType.TASK, false, false, false))
                 .addCriterion("food", hasTag(DragonFruitTags.Items.FOODS))
                 .addCriterion("drink", hasTag(DragonFruitTags.Items.DRINKS))
                 .addCriterion("tool", hasTag(DragonFruitTags.Items.KNIVES))
                 .requirements(AdvancementRequirements.Strategy.OR)
-                .save(out, Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root").toString());
+                .save(this.output, Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root").toString());
 
         task("dragon_fruit", root, DragonFruitItems.DRAGON_FRUIT.get())
                 .addCriterion("has_dragon_fruit", has(DragonFruitItems.DRAGON_FRUIT.get()))
-                .save(out, id("dragon_fruit"));
+                .save(this.output, id("dragon_fruit"));
     }
 
     /** Every part with advancements declares all three of the root's tags, empty or not, so none is ever missing. */
@@ -62,7 +68,7 @@ public class DragonFruitAdvancements implements AdvancementSubProvider {
     private Advancement.Builder task(String name, AdvancementHolder parent, ItemLike icon) {
         return Advancement.Builder.advancement()
                 .parent(parent)
-                .display(icon, title(name), description(name), null, AdvancementType.TASK, true, true, false);
+                .display(icon.asItem(), title(name), description(name), AdvancementType.TASK, true, true, false);
     }
 
     private Criterion<?> has(ItemLike item) {

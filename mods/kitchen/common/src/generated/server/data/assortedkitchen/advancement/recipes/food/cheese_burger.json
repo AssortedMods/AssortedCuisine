@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedkitchen:cheese_burger"
+        "recipes": "assortedkitchen:cheese_burger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

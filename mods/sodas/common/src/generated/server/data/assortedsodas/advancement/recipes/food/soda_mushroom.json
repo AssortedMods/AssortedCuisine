@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedsodas:soda_mushroom"
+        "recipes": "assortedsodas:soda_mushroom"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

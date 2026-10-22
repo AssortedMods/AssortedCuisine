@@ -1,8 +1,9 @@
 package com.grim3212.assorted.kitchen.gametest;
 
 import com.grim3212.assorted.kitchen.common.item.KitchenItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -18,8 +19,8 @@ final class CompostTests {
     }
 
     private static void cuisineFoodIsCompostable(GameTestHelper helper) {
-        helper.assertTrue(ComposterBlock.COMPOSTABLES.containsKey(KitchenItems.CHEESE.get()), "cheese is not compostable");
-        helper.assertTrue(ComposterBlock.COMPOSTABLES.containsKey(KitchenItems.RAW_APPLE_PIE.get()), "an unbaked pie is not compostable");
+        helper.assertTrue(new ItemStack(KitchenItems.CHEESE.get()).has(DataComponents.COMPOSTABLE), "cheese is not compostable");
+        helper.assertTrue(new ItemStack(KitchenItems.RAW_APPLE_PIE.get()).has(DataComponents.COMPOSTABLE), "an unbaked pie is not compostable");
         helper.succeed();
     }
 }

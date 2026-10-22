@@ -1,5 +1,6 @@
 package com.grim3212.assorted.health;
 
+import com.grim3212.assorted.health.common.handlers.HealthCompostables;
 import com.grim3212.assorted.health.common.handlers.HealthCreativeItems;
 import com.grim3212.assorted.health.common.item.HealthItems;
 import com.grim3212.assorted.lib.family.Families;
@@ -26,5 +27,7 @@ public class HealthCommonMod {
         MovedIds.inherit(Constants.FAMILY_ID, Constants.MOD_ID);
         // The advancement root every part shares: its icon is the first installed of the family's.
         AdvancementIcons.register(Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root"), () -> Families.icons(Constants.FAMILY_ID));
+
+        HealthCompostables.init();
     }
 }

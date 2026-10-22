@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedsodas:soda_carbonated_water"
+        "recipes": "assortedsodas:soda_carbonated_water"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

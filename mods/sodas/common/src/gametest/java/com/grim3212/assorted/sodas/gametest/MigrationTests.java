@@ -21,7 +21,7 @@ final class MigrationTests {
     // The family's first two icons, the kitchen's cheese and cheese burger, are not installed here.
     private static void advancementRootFallsBackToTheOrangeSoda(GameTestHelper helper) {
         Identifier root = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root");
-        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().getIcon().item().value() == SodasItems.SODA_ORANGE.get(),
+        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().icon().item().value() == SodasItems.SODA_ORANGE.get(),
                 "the Assorted Cuisine advancement root is not drawn with the orange soda, the first of the family's icons installed");
         helper.succeed();
     }
