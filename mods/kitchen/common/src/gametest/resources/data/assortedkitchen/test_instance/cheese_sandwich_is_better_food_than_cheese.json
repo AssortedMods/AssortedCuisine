@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedkitchen:cheese_sandwich_is_better_food_than_cheese",
+  "structure": "assortedkitchen:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

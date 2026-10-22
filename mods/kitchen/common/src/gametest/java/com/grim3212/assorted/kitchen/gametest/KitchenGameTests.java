@@ -1,5 +1,7 @@
 package com.grim3212.assorted.kitchen.gametest;
 
+import com.grim3212.assorted.kitchen.Constants;
+import com.grim3212.assorted.lib.test.CommonTests;
 import net.minecraft.gametest.framework.GameTestHelper;
 
 import java.util.function.BiConsumer;
@@ -21,8 +23,11 @@ public final class KitchenGameTests {
         CompostTests.register(out);
         AutomationTests.register(out);
         RecipeTests.register(out);
+        KitchenToolTests.register(out);
+        PieTests.register(out);
         AliasTests.register(out);
         MigrationTests.register(out);
         FamilyTests.register(out);
+        CommonTests.register(out, Constants.MOD_ID);
     }
 }

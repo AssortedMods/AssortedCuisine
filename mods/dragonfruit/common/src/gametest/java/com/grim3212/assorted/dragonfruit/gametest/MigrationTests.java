@@ -2,13 +2,15 @@ package com.grim3212.assorted.dragonfruit.gametest;
 
 import com.grim3212.assorted.dragonfruit.Constants;
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
+import com.grim3212.assorted.lib.family.Families;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-/** With only the dragon fruit installed, the Assorted Cuisine advancement root still has an icon of its own. */
+/** The Assorted Cuisine advancement root is drawn with the family's first installed icon, which is this part's own when it is alone. */
 final class MigrationTests {
 
     private MigrationTests() {
@@ -18,10 +20,13 @@ final class MigrationTests {
         out.accept("advancement_root_falls_back_to_the_dragon_fruit", MigrationTests::advancementRootFallsBackToTheDragonFruit);
     }
 
-    // Every icon of the family before the dragon fruit, the last of them, belongs to a part not installed here.
     private static void advancementRootFallsBackToTheDragonFruit(GameTestHelper helper) {
         Identifier root = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root");
-        helper.assertTrue(helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().icon().item().value() == DragonFruitItems.DRAGON_FRUIT.get(),
+        Item drawn = helper.getLevel().getServer().getAdvancements().get(root).value().display().orElseThrow().icon().item().value();
+        Item expected = Families.icon(Constants.FAMILY_ID).getItem();
+        helper.assertTrue(drawn == expected, "the Assorted Cuisine advancement root is drawn with " + drawn + ", not the family's first installed icon " + expected);
+        // Beside a part whose icon ranks higher, as in a family's combined run, the root rightly shows that part's.
+        helper.assertTrue(Families.members(Constants.FAMILY_ID).size() > 1 || drawn == DragonFruitItems.DRAGON_FRUIT.get(),
                 "the Assorted Cuisine advancement root is not drawn with the dragon fruit, the first of the family's icons installed");
         helper.succeed();
     }

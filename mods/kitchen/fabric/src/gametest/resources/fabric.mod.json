@@ -12,6 +12,9 @@
   "entrypoints": {
     "main": [
       "com.grim3212.assorted.kitchen.gametest.KitchenFabricGameTests"
+    ],
+    "fabric-client-gametest": [
+      "com.grim3212.assorted.kitchen.gametest.KitchenClientGameTests"
     ]
   },
   "depends": {

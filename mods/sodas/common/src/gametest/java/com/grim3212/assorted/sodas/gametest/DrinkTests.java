@@ -5,6 +5,8 @@ import com.grim3212.assorted.sodas.Constants;
 import com.grim3212.assorted.sodas.common.item.SodasItems;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Item;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -13,7 +15,10 @@ import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.animal.pig.Pig;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -35,6 +40,31 @@ final class DrinkTests {
         out.accept("soda_flavor_applies_its_effect", DrinkTests::sodaFlavorAppliesItsEffect);
         out.accept("spiked_soda_hurts", DrinkTests::spikedSodaHurts);
         out.accept("sodas_describe_their_healing", DrinkTests::describeTheirHealing);
+        out.accept("every_soda_heals_what_the_site_lists", DrinkTests::everySodaHealsWhatTheSiteLists);
+    }
+
+    /** Half hearts healed by each soda, as the site's table lists them in hearts. */
+    private static final Map<Supplier<Item>, Float> HEALS = Map.of(
+            SodasItems.SODA_CARBONATED_WATER::get, 2.0F, SodasItems.SODA_SLURM::get, 3.0F, SodasItems.SODA_ROOT_BEER::get, 5.0F,
+            SodasItems.SODA_MUSHROOM::get, 5.0F, SodasItems.SODA_ORANGE::get, 8.0F, SodasItems.SODA_APPLE::get, 10.0F,
+            SodasItems.SODA_CREAM_ORANGE::get, 10.0F, SodasItems.SODA_COCOA::get, 14.0F, SodasItems.SODA_GOLDEN_APPLE::get, 20.0F,
+            SodasItems.SODA_DIAMOND::get, 20.0F);
+
+    /** From one half heart, so even the largest heal has room to show in full. */
+    private static void everySodaHealsWhatTheSiteLists(GameTestHelper helper) {
+        List<String> problems = new ArrayList<>();
+        for (Map.Entry<Supplier<Item>, Float> soda : HEALS.entrySet()) {
+            ServerPlayer player = survivalPlayer(helper, new ItemStack(soda.getKey().get()));
+            player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(40.0D);
+            player.setHealth(1.0F);
+            player.getMainHandItem().finishUsingItem(helper.getLevel(), player);
+            float healed = player.getHealth() - 1.0F;
+            if (Math.abs(healed - soda.getValue()) > 0.01F) {
+                problems.add(soda.getKey().get() + " healed " + healed + " half hearts, not " + soda.getValue());
+            }
+        }
+        helper.assertTrue(problems.isEmpty(), String.join("\n", problems));
+        helper.succeed();
     }
 
     private static void sodaIsDrunkNotSwallowed(GameTestHelper helper) {

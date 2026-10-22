@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedkitchen:pies_are_eaten_a_slice_at_a_time",
+  "structure": "assortedkitchen:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

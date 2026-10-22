@@ -28,6 +28,21 @@ final class HealingTests {
         out.accept("healing_item_takes_time", HealingTests::healingItemTakesTime);
         out.accept("healing_item_spares_a_full_player", HealingTests::healingItemSparesAFullPlayer);
         out.accept("healing_items_describe_their_healing", HealingTests::describeTheirHealing);
+        out.accept("healing_item_is_interrupted_by_a_hit", HealingTests::healingItemIsInterruptedByAHit);
+    }
+
+    /** The site promises a hit stops a bandage being applied, so it cannot be used mid fight. */
+    private static void healingItemIsInterruptedByAHit(GameTestHelper helper) {
+        ServerPlayer player = mortalPlayer(helper, new ItemStack(HealthItems.HEALTHPACK.get()));
+        player.setHealth(player.getMaxHealth() / 2.0F);
+        player.getMainHandItem().use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        helper.assertTrue(player.isUsingItem(), "the health pack was not being applied");
+
+        player.hurtServer(helper.getLevel(), helper.getLevel().damageSources().generic(), 1.0F);
+        // The player's own tick runs this, which a test player is not given.
+        player.getUseItem().onUseTick(helper.getLevel(), player, player.getUseItemRemainingTicks());
+        helper.assertFalse(player.isUsingItem(), "a hit did not stop the health pack being applied");
+        helper.succeed();
     }
 
     /** A bandage that healed on the click was a better panic button than a golden apple. */

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assorteddragonfruit:broken_cactus_sometimes_drops_dragon_fruit",
+  "structure": "assorteddragonfruit:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

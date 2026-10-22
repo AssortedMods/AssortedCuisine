@@ -47,6 +47,17 @@ public class HealingItem extends Item {
         return super.use(level, player, hand);
     }
 
+    /** A hit while it is going on stops it, so it cannot be used mid fight; hurtTime counts down from the latest hit. */
+    @Override
+    public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int ticksRemaining) {
+        if (entity.hurtTime > 0 && entity.getTicksUsingItem() >= entity.hurtDuration - entity.hurtTime) {
+            entity.stopUsingItem();
+            return;
+        }
+
+        super.onUseTick(level, entity, stack, ticksRemaining);
+    }
+
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         if (!level.isClientSide()) {

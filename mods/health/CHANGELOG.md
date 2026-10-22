@@ -5,6 +5,7 @@
 Updated to Minecraft 26.3, for NeoForge and Fabric.
 
 - Requires Assorted Lib 5.0.0
+- Getting hit while putting on a bandage or health pack now stops it, as it always said it would
 
 ## 1.0.0
 
