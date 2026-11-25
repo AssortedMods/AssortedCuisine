@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Sweets and powered sweets now give the saturation their food values were written for, 0.4 and 3.6 instead of 0.1 and 0.3. They were being given a fraction of it
+
 ## 2.0.0
 
 Updated to Minecraft 26.3, for NeoForge and Fabric.
