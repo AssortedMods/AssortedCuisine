@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,8 +14,12 @@
     }
   ],
   "ingredients": [
-    "minecraft:cocoa_beans",
-    "#c:tools/mortar_and_pestle"
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "tag": "c:tools/mortar_and_pestle"
+    }
   ],
   "result": {
     "count": 2,

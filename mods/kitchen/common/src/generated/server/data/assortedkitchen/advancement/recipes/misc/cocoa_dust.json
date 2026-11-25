@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:cocoa_dust"
+        "recipe": "assortedkitchen:cocoa_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

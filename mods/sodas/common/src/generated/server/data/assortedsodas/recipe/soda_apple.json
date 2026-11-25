@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,14 +14,19 @@
     }
   ],
   "key": {
-    "X": "minecraft:apple",
-    "Y": "assortedsodas:soda_carbonated_water"
+    "X": {
+      "item": "minecraft:apple"
+    },
+    "Y": {
+      "item": "assortedsodas:soda_carbonated_water"
+    }
   },
   "pattern": [
     "X",
     "Y"
   ],
   "result": {
+    "count": 1,
     "id": "assortedsodas:soda_apple"
   }
 }

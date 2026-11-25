@@ -8,8 +8,8 @@ import net.minecraft.world.level.ItemLike;
 import java.util.function.Supplier;
 
 /**
- * Everything here is food, so all of it belongs in a composter. Called from common init: the chance is a component on
- * the item, set as the item is made.
+ * Everything here is food, so all of it belongs in a composter. Called from common init: Fabric registers the chance as
+ * the mod loads, and NeoForge datagen writes it into the {@code neoforge:compostables} data map.
  */
 public class KitchenCompostables {
 

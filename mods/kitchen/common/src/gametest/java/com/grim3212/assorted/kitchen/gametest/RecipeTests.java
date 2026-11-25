@@ -52,12 +52,12 @@ final class RecipeTests {
     }
 
     /**
-     * The machine recipes are not grid recipes, and must say so. A recipe that does not claim to be
-     * special but publishes no placement is warned about and dropped from the ingredient index on
-     * every load - this asserts the exact pair {@code RecipeManager} checks.
+     * The machine recipes are not grid recipes, and must say so. The client's recipe book sorts every
+     * recipe that is neither special nor incomplete into a tab, and has none for a machine, so it would
+     * log each one as an unknown category - this asserts the exact pair {@code ClientRecipeBook} checks.
      */
     private static void machineRecipesLoadWithoutComplaint(GameTestHelper helper) {
-        List<RecipeHolder<?>> machineRecipes = helper.getLevel().recipeAccess().getRecipes().stream()
+        List<RecipeHolder<?>> machineRecipes = helper.getLevel().getRecipeManager().getRecipes().stream()
                 .filter(holder -> holder.value() instanceof KitchenMachineRecipe)
                 .toList();
 
@@ -66,8 +66,8 @@ final class RecipeTests {
 
         for (RecipeHolder<?> holder : machineRecipes) {
             Recipe<?> recipe = holder.value();
-            helper.assertFalse(!recipe.isSpecial() && recipe.placementInfo().isImpossibleToPlace(),
-                    holder.id().identifier() + " would be warned about and ignored when recipes load");
+            helper.assertTrue(recipe.isSpecial() || recipe.isIncomplete(),
+                    holder.id() + " would be sorted into the recipe book, which has no tab for it, and logged as an unknown category");
         }
 
         helper.succeed();
@@ -113,7 +113,7 @@ final class RecipeTests {
         CraftingInput input = CraftingInput.of(2, 1, List.of(new ItemStack(Items.BREAD), knife));
         CraftingRecipe recipe = recipeFor(helper, input, "bread and a knife");
 
-        ItemStack result = recipe.assemble(input);
+        ItemStack result = recipe.assemble(input, helper.getLevel().registryAccess());
         helper.assertTrue(result.is(KitchenItems.BREAD_SLICE.get()), "crafting bread with a knife did not give bread slices");
         helper.assertTrue(result.getCount() == 2, "expected two bread slices, got " + result.getCount());
 
@@ -136,7 +136,7 @@ final class RecipeTests {
     }
 
     private static CraftingRecipe recipeFor(GameTestHelper helper, CraftingInput input, String what) {
-        Optional<RecipeHolder<CraftingRecipe>> found = helper.getLevel().recipeAccess().getRecipeFor(RecipeType.CRAFTING, input, helper.getLevel());
+        Optional<RecipeHolder<CraftingRecipe>> found = helper.getLevel().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, input, helper.getLevel());
         helper.assertTrue(found.isPresent(), "no crafting recipe matched " + what);
         return found.get().value();
     }

@@ -6,7 +6,7 @@
     }
   ],
   "type": "minecraft:smelting",
-  "category": "food",
+  "category": "blocks",
   "cookingtime": 200,
   "experience": 0.35,
   "fabric:load_conditions": [
@@ -15,8 +15,11 @@
       "part": "assortedkitchen"
     }
   ],
-  "ingredient": "assortedkitchen:raw_pork_pie",
+  "ingredient": {
+    "item": "assortedkitchen:raw_pork_pie"
+  },
   "result": {
+    "count": 1,
     "id": "assortedkitchen:pork_pie"
   }
 }

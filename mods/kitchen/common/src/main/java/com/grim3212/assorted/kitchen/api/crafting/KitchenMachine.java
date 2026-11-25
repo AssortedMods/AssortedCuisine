@@ -1,7 +1,7 @@
 package com.grim3212.assorted.kitchen.api.crafting;
 
 import com.grim3212.assorted.kitchen.Constants;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 /**
  * The three blocks that turn one item into another over time. Each owns a recipe type, so a pack
@@ -35,7 +35,7 @@ public enum KitchenMachine {
         return this.defaultProcessTime;
     }
 
-    public Identifier id() {
-        return Identifier.fromNamespaceAndPath(Constants.MOD_ID, this.name);
+    public ResourceLocation id() {
+        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, this.name);
     }
 }

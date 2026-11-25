@@ -10,11 +10,8 @@
   "license": "${license}",
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "fabric-gametest": [
       "com.grim3212.assorted.dragonfruit.gametest.DragonFruitFabricGameTests"
-    ],
-    "fabric-client-gametest": [
-      "com.grim3212.assorted.dragonfruit.gametest.DragonFruitClientGameTests"
     ]
   },
   "depends": {

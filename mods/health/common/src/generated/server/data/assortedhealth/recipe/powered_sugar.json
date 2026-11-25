@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,10 +14,15 @@
     }
   ],
   "ingredients": [
-    "#c:dusts/redstone",
-    "minecraft:sugar"
+    {
+      "tag": "c:dusts/redstone"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
   ],
   "result": {
+    "count": 1,
     "id": "assortedhealth:powered_sugar"
   }
 }

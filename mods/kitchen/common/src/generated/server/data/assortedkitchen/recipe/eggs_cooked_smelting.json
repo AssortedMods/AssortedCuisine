@@ -15,8 +15,11 @@
       "part": "assortedkitchen"
     }
   ],
-  "ingredient": "assortedkitchen:eggs_mixed",
+  "ingredient": {
+    "item": "assortedkitchen:eggs_mixed"
+  },
   "result": {
+    "count": 1,
     "id": "assortedkitchen:eggs_cooked"
   }
 }

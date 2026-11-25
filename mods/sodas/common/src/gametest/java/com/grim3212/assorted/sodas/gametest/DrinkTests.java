@@ -3,7 +3,6 @@ package com.grim3212.assorted.sodas.gametest;
 import com.grim3212.assorted.lib.core.item.LibDataComponents;
 import com.grim3212.assorted.sodas.Constants;
 import com.grim3212.assorted.sodas.common.item.SodasItems;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
@@ -11,9 +10,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.pig.Pig;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,8 @@ import static com.grim3212.assorted.sodas.gametest.SodasTestSupport.*;
 import static com.grim3212.assorted.lib.test.TestSupport.*;
 
 /**
- * Sodas are consumables: held for a moment rather than swallowed on the click, which is what 1.12 did
- * and what the port kept doing by accident. The items carried a CONSUMABLE component {@code use} never reached.
+ * Sodas are drunk: held for a moment rather than swallowed on the click, which is what 1.12 did
+ * and what the port kept doing by accident.
  */
 final class DrinkTests {
 
@@ -71,9 +71,9 @@ final class DrinkTests {
         ServerPlayer player = hurtPlayer(helper, new ItemStack(SodasItems.SODA_APPLE.get(), 2));
         ItemStack stack = player.getMainHandItem();
 
-        helper.assertTrue(stack.has(DataComponents.CONSUMABLE), "the soda has no consumable component");
+        helper.assertTrue(stack.getUseAnimation() == UseAnim.DRINK, "the soda is not drunk");
 
-        InteractionResult result = stack.use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        InteractionResult result = stack.use(helper.getLevel(), player, InteractionHand.MAIN_HAND).getResult();
         helper.assertTrue(result.consumesAction(), "the soda was not used");
         helper.assertTrue(player.isUsingItem(), "drinking the soda did not start the use animation");
         helper.assertTrue(player.getMainHandItem().getCount() == 2, "the soda was swallowed before the animation finished");
@@ -94,7 +94,7 @@ final class DrinkTests {
         ServerPlayer player = hurtPlayer(helper, new ItemStack(SodasItems.SODA_COCOA.get()));
 
         player.getMainHandItem().finishUsingItem(helper.getLevel(), player);
-        helper.assertTrue(player.hasEffect(MobEffects.SPEED), "cocoa soda did not give speed");
+        helper.assertTrue(player.hasEffect(MobEffects.MOVEMENT_SPEED), "cocoa soda did not give speed");
         helper.succeed();
     }
 
@@ -103,7 +103,7 @@ final class DrinkTests {
      * loaded client is invulnerable to everything, so no damage would ever land on one here.
      */
     private static void spikedSodaHurts(GameTestHelper helper) {
-        Pig pig = helper.spawn(EntityTypes.PIG, CENTRE);
+        Pig pig = helper.spawn(EntityType.PIG, CENTRE);
         float before = pig.getHealth();
 
         new ItemStack(SodasItems.SODA_SPIKED_ORANGE.get()).finishUsingItem(helper.getLevel(), pig);

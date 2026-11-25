@@ -33,11 +33,12 @@
   },
   "display": {
     "announce_to_chat": false,
-    "background": "minecraft:block/pumpkin_top",
+    "background": "minecraft:textures/block/pumpkin_top.png",
     "description": {
       "translate": "advancements.assortedcuisine.root.description"
     },
     "icon": {
+      "count": 1,
       "id": "assortedhealth:healthpack"
     },
     "show_toast": false,

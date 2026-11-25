@@ -1,5 +1,6 @@
 package com.grim3212.assorted.kitchen.common.block.blockentity;
 
+import com.grim3212.assorted.kitchen.api.crafting.KitchenMachine;
 import com.grim3212.assorted.kitchen.api.crafting.KitchenMachineRecipe;
 import com.grim3212.assorted.kitchen.common.block.KitchenMachineBlock;
 import com.grim3212.assorted.kitchen.common.crafting.KitchenRecipeTypes;
@@ -17,18 +18,15 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 /**
  * What the cheese maker, the butter churn and the chocolate mold all need: an input to work on, an
@@ -45,6 +43,12 @@ public class KitchenMachineBlockEntity extends BlockEntity implements WorldlyCon
     private static final int[] FROM_ABOVE = {SLOT_INPUT};
     private static final int[] FROM_BELOW = {SLOT_OUTPUT, SLOT_CONTAINER};
     private static final int[] FROM_SIDE = {SLOT_INPUT, SLOT_OUTPUT, SLOT_CONTAINER};
+
+    /**
+     * Any recipe will do to read what a stack leaves behind: {@code Recipe#getRemainingItems} is the one
+     * place both loaders ask the stack itself, so a kitchen tool comes back worn rather than whole.
+     */
+    private static final Recipe<SingleRecipeInput> REMAINDERS = new KitchenMachineRecipe(KitchenMachine.CHEESE_MAKER, "", Ingredient.EMPTY, ItemStack.EMPTY, 1);
 
     private NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
 
@@ -204,7 +208,7 @@ public class KitchenMachineBlockEntity extends BlockEntity implements WorldlyCon
             return null;
         }
 
-        return serverLevel.recipeAccess()
+        return serverLevel.getRecipeManager()
                 .getRecipeFor(KitchenRecipeTypes.type(block.getMachine()), new SingleRecipeInput(stack), serverLevel)
                 .map(RecipeHolder::value)
                 .orElse(null);
@@ -219,7 +223,7 @@ public class KitchenMachineBlockEntity extends BlockEntity implements WorldlyCon
         }
 
         // One unit at a time: that is all a run consumes, whatever the slot happens to hold.
-        NonNullList<ItemStack> remaining = CraftingRecipe.defaultCraftingReminder(CraftingInput.of(1, 1, List.of(stack.copyWithCount(1))));
+        NonNullList<ItemStack> remaining = REMAINDERS.getRemainingItems(new SingleRecipeInput(stack.copyWithCount(1)));
         return remaining.isEmpty() ? ItemStack.EMPTY : remaining.get(0);
     }
 
@@ -335,30 +339,31 @@ public class KitchenMachineBlockEntity extends BlockEntity implements WorldlyCon
     // --- Saving ---
 
     @Override
-    protected void loadAdditional(ValueInput input) {
-        super.loadAdditional(input);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         this.items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(input, this.items);
-        this.pendingResult = input.read("PendingResult", ItemStack.CODEC).orElse(ItemStack.EMPTY);
-        this.pendingContainer = input.read("PendingContainer", ItemStack.CODEC).orElse(ItemStack.EMPTY);
-        this.progress = input.getIntOr("Progress", 0);
-        this.totalTime = input.getIntOr("TotalTime", 0);
+        ContainerHelper.loadAllItems(tag, this.items, registries);
+        this.pendingResult = ItemStack.parseOptional(registries, tag.getCompound("PendingResult"));
+        this.pendingContainer = ItemStack.parseOptional(registries, tag.getCompound("PendingContainer"));
+        this.progress = tag.getInt("Progress");
+        this.totalTime = tag.getInt("TotalTime");
     }
 
     @Override
-    protected void saveAdditional(ValueOutput output) {
-        super.saveAdditional(output);
-        ContainerHelper.saveAllItems(output, this.items);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        ContainerHelper.saveAllItems(tag, this.items, registries);
 
+        // An empty stack cannot be saved, so a missing tag is read back as empty.
         if (!this.pendingResult.isEmpty()) {
-            output.store("PendingResult", ItemStack.CODEC, this.pendingResult);
+            tag.put("PendingResult", this.pendingResult.save(registries));
         }
         if (!this.pendingContainer.isEmpty()) {
-            output.store("PendingContainer", ItemStack.CODEC, this.pendingContainer);
+            tag.put("PendingContainer", this.pendingContainer.save(registries));
         }
 
-        output.putInt("Progress", this.progress);
-        output.putInt("TotalTime", this.totalTime);
+        tag.putInt("Progress", this.progress);
+        tag.putInt("TotalTime", this.totalTime);
     }
 
     /**
@@ -379,20 +384,12 @@ public class KitchenMachineBlockEntity extends BlockEntity implements WorldlyCon
      * Spills everything when the block is broken, the half-finished run included: the input was
      * already taken off whoever put it in, so swallowing it would lose it.
      *
-     * <p>It has to happen here: the block entity is already gone by
-     * {@code affectNeighborsAfterRemoval}.
+     * <p>{@code KitchenMachineBlock#onRemove} calls this while the block entity still exists.
      */
-    @Override
-    public void preRemoveSideEffects(BlockPos pos, BlockState state) {
-        super.preRemoveSideEffects(pos, state);
-
-        if (this.level == null) {
-            return;
-        }
-
-        Containers.dropContents(this.level, pos, this);
-        Block.popResource(this.level, pos, this.pendingResult);
-        Block.popResource(this.level, pos, this.pendingContainer);
+    public void onBlockRemoved(Level level, BlockPos pos) {
+        Containers.dropContents(level, pos, this);
+        Block.popResource(level, pos, this.pendingResult);
+        Block.popResource(level, pos, this.pendingContainer);
         this.pendingResult = ItemStack.EMPTY;
         this.pendingContainer = ItemStack.EMPTY;
     }

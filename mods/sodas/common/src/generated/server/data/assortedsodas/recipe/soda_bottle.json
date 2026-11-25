@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,7 +14,9 @@
     }
   ],
   "key": {
-    "X": "#c:glass_panes"
+    "X": {
+      "tag": "c:glass_panes"
+    }
   },
   "pattern": [
     "X X",
@@ -21,6 +24,7 @@
     "XXX"
   ],
   "result": {
+    "count": 1,
     "id": "assortedsodas:soda_bottle"
   }
 }

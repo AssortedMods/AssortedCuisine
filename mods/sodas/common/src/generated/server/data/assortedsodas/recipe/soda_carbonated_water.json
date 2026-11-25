@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,9 +14,15 @@
     }
   ],
   "key": {
-    "X": "assortedsodas:soda_co2",
-    "Y": "minecraft:water_bucket",
-    "Z": "assortedsodas:soda_bottle"
+    "X": {
+      "item": "assortedsodas:soda_co2"
+    },
+    "Y": {
+      "item": "minecraft:water_bucket"
+    },
+    "Z": {
+      "item": "assortedsodas:soda_bottle"
+    }
   },
   "pattern": [
     "X",
@@ -23,6 +30,7 @@
     "Z"
   ],
   "result": {
+    "count": 1,
     "id": "assortedsodas:soda_carbonated_water"
   }
 }

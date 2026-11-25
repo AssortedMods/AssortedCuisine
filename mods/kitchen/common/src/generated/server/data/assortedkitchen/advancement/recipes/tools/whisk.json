@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:whisk"
+        "recipe": "assortedkitchen:whisk"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

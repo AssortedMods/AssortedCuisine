@@ -9,7 +9,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedhealth:bandage"
+        "recipe": "assortedhealth:bandage"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

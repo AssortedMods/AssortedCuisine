@@ -5,15 +5,14 @@ import com.grim3212.assorted.kitchen.api.crafting.KitchenMachineRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.advancements.triggers.RecipeUnlockedTrigger;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
@@ -24,13 +23,13 @@ public class KitchenMachineRecipeBuilder implements RecipeBuilder {
 
     private final KitchenMachine machine;
     private final Ingredient ingredient;
-    private final ItemStackTemplate result;
+    private final ItemStack result;
     private final int processTime;
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 
     private @Nullable String group;
 
-    private KitchenMachineRecipeBuilder(KitchenMachine machine, Ingredient ingredient, ItemStackTemplate result, int processTime) {
+    private KitchenMachineRecipeBuilder(KitchenMachine machine, Ingredient ingredient, ItemStack result, int processTime) {
         this.machine = machine;
         this.ingredient = ingredient;
         this.result = result;
@@ -38,11 +37,11 @@ public class KitchenMachineRecipeBuilder implements RecipeBuilder {
     }
 
     /** Takes the machine's own default time, which is what every recipe in this mod wants. */
-    public static KitchenMachineRecipeBuilder recipe(KitchenMachine machine, Ingredient ingredient, ItemStackTemplate result) {
+    public static KitchenMachineRecipeBuilder recipe(KitchenMachine machine, Ingredient ingredient, ItemStack result) {
         return new KitchenMachineRecipeBuilder(machine, ingredient, result, machine.getDefaultProcessTime());
     }
 
-    public static KitchenMachineRecipeBuilder recipe(KitchenMachine machine, Ingredient ingredient, ItemStackTemplate result, int processTime) {
+    public static KitchenMachineRecipeBuilder recipe(KitchenMachine machine, Ingredient ingredient, ItemStack result, int processTime) {
         return new KitchenMachineRecipeBuilder(machine, ingredient, result, processTime);
     }
 
@@ -59,23 +58,23 @@ public class KitchenMachineRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public ResourceKey<Recipe<?>> defaultId() {
-        return RecipeBuilder.getDefaultRecipeId(this.result);
+    public Item getResult() {
+        return this.result.getItem();
     }
 
     @Override
-    public void save(RecipeOutput output, ResourceKey<Recipe<?>> id) {
+    public void save(RecipeOutput output, ResourceLocation id) {
         if (this.criteria.isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + id.identifier());
+            throw new IllegalStateException("No way of obtaining recipe " + id);
         }
 
         Advancement.Builder advancement = output.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(output.lookup(Registries.RECIPE).getOrThrow(id)))
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
 
         KitchenMachineRecipe recipe = new KitchenMachineRecipe(this.machine, this.group == null ? "" : this.group, this.ingredient, this.result, this.processTime);
-        output.accept(id, recipe, advancement.build(id.identifier().withPrefix("recipes/")));
+        output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")));
     }
 }

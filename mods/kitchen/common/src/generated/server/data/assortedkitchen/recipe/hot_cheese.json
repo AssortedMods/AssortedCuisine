@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,8 +14,12 @@
     }
   ],
   "key": {
-    "A": "#c:foods/cheese",
-    "C": "#c:foods/bread"
+    "A": {
+      "tag": "c:foods/cheese"
+    },
+    "C": {
+      "tag": "c:foods/bread"
+    }
   },
   "pattern": [
     " C ",
@@ -22,6 +27,7 @@
     " C "
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:hot_cheese"
   }
 }

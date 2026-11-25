@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,10 +14,15 @@
     }
   ],
   "ingredients": [
-    "minecraft:paper",
-    "#c:dyes/blue"
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "c:dyes/blue"
+    }
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:wrapper"
   }
 }

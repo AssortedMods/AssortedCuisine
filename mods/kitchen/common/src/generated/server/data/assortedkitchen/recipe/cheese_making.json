@@ -12,8 +12,11 @@
       "part": "assortedkitchen"
     }
   ],
-  "ingredient": "#c:buckets/milk",
+  "ingredient": {
+    "tag": "c:buckets/milk"
+  },
   "result": {
+    "count": 1,
     "id": "assortedkitchen:cheese_block"
   }
 }

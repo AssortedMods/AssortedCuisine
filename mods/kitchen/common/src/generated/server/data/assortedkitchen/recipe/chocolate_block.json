@@ -14,7 +14,9 @@
     }
   ],
   "key": {
-    "X": "assortedkitchen:chocolate_bar"
+    "X": {
+      "item": "assortedkitchen:chocolate_bar"
+    }
   },
   "pattern": [
     "XXX",
@@ -22,6 +24,7 @@
     "XXX"
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:chocolate_block"
   }
 }

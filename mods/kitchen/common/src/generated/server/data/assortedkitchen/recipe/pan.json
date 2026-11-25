@@ -14,13 +14,16 @@
     }
   ],
   "key": {
-    "X": "#c:stones"
+    "X": {
+      "tag": "c:stones"
+    }
   },
   "pattern": [
     "X X",
     " X "
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:pan"
   }
 }

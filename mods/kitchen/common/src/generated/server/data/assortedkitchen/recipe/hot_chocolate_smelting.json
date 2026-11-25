@@ -15,8 +15,11 @@
       "part": "assortedkitchen"
     }
   ],
-  "ingredient": "assortedkitchen:chocolate_bowl",
+  "ingredient": {
+    "item": "assortedkitchen:chocolate_bowl"
+  },
   "result": {
+    "count": 1,
     "id": "assortedkitchen:hot_chocolate"
   }
 }

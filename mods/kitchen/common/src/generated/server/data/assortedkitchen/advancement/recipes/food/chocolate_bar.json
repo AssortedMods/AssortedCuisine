@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:chocolate_bar"
+        "recipe": "assortedkitchen:chocolate_bar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

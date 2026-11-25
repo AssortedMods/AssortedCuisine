@@ -4,17 +4,14 @@ import com.grim3212.assorted.kitchen.common.crafting.KitchenRecipeTypes;
 import com.grim3212.assorted.lib.manual.IManualRecipeProvider;
 import com.grim3212.assorted.lib.manual.ManualRecipeView;
 import com.grim3212.assorted.lib.manual.ManualSlot;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -28,10 +25,10 @@ public class KitchenMachineRecipe implements Recipe<SingleRecipeInput>, IManualR
     private final KitchenMachine machine;
     private final String group;
     private final Ingredient ingredient;
-    private final ItemStackTemplate result;
+    private final ItemStack result;
     private final int processTime;
 
-    public KitchenMachineRecipe(KitchenMachine machine, String group, Ingredient ingredient, ItemStackTemplate result, int processTime) {
+    public KitchenMachineRecipe(KitchenMachine machine, String group, Ingredient ingredient, ItemStack result, int processTime) {
         this.machine = machine;
         this.group = group;
         this.ingredient = ingredient;
@@ -45,63 +42,53 @@ public class KitchenMachineRecipe implements Recipe<SingleRecipeInput>, IManualR
     }
 
     @Override
-    public ItemStack assemble(SingleRecipeInput input) {
-        return this.result.create();
+    public ItemStack assemble(SingleRecipeInput input, HolderLookup.Provider registries) {
+        return this.result.copy();
     }
 
     @Override
-    public RecipeType<? extends Recipe<SingleRecipeInput>> getType() {
+    public boolean canCraftInDimensions(int width, int height) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getResultItem(HolderLookup.Provider registries) {
+        return this.result;
+    }
+
+    @Override
+    public RecipeType<KitchenMachineRecipe> getType() {
         return KitchenRecipeTypes.type(this.machine);
     }
 
     @Override
-    public RecipeSerializer<? extends Recipe<SingleRecipeInput>> getSerializer() {
+    public RecipeSerializer<KitchenMachineRecipe> getSerializer() {
         return KitchenRecipeTypes.serializer(this.machine);
     }
 
     @Override
-    public String group() {
+    public String getGroup() {
         return this.group;
     }
 
     /**
-     * Special, meaning it is not laid out in a grid and the recipe book has no business with it.
-     * Without this, {@code RecipeManager} sees a placeable recipe it cannot place and logs
-     * "can't be placed due to empty ingredients and will be ignored" for every one of these on
-     * every load.
+     * Kept out of the recipe book. 1.21.1's book sorts every recipe it is sent into a tab from a fixed
+     * enum of categories, and a machine has none, so the client would only log each one as an unknown
+     * recipe category. JEI and the manual list them instead.
      */
     @Override
     public boolean isSpecial() {
         return true;
     }
 
-    /** Not placeable: it has no display, so the recipe book never offers to lay it out. */
     @Override
-    public PlacementInfo placementInfo() {
-        return PlacementInfo.NOT_PLACEABLE;
-    }
-
-    @Override
-    public List<RecipeDisplay> display() {
-        return List.of();
-    }
-
-    /** Required of every recipe, but unreachable: with no display it never enters the book. */
-    @Override
-    public RecipeBookCategory recipeBookCategory() {
-        return KitchenRecipeTypes.MACHINE_CATEGORY.get();
-    }
-
-    /** Nothing to toast about: the book never learns these, so it has no notification to show. */
-    @Override
-    public boolean showNotification() {
-        return false;
+    public NonNullList<Ingredient> getIngredients() {
+        return NonNullList.of(Ingredient.EMPTY, this.ingredient);
     }
 
     @Override
     public ManualRecipeView manualView() {
-        return ManualRecipeView.shaped(1, 1, List.of(ManualSlot.of(this.ingredient.display())),
-                ManualSlot.of(new SlotDisplay.ItemStackSlotDisplay(this.result)));
+        return ManualRecipeView.shaped(1, 1, List.of(ManualSlot.of(this.ingredient)), ManualSlot.of(this.getResultItem()));
     }
 
     public KitchenMachine getMachine() {
@@ -112,13 +99,9 @@ public class KitchenMachineRecipe implements Recipe<SingleRecipeInput>, IManualR
         return this.ingredient;
     }
 
-    /** The result as a template: a stack cannot be built before item components are bound. */
-    public ItemStackTemplate getResultTemplate() {
-        return this.result;
-    }
-
+    /** A copy of the recipe's result, which needs no registries to read. */
     public ItemStack getResultItem() {
-        return this.result.create();
+        return this.result.copy();
     }
 
     public int getProcessTime() {

@@ -4,8 +4,6 @@ import com.grim3212.assorted.dragonfruit.Constants;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 
@@ -17,15 +15,13 @@ public class DragonFruitItems {
 
     public static final IRegistryObject<Item> DRAGON_FRUIT = food("dragon_fruit", 4, 0.3F);
 
-    private static IRegistryObject<Item> food(String name, int nutrition, float saturation) {
-        return register(name, props -> new Item(props.food(new FoodProperties(nutrition, saturation, false))));
+    /** Saturation is written as vanilla writes it, as a modifier: the food restores nutrition x modifier x 2. */
+    private static IRegistryObject<Item> food(String name, int nutrition, float saturationModifier) {
+        return register(name, props -> new Item(props.food(new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturationModifier).build())));
     }
 
     private static <T extends Item> IRegistryObject<T> register(final String name, final Function<Item.Properties, ? extends T> factory) {
-        // Since 1.21.2 every item has to know its own id before it is constructed, so the
-        // properties are built here where the registration name is known.
-        final ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Constants.MOD_ID, name));
-        return ITEMS.register(name, () -> factory.apply(new Item.Properties().setId(key)));
+        return ITEMS.register(name, () -> factory.apply(new Item.Properties()));
     }
 
     public static void init() {

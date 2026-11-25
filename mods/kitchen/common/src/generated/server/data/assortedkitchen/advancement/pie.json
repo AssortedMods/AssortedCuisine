@@ -17,6 +17,7 @@
       "translate": "advancements.assortedkitchen.pie.description"
     },
     "icon": {
+      "count": 1,
       "id": "assortedkitchen:apple_pie"
     },
     "title": {

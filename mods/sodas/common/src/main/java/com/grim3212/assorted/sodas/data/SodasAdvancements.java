@@ -8,56 +8,45 @@ import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.DisplayInfo;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.triggers.ConsumeItemTrigger;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.advancements.triggers.InventoryChangeTrigger;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderGetter;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.ConsumeItemTrigger;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.AdvancementSubProvider;
-import net.minecraft.data.tags.TagAppender;
-import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.function.Consumer;
 
 /**
  * This part's advancements, under the Assorted Cuisine root that every part with advancements writes the same. The
  * root names only common tags, so it loads whichever parts are installed and opens on any of their food or drink.
  */
-public class SodasAdvancements extends AdvancementSubProvider {
-
-    private final HolderGetter<Item> items;
-
-    public SodasAdvancements(BootstrapContext<Advancement> output) {
-        super(output);
-        this.items = output.lookup(Registries.ITEM);
-    }
+public class SodasAdvancements implements AdvancementSubProvider {
 
     @Override
-    public void generate() {
+    public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> output) {
         // Every part writes this root the same; its icon is swapped for the first of the family's that is installed.
         AdvancementHolder root = Advancement.Builder.advancement()
-                .display(new DisplayInfo(new ItemStackTemplate(SodasItems.SODA_ORANGE.get().asItem()), Component.translatable("advancements." + Constants.FAMILY_ID + ".root.title"),
+                .display(new DisplayInfo(new ItemStack(SodasItems.SODA_ORANGE.get()), Component.translatable("advancements." + Constants.FAMILY_ID + ".root.title"),
                         Component.translatable("advancements." + Constants.FAMILY_ID + ".root.description"),
-                        Optional.of(new ClientAsset.ResourceTexture(Identifier.withDefaultNamespace("block/pumpkin_top"))), AdvancementType.TASK, false, false, false))
+                        Optional.of(ResourceLocation.withDefaultNamespace("textures/block/pumpkin_top.png")), AdvancementType.TASK, false, false, false))
                 .addCriterion("food", hasTag(SodasTags.Items.FOODS))
                 .addCriterion("drink", hasTag(SodasTags.Items.DRINKS))
                 .addCriterion("tool", hasTag(SodasTags.Items.KNIVES))
                 .requirements(AdvancementRequirements.Strategy.OR)
-                .save(this.output, Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, "root").toString());
+                .save(output, ResourceLocation.fromNamespaceAndPath(Constants.FAMILY_ID, "root").toString());
 
         AdvancementHolder soda = task("soda", root, SodasItems.SODA_CARBONATED_WATER.get())
                 .addCriterion("has_soda", hasTag(SodasTags.Items.SODAS))
-                .save(this.output, id("soda"));
+                .save(output, id("soda"));
 
         Advancement.Builder every = challenge("every_soda", soda, SodasItems.SODA_GOLDEN_APPLE.get());
         for (ItemLike flavor : new ItemLike[]{SodasItems.SODA_CARBONATED_WATER.get(), SodasItems.SODA_APPLE.get(),
@@ -66,45 +55,45 @@ public class SodasAdvancements extends AdvancementSubProvider {
                 SodasItems.SODA_MUSHROOM.get(), SodasItems.SODA_SLURM.get()}) {
             every.addCriterion("has_" + name(flavor), has(flavor));
         }
-        every.save(this.output, id("every_soda"));
+        every.save(output, id("every_soda"));
 
         // Drunk, not merely held: the whole point of this one is what it does to you.
         goal("spiked", soda, SodasItems.SODA_SPIKED_ORANGE.get())
-                .addCriterion("drank_spiked_orange", ConsumeItemTrigger.TriggerInstance.usedItem(this.items, SodasItems.SODA_SPIKED_ORANGE.get()))
-                .save(this.output, id("spiked"));
+                .addCriterion("drank_spiked_orange", ConsumeItemTrigger.TriggerInstance.usedItem(SodasItems.SODA_SPIKED_ORANGE.get()))
+                .save(output, id("spiked"));
     }
 
     /** Every part with advancements declares all three of the root's tags, empty or not, so none is ever missing. */
-    static void rootTags(Function<TagKey<Item>, TagAppender<Item>> appender) {
-        appender.apply(SodasTags.Items.FOODS);
-        appender.apply(SodasTags.Items.DRINKS);
-        appender.apply(SodasTags.Items.KNIVES);
+    static void rootTags(Consumer<TagKey<Item>> declare) {
+        declare.accept(SodasTags.Items.FOODS);
+        declare.accept(SodasTags.Items.DRINKS);
+        declare.accept(SodasTags.Items.KNIVES);
     }
 
-    private Advancement.Builder task(String name, AdvancementHolder parent, ItemLike icon) {
+    private static Advancement.Builder task(String name, AdvancementHolder parent, ItemLike icon) {
         return builder(name, parent, icon, AdvancementType.TASK);
     }
 
-    private Advancement.Builder goal(String name, AdvancementHolder parent, ItemLike icon) {
+    private static Advancement.Builder goal(String name, AdvancementHolder parent, ItemLike icon) {
         return builder(name, parent, icon, AdvancementType.GOAL);
     }
 
-    private Advancement.Builder challenge(String name, AdvancementHolder parent, ItemLike icon) {
+    private static Advancement.Builder challenge(String name, AdvancementHolder parent, ItemLike icon) {
         return builder(name, parent, icon, AdvancementType.CHALLENGE);
     }
 
-    private Advancement.Builder builder(String name, AdvancementHolder parent, ItemLike icon, AdvancementType type) {
+    private static Advancement.Builder builder(String name, AdvancementHolder parent, ItemLike icon, AdvancementType type) {
         return Advancement.Builder.advancement()
                 .parent(parent)
-                .display(icon.asItem(), title(name), description(name), type, true, true, false);
+                .display(icon, title(name), description(name), null, type, true, true, false);
     }
 
-    private Criterion<?> has(ItemLike item) {
+    private static Criterion<?> has(ItemLike item) {
         return InventoryChangeTrigger.TriggerInstance.hasItems(item);
     }
 
-    private Criterion<?> hasTag(TagKey<Item> tag) {
-        return InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(this.items, tag));
+    private static Criterion<?> hasTag(TagKey<Item> tag) {
+        return InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(tag));
     }
 
     private static String name(ItemLike item) {
@@ -120,6 +109,6 @@ public class SodasAdvancements extends AdvancementSubProvider {
     }
 
     private static String id(String name) {
-        return Identifier.fromNamespaceAndPath(Constants.MOD_ID, name).toString();
+        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name).toString();
     }
 }

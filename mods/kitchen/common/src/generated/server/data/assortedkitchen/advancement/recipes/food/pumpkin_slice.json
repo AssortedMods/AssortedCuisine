@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:pumpkin_slice"
+        "recipe": "assortedkitchen:pumpkin_slice"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

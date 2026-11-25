@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,9 +14,15 @@
     }
   ],
   "key": {
-    "A": "minecraft:sugar",
-    "B": "#c:buckets/milk",
-    "X": "assortedkitchen:cocoa_dust"
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "tag": "c:buckets/milk"
+    },
+    "X": {
+      "item": "assortedkitchen:cocoa_dust"
+    }
   },
   "pattern": [
     " X ",
@@ -23,6 +30,7 @@
     " B "
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:chocolate_bowl"
   }
 }

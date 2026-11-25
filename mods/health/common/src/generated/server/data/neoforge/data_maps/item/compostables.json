@@ -1,0 +1,10 @@
+{
+  "values": {
+    "assortedhealth:powered_sweets": {
+      "chance": 0.3
+    },
+    "assortedhealth:sweets": {
+      "chance": 0.3
+    }
+  }
+}

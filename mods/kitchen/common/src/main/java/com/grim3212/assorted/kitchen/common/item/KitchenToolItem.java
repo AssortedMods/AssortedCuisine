@@ -1,13 +1,8 @@
 package com.grim3212.assorted.kitchen.common.item;
 
 import com.grim3212.assorted.lib.annotations.LoaderImplement;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * The knife, the whisk and the mortar and pestle: tools that stay in the crafting grid and wear out a
@@ -19,24 +14,30 @@ public class KitchenToolItem extends Item {
         super(props);
     }
 
-    private @Nullable ItemStackTemplate craftingRemainder(ItemInstance stack) {
-        int damage = stack.getOrDefault(DataComponents.DAMAGE, 0) + 1;
-        int maxDamage = stack.getOrDefault(DataComponents.MAX_DAMAGE, 0);
-
-        if (maxDamage > 0 && damage >= maxDamage) {
-            return null;
+    /** The tool a point more worn, or nothing once that point would break it. */
+    private ItemStack craftingRemainder(ItemStack stack) {
+        int damage = stack.getDamageValue() + 1;
+        if (stack.getMaxDamage() > 0 && damage >= stack.getMaxDamage()) {
+            return ItemStack.EMPTY;
         }
 
-        return new ItemStackTemplate(stack.typeHolder(), 1, DataComponentPatch.builder().set(DataComponents.DAMAGE, damage).build());
+        ItemStack worn = stack.copyWithCount(1);
+        worn.setDamageValue(damage);
+        return worn;
     }
 
     @LoaderImplement(loader = LoaderImplement.Loader.FORGE, value = "IItemExtension")
-    public @Nullable ItemStackTemplate getCraftingRemainder(ItemInstance stack) {
+    public boolean hasCraftingRemainingItem(ItemStack stack) {
+        return true;
+    }
+
+    @LoaderImplement(loader = LoaderImplement.Loader.FORGE, value = "IItemExtension")
+    public ItemStack getCraftingRemainingItem(ItemStack stack) {
         return this.craftingRemainder(stack);
     }
 
     @LoaderImplement(loader = LoaderImplement.Loader.FABRIC, value = "FabricItem")
-    public @Nullable ItemStackTemplate getCraftingRemainder(ItemStack stack) {
+    public ItemStack getRecipeRemainder(ItemStack stack) {
         return this.craftingRemainder(stack);
     }
 }

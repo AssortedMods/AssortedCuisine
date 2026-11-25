@@ -4,16 +4,19 @@ import com.grim3212.assorted.health.Constants;
 import com.grim3212.assorted.lib.core.item.ItemDescription;
 import com.grim3212.assorted.lib.core.item.LibDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
 /**
@@ -22,13 +25,8 @@ import net.minecraft.world.level.Level;
  */
 public class HealingItem extends Item {
 
-    /** Long enough to be interrupted by a hit, short enough not to be annoying. */
-    public static final Consumable APPLYING = Consumable.builder()
-            .consumeSeconds(1.2F)
-            .animation(ItemUseAnimation.BRUSH)
-            .sound(SoundEvents.ARMOR_EQUIP_LEATHER)
-            .hasConsumeParticles(false)
-            .build();
+    /** Long enough to be interrupted by a hit, short enough not to be annoying: 1.2 seconds. */
+    private static final int APPLY_TICKS = 24;
 
     private final float healAmount;
 
@@ -38,13 +36,23 @@ public class HealingItem extends Item {
     }
 
     @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         // Nothing to heal means nothing is spent - the 1.12 version silently ate the item.
         if (player.getHealth() >= player.getMaxHealth()) {
-            return InteractionResult.PASS;
+            return InteractionResultHolder.pass(player.getItemInHand(hand));
         }
 
-        return super.use(level, player, hand);
+        return ItemUtils.startUsingInstantly(level, player, hand);
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BRUSH;
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
+        return APPLY_TICKS;
     }
 
     /** A hit while it is going on stops it, so it cannot be used mid fight; hurtTime counts down from the latest hit. */
@@ -55,7 +63,12 @@ public class HealingItem extends Item {
             return;
         }
 
-        super.onUseTick(level, entity, stack, ticksRemaining);
+        // Vanilla only sounds the eat and drink animations, so the rustle of the dressing is played here,
+        // every fourth tick once the first fifth of the time has passed, as vanilla paces its own.
+        int elapsed = APPLY_TICKS - ticksRemaining;
+        if (elapsed > (int) (APPLY_TICKS * 0.21875F) && ticksRemaining % 4 == 0) {
+            playApplying(entity);
+        }
     }
 
     @Override
@@ -64,7 +77,18 @@ public class HealingItem extends Item {
             entity.heal(this.healAmount);
         }
 
-        return super.finishUsingItem(stack, level, entity);
+        playApplying(entity);
+        if (entity instanceof ServerPlayer player) {
+            CriteriaTriggers.CONSUME_ITEM.trigger(player, stack);
+            player.awardStat(Stats.ITEM_USED.get(this));
+        }
+
+        stack.consume(1, entity);
+        return stack;
+    }
+
+    private static void playApplying(LivingEntity entity) {
+        entity.playSound(SoundEvents.ARMOR_EQUIP_LEATHER.value(), entity.getRandom().nextBoolean() ? 0.5F : 1.0F, (float) entity.getRandom().triangle(1.0D, 0.2D));
     }
 
     /** Half hearts as hearts, trimmed so a whole number reads as "5" rather than "5.0". */

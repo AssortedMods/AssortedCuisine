@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,15 +14,22 @@
     }
   ],
   "key": {
-    "I": "#c:foods/butter",
-    "M": "minecraft:bowl",
-    "X": "#c:eggs"
+    "I": {
+      "tag": "c:foods/butter"
+    },
+    "M": {
+      "item": "minecraft:bowl"
+    },
+    "X": {
+      "tag": "c:eggs"
+    }
   },
   "pattern": [
     "XIX",
     " M "
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:eggs_unmixed"
   }
 }

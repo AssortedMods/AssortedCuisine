@@ -14,8 +14,12 @@
     }
   ],
   "key": {
-    "W": "#c:ingots/iron",
-    "X": "#minecraft:planks"
+    "W": {
+      "tag": "c:ingots/iron"
+    },
+    "X": {
+      "tag": "minecraft:planks"
+    }
   },
   "pattern": [
     "X  ",
@@ -23,6 +27,7 @@
     "  W"
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:knife"
   }
 }

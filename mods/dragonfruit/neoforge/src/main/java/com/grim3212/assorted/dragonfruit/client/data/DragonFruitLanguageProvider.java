@@ -17,6 +17,8 @@ public class DragonFruitLanguageProvider extends LibLanguageProvider {
     @Override
     protected void addNames() {
         this.add("itemGroup.assortedcuisine", "Assorted Cuisine");
+        // The advancement root's knife tag, which this part declares and neither loader names in 1.21.1.
+        this.add("tag.item.c.tools.knife", "Knives");
 
         this.addManual();
         this.addAdvancements();

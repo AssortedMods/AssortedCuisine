@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:chocolate_molding"
+        "recipe": "assortedkitchen:chocolate_molding"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -14,8 +14,12 @@
     }
   ],
   "key": {
-    "S": "#c:rods/wooden",
-    "X": "#c:stones"
+    "S": {
+      "tag": "c:rods/wooden"
+    },
+    "X": {
+      "tag": "c:stones"
+    }
   },
   "pattern": [
     "  S",
@@ -23,6 +27,7 @@
     " X "
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:mortar_and_pestle"
   }
 }

@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:raw_chocolate_pie"
+        "recipe": "assortedkitchen:raw_chocolate_pie"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

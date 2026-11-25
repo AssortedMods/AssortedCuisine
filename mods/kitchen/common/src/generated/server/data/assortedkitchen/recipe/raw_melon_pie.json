@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,9 +14,15 @@
     }
   ],
   "key": {
-    "M": "minecraft:melon_slice",
-    "X": "#c:foods/dough",
-    "Y": "assortedkitchen:raw_empty_pie"
+    "M": {
+      "item": "minecraft:melon_slice"
+    },
+    "X": {
+      "tag": "c:foods/dough"
+    },
+    "Y": {
+      "item": "assortedkitchen:raw_empty_pie"
+    }
   },
   "pattern": [
     " X ",
@@ -23,6 +30,7 @@
     " Y "
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:raw_melon_pie"
   }
 }

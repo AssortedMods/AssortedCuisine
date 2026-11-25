@@ -189,6 +189,6 @@ final class MachineTests {
 
     private static int signal(GameTestHelper helper) {
         BlockPos pos = helper.absolutePos(CENTRE);
-        return helper.getBlockState(CENTRE).getAnalogOutputSignal(helper.getLevel(), pos, Direction.NORTH);
+        return helper.getBlockState(CENTRE).getAnalogOutputSignal(helper.getLevel(), pos);
     }
 }

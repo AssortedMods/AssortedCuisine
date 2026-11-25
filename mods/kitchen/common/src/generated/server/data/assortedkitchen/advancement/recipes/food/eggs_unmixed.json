@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:eggs_unmixed"
+        "recipe": "assortedkitchen:eggs_unmixed"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

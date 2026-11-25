@@ -12,14 +12,14 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 
@@ -39,7 +39,7 @@ public class KitchenMachineRecipeCategory implements IRecipeCategory<KitchenMach
      * three processes look the same - a block, an input, an arrow, a result - so one file serves
      * them all, including the filled arrow parked below the strip.
      */
-    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/container/cuisine_machine.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/container/cuisine_machine.png");
 
     /** The strip, and the slot and arrow positions baked into it. */
     private static final int WIDTH = 98;
@@ -56,7 +56,7 @@ public class KitchenMachineRecipeCategory implements IRecipeCategory<KitchenMach
     /** Room under the strip for the time in seconds. */
     private static final int HEIGHT = STRIP_HEIGHT + 11;
 
-    private final IRecipeType<KitchenMachineRecipe> type;
+    private final RecipeType<KitchenMachineRecipe> type;
     private final KitchenMachine machine;
     private final ItemStack station;
     private final IGuiHelper guiHelper;
@@ -67,7 +67,7 @@ public class KitchenMachineRecipeCategory implements IRecipeCategory<KitchenMach
     /** One arrow per distinct process time, so a pack's slower recipe animates at its own speed. */
     private final Map<Integer, IDrawableAnimated> arrows = new HashMap<>();
 
-    public KitchenMachineRecipeCategory(IGuiHelper guiHelper, IRecipeType<KitchenMachineRecipe> type, KitchenMachine machine, Block catalyst) {
+    public KitchenMachineRecipeCategory(IGuiHelper guiHelper, RecipeType<KitchenMachineRecipe> type, KitchenMachine machine, Block catalyst) {
         this.guiHelper = guiHelper;
         this.type = type;
         this.machine = machine;
@@ -78,7 +78,7 @@ public class KitchenMachineRecipeCategory implements IRecipeCategory<KitchenMach
     }
 
     @Override
-    public IRecipeType<KitchenMachineRecipe> getRecipeType() {
+    public RecipeType<KitchenMachineRecipe> getRecipeType() {
         return this.type;
     }
 
@@ -107,24 +107,24 @@ public class KitchenMachineRecipeCategory implements IRecipeCategory<KitchenMach
     public void setRecipe(IRecipeLayoutBuilder layout, KitchenMachineRecipe recipe, IFocusGroup focuses) {
         // The block that does the work, in its own slot on the left. Saying so in the tooltip is
         // the whole point of it being here: the page is otherwise silent about where this happens.
-        layout.addSlot(RecipeIngredientRole.CRAFTING_STATION, STATION_X, SLOT_Y)
-                .add(this.station)
+        layout.addSlot(RecipeIngredientRole.CATALYST, STATION_X, SLOT_Y)
+                .addItemStack(this.station)
                 .addRichTooltipCallback((slot, tooltip) ->
                         tooltip.add(Component.translatable("tooltip." + Constants.MOD_ID + ".made_in", this.station.getHoverName())
                                 .withStyle(ChatFormatting.GRAY)));
 
-        layout.addSlot(RecipeIngredientRole.INPUT, INPUT_X, SLOT_Y).add(recipe.getIngredient());
-        layout.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, SLOT_Y).add(recipe.getResultTemplate());
+        layout.addSlot(RecipeIngredientRole.INPUT, INPUT_X, SLOT_Y).addIngredients(recipe.getIngredient());
+        layout.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, SLOT_Y).addItemStack(recipe.getResultItem());
     }
 
     @Override
-    public void draw(KitchenMachineRecipe recipe, IRecipeSlotsView slots, GuiGraphicsExtractor graphics, double mouseX, double mouseY) {
+    public void draw(KitchenMachineRecipe recipe, IRecipeSlotsView slots, GuiGraphics graphics, double mouseX, double mouseY) {
         this.background.draw(graphics, 0, 0);
         this.arrow(recipe.getProcessTime()).draw(graphics, ARROW_X, ARROW_Y);
 
         Font font = Minecraft.getInstance().font;
         Component time = Component.translatable("gui.jei.category.smelting.time.seconds", recipe.getProcessTime() / 20);
-        graphics.text(font, time, (WIDTH - font.width(time)) / 2, STRIP_HEIGHT + 2, 0xFF808080, false);
+        graphics.drawString(font, time, (WIDTH - font.width(time)) / 2, STRIP_HEIGHT + 2, 0xFF808080, false);
     }
 
     /** The filled arrow is parked below the strip; it grows left to right over the recipe's time. */

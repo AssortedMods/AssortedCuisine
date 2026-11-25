@@ -5,12 +5,12 @@ import com.grim3212.assorted.dragonfruit.DragonFruitCommonMod;
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
 import com.grim3212.assorted.lib.conditions.LibParts;
 import com.grim3212.assorted.lib.events.LootTableModifyEvent;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 /**
  * Cactus drops dragon fruit. 1.12 did this by intercepting the harvest event; a loot pool is the
@@ -18,7 +18,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
  */
 public class LootTableHandlers {
 
-    private static final Identifier CACTUS = Identifier.withDefaultNamespace("blocks/cactus");
+    private static final ResourceLocation CACTUS = ResourceLocation.withDefaultNamespace("blocks/cactus");
 
     public static void init(LootTableModifyEvent event) {
         if (!LibParts.isEnabled(Constants.MOD_ID)) {
@@ -36,7 +36,7 @@ public class LootTableHandlers {
 
         event.getContext().addPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(DragonFruitItems.DRAGON_FRUIT.get())
-                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2))))
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
                 .when(LootItemRandomChanceCondition.randomChance((float) chance)));
     }
 }

@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,11 +14,21 @@
     }
   ],
   "key": {
-    "B": "assortedkitchen:chocolate_ball",
-    "E": "#c:eggs",
-    "S": "minecraft:sugar",
-    "W": "minecraft:wheat",
-    "X": "#c:buckets/milk"
+    "B": {
+      "item": "assortedkitchen:chocolate_ball"
+    },
+    "E": {
+      "tag": "c:eggs"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "X": {
+      "tag": "c:buckets/milk"
+    }
   },
   "pattern": [
     "BXB",
@@ -25,6 +36,7 @@
     "WWW"
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:chocolate_cake"
   }
 }

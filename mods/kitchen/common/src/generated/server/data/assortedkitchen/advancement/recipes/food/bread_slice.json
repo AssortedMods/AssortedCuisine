@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:bread_slice"
+        "recipe": "assortedkitchen:bread_slice"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

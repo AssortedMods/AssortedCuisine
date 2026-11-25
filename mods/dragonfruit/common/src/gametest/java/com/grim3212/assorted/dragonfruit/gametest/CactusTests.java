@@ -28,7 +28,7 @@ final class CactusTests {
 
     /** At the default one in three, forty breaks always turn up some dragon fruit, and every break still gives the cactus. */
     private static void brokenCactusSometimesDropsDragonFruit(GameTestHelper helper) {
-        LootTable table = helper.getLevel().getServer().reloadableRegistries().getLootTable(Blocks.CACTUS.getLootTable().orElseThrow());
+        LootTable table = helper.getLevel().getServer().reloadableRegistries().getLootTable(Blocks.CACTUS.getLootTable());
         LootParams params = new LootParams.Builder(helper.getLevel())
                 .withParameter(LootContextParams.BLOCK_STATE, Blocks.CACTUS.defaultBlockState())
                 .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(helper.absolutePos(DragonFruitTestSupport.CENTRE)))

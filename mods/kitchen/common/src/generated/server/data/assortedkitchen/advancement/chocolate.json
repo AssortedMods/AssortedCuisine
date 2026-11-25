@@ -17,6 +17,7 @@
       "translate": "advancements.assortedkitchen.chocolate.description"
     },
     "icon": {
+      "count": 1,
       "id": "assortedkitchen:chocolate_bar"
     },
     "title": {

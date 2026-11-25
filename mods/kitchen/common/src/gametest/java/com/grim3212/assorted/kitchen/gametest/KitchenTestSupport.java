@@ -5,7 +5,6 @@ import com.grim3212.assorted.kitchen.common.block.blockentity.KitchenBlockEntity
 import com.grim3212.assorted.kitchen.common.block.blockentity.KitchenMachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTestAssertException;
-import net.minecraft.network.chat.Component;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -54,7 +53,7 @@ final class KitchenTestSupport {
         BlockEntity entity = helper.getLevel().getBlockEntity(helper.absolutePos(rel));
 
         if (!(entity instanceof KitchenMachineBlockEntity machine)) {
-            throw new GameTestAssertException(Component.literal("no machine block entity at " + rel), 0);
+            throw new GameTestAssertException("no machine block entity at " + rel);
         }
 
         return machine;

@@ -10,17 +10,17 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IRecipeManager;
-import mezz.jei.api.recipe.types.IRecipeType;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +33,9 @@ import java.util.Map;
 @JeiPlugin
 public class JEIAssortedKitchen implements IModPlugin {
 
-    private static final Identifier PLUGIN_ID = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "jei");
+    private static final ResourceLocation PLUGIN_ID = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "jei");
 
-    private static final Map<KitchenMachine, IRecipeType<KitchenMachineRecipe>> TYPES = new EnumMap<>(KitchenMachine.class);
+    private static final Map<KitchenMachine, RecipeType<KitchenMachineRecipe>> TYPES = new EnumMap<>(KitchenMachine.class);
 
     /**
      * What JEI has been handed, so a later sync knows what to take back out. Only ever touched from
@@ -44,13 +44,13 @@ public class JEIAssortedKitchen implements IModPlugin {
     private static final Map<KitchenMachine, List<KitchenMachineRecipe>> SHOWN = new EnumMap<>(KitchenMachine.class);
 
     /** Replaced wholesale on each sync, so identity spots a fresh one. */
-    private static RecipeMap shownFrom = RecipeMap.EMPTY;
+    private static Collection<RecipeHolder<?>> shownFrom = SyncedRecipes.recipes();
 
     private static @Nullable IJeiRuntime runtime;
 
     static {
         for (KitchenMachine machine : KitchenMachine.values()) {
-            TYPES.put(machine, IRecipeType.create(Constants.MOD_ID, machine.getName(), KitchenMachineRecipe.class));
+            TYPES.put(machine, RecipeType.create(Constants.MOD_ID, machine.getName(), KitchenMachineRecipe.class));
             SHOWN.put(machine, List.of());
         }
 
@@ -58,7 +58,7 @@ public class JEIAssortedKitchen implements IModPlugin {
     }
 
     @Override
-    public Identifier getPluginUid() {
+    public ResourceLocation getPluginUid() {
         return PLUGIN_ID;
     }
 
@@ -72,8 +72,7 @@ public class JEIAssortedKitchen implements IModPlugin {
     }
 
     /**
-     * From {@link SyncedRecipes}: there is no recipe manager on the client, so these arrive with the
-     * login packet. They routinely arrive <em>after</em> this runs, which is why the listing is
+     * From {@link SyncedRecipes}, which every loader fills from the recipes the server sent on login. They routinely arrive <em>after</em> this runs, which is why the listing is
      * redone in {@link #onRecipesUpdated()} rather than only being read once here.
      */
     @Override
@@ -91,7 +90,7 @@ public class JEIAssortedKitchen implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         for (KitchenMachine machine : KitchenMachine.values()) {
-            registration.addCraftingStation(TYPES.get(machine), block(machine));
+            registration.addRecipeCatalysts(TYPES.get(machine), block(machine));
         }
     }
 
@@ -119,7 +118,7 @@ public class JEIAssortedKitchen implements IModPlugin {
             return;
         }
 
-        RecipeMap current = SyncedRecipes.recipes();
+        Collection<RecipeHolder<?>> current = SyncedRecipes.recipes();
 
         if (current == shownFrom) {
             return;

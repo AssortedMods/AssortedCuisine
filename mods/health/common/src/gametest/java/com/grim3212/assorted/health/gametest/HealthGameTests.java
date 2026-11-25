@@ -23,6 +23,7 @@ public final class HealthGameTests {
         MigrationTests.register(out);
         HealingTests.register(out);
         CompostTests.register(out);
+        FoodValueTests.register(out);
         FamilyTests.register(out);
         CommonTests.register(out, Constants.MOD_ID);
     }

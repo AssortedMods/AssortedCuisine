@@ -14,7 +14,9 @@
     }
   ],
   "key": {
-    "C": "assortedkitchen:cheese"
+    "C": {
+      "item": "assortedkitchen:cheese"
+    }
   },
   "pattern": [
     "CCC",
@@ -22,6 +24,7 @@
     "CCC"
   ],
   "result": {
+    "count": 1,
     "id": "assortedkitchen:cheese_block"
   }
 }

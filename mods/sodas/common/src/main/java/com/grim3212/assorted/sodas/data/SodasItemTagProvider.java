@@ -6,7 +6,6 @@ import com.grim3212.assorted.sodas.common.item.SodasItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -26,7 +25,7 @@ public class SodasItemTagProvider extends LibItemTagProvider {
         // See the other mods' providers: TagAppender only accepts ResourceKeys now.
         Function<TagKey<Item>, ItemTagger> tagger = (tag) -> new ItemTagger(appender.apply(tag));
 
-        SodasAdvancements.rootTags(appender);
+        SodasAdvancements.rootTags(appender::apply);
 
         // The broad tag, so a recipe elsewhere asking for any drink finds these.
         tagger.apply(SodasTags.Items.DRINKS)

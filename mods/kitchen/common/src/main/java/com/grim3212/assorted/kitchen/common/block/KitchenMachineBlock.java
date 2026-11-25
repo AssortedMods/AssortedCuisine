@@ -14,6 +14,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -83,18 +84,22 @@ public abstract class KitchenMachineBlock extends Block implements EntityBlock {
      * creative that destroyed it before the cheese ever came out.
      */
     @Override
-    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         return this.interact(state, level, pos, player, stack);
     }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
-        return this.interact(state, level, pos, player, ItemStack.EMPTY);
+        return this.interact(state, level, pos, player, ItemStack.EMPTY).result();
     }
 
-    private InteractionResult interact(BlockState state, Level level, BlockPos pos, Player player, ItemStack stack) {
+    /**
+     * Skipping the block's empty-hand use leaves the click to the held item; passing to it runs
+     * {@link #useWithoutItem}, which is what an item the machine does not take falls back to.
+     */
+    private ItemInteractionResult interact(BlockState state, Level level, BlockPos pos, Player player, ItemStack stack) {
         if (!(level.getBlockEntity(pos) instanceof KitchenMachineBlockEntity entity)) {
-            return InteractionResult.PASS;
+            return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
         }
 
         if (entity.hasCollectable()) {
@@ -102,15 +107,17 @@ public abstract class KitchenMachineBlock extends Block implements EntityBlock {
                 this.collect(level, pos, state, player, entity);
             }
 
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
 
         if (entity.isWorking()) {
-            return this.workOn(state, level, pos, player, entity);
+            return this.workOn(state, level, pos, player, entity).consumesAction()
+                    ? ItemInteractionResult.sidedSuccess(level.isClientSide())
+                    : ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
         }
 
         if (stack.isEmpty()) {
-            return InteractionResult.PASS;
+            return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
         }
 
         return this.load(state, level, pos, stack, entity);
@@ -125,24 +132,24 @@ public abstract class KitchenMachineBlock extends Block implements EntityBlock {
         KitchenBlocks.giveTo(player, entity.takeContainer());
 
         syncStage(level, pos, state, entity);
-        level.playSound(null, pos, state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.playSound(null, pos, this.soundType.getBreakSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
-    private InteractionResult load(BlockState state, Level level, BlockPos pos, ItemStack stack, KitchenMachineBlockEntity entity) {
+    private ItemInteractionResult load(BlockState state, Level level, BlockPos pos, ItemStack stack, KitchenMachineBlockEntity entity) {
         if (level.isClientSide()) {
-            // The client cannot see this recipe type, so it assumes a full hand is worth a try and
-            // lets the server correct it.
-            return InteractionResult.SUCCESS;
+            // The client leaves the recipe lookup to the server: it assumes a full hand is worth a
+            // try and lets the server correct it.
+            return ItemInteractionResult.SUCCESS;
         }
 
         if (!entity.fill(stack)) {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
 
         syncStage(level, pos, state, entity);
         level.playSound(null, pos, this.insertSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.CONSUME;
     }
 
     public KitchenMachine getMachine() {
@@ -171,6 +178,19 @@ public abstract class KitchenMachineBlock extends Block implements EntityBlock {
         return null;
     }
 
+    /** Spills the machine through its block entity while that still exists, but only when the block itself goes. */
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (!state.is(newState.getBlock())) {
+            if (level.getBlockEntity(pos) instanceof KitchenMachineBlockEntity entity) {
+                entity.onBlockRemoved(level, pos);
+            }
+            level.updateNeighbourForOutputSignal(pos, this);
+        }
+
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
     @Override
     protected boolean hasAnalogOutputSignal(BlockState state) {
         return true;
@@ -178,7 +198,7 @@ public abstract class KitchenMachineBlock extends Block implements EntityBlock {
 
     /** Zero while empty, then up with the work, so a comparator can wait for the cheese. */
     @Override
-    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos, Direction direction) {
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
         return state.getValue(STAGE);
     }
 

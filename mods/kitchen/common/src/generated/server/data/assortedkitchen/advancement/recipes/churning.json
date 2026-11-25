@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:churning"
+        "recipe": "assortedkitchen:churning"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

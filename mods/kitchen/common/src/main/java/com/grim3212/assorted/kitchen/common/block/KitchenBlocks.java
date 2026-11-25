@@ -5,13 +5,11 @@ import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.util.Prediction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -33,7 +31,7 @@ public class KitchenBlocks {
 
     public static final IRegistryObject<ChocolateBarMoldBlock> CHOCOLATE_BAR_MOLD = register("chocolate_bar_mold", props -> new ChocolateBarMoldBlock(props.mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.0F).noOcclusion()));
     public static final IRegistryObject<Block> CHOCOLATE_BLOCK = register("chocolate_block", props -> new Block(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(1.0F)));
-    public static final IRegistryObject<KitchenCakeBlock> CHOCOLATE_CAKE = register("chocolate_cake", props -> new KitchenCakeBlock(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.POPPED)));
+    public static final IRegistryObject<KitchenCakeBlock> CHOCOLATE_CAKE = register("chocolate_cake", props -> new KitchenCakeBlock(props.mapColor(MapColor.DIRT).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.DESTROY)));
 
     public static final IRegistryObject<KitchenCakeBlock> APPLE_PIE = registerPie("apple_pie");
     public static final IRegistryObject<KitchenCakeBlock> MELON_PIE = registerPie("melon_pie");
@@ -43,16 +41,16 @@ public class KitchenBlocks {
 
     /** The mold was spelled chocolate_bar_mould in Assorted Cuisine 1.x. */
     static {
-        Identifier mold = CHOCOLATE_BAR_MOLD.getId();
+        ResourceLocation mold = CHOCOLATE_BAR_MOLD.getId();
         for (String namespace : List.of(Constants.FAMILY_ID, Constants.MOD_ID)) {
-            Identifier mould = Identifier.fromNamespaceAndPath(namespace, "chocolate_bar_mould");
+            ResourceLocation mould = ResourceLocation.fromNamespaceAndPath(namespace, "chocolate_bar_mould");
             Services.REGISTRY_FACTORY.alias(Registries.BLOCK, mould, mold);
             Services.REGISTRY_FACTORY.alias(Registries.ITEM, mould, mold);
         }
     }
 
     private static IRegistryObject<KitchenCakeBlock> registerPie(String name) {
-        return register(name, props -> new KitchenCakeBlock(props.mapColor(MapColor.SAND).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.POPPED)));
+        return register(name, props -> new KitchenCakeBlock(props.mapColor(MapColor.SAND).sound(SoundType.WOOL).strength(0.5F).pushReaction(PushReaction.DESTROY)));
     }
 
     /**
@@ -62,23 +60,18 @@ public class KitchenBlocks {
      */
     public static void giveTo(Player player, ItemStack stack) {
         if (!stack.isEmpty()) {
-            // The click has already swung the arm on the client, so the swing a full inventory's drop makes is predicted.
-            player.getInventory().placeItemBackInInventory(stack, Prediction.PREDICTED);
+            player.getInventory().placeItemBackInInventory(stack);
         }
     }
 
     private static <T extends Block> IRegistryObject<T> register(String name, Function<BlockBehaviour.Properties, ? extends T> factory) {
-        // Since 1.21.2 every block has to know its own id before it is constructed, so the
-        // properties are built here where the registration name is known.
-        final ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, name));
-        IRegistryObject<T> ret = BLOCKS.register(name, () -> factory.apply(BlockBehaviour.Properties.of().setId(key)));
+        IRegistryObject<T> ret = BLOCKS.register(name, () -> factory.apply(BlockBehaviour.Properties.of()));
         ITEMS.register(name, item(name, ret));
         return ret;
     }
 
     private static Supplier<BlockItem> item(final String name, final IRegistryObject<? extends Block> block) {
-        final ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Constants.MOD_ID, name));
-        return () -> new BlockItem(block.get(), new Item.Properties().useBlockDescriptionPrefix().setId(key));
+        return () -> new BlockItem(block.get(), new Item.Properties());
     }
 
     public static void init() {

@@ -9,7 +9,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedhealth:healthpack"
+        "recipe": "assortedhealth:healthpack"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

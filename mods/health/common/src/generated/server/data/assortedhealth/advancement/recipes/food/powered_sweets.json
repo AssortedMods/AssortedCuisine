@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedhealth:powered_sweets"
+        "recipe": "assortedhealth:powered_sweets"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

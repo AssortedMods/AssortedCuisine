@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedkitchen:eggs_cooked_smelting"
+        "recipe": "assortedkitchen:eggs_cooked_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

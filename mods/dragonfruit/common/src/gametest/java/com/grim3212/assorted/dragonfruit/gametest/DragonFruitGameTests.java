@@ -22,6 +22,7 @@ public final class DragonFruitGameTests {
         AliasTests.register(out);
         MigrationTests.register(out);
         CompostTests.register(out);
+        FoodValueTests.register(out);
         CactusTests.register(out);
         FamilyTests.register(out);
         CommonTests.register(out, Constants.MOD_ID);

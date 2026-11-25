@@ -4,20 +4,19 @@ import com.grim3212.assorted.dragonfruit.Constants;
 import com.grim3212.assorted.dragonfruit.api.DragonFruitTags;
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
 import com.grim3212.assorted.lib.core.conditions.ConditionalRecipeProvider;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Recipe;
+
+import java.util.concurrent.CompletableFuture;
 
 public class DragonFruitRecipes extends ConditionalRecipeProvider {
 
-    public DragonFruitRecipes(BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
-        super(recipes, advancements, Constants.MOD_ID);
+    public DragonFruitRecipes(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, Constants.MOD_ID);
     }
 
     @Override
@@ -33,15 +32,12 @@ public class DragonFruitRecipes extends ConditionalRecipeProvider {
     public void buildRecipes() {
         super.buildRecipes();
 
-        ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.FOOD, DragonFruitItems.DRAGON_FRUIT.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DragonFruitItems.DRAGON_FRUIT.get())
                 .requires(Items.CACTUS).requires(DragonFruitTags.Items.KNIVES)
                 .unlockedBy("has_knife", has(DragonFruitTags.Items.KNIVES)).save(this.output, key("dragon_fruit"));
     }
 
-    /**
-     * Recipes are addressed by {@code ResourceKey<Recipe<?>>} rather than a raw id now.
-     */
-    private static ResourceKey<Recipe<?>> key(String path) {
-        return ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(Constants.MOD_ID, path));
+    private static ResourceLocation key(String path) {
+        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path);
     }
 }

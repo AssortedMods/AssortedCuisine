@@ -4,8 +4,8 @@ import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
 import com.grim3212.assorted.lib.crafting.CompostChances;
 
 /**
- * Dragon fruit is food, so it belongs in a composter. Called from common init: the chance is a component on the item,
- * set as the item is made.
+ * Dragon fruit is food, so it belongs in a composter. Called from common init: Fabric registers the chance as
+ * the mod loads, and NeoForge datagen writes it into the {@code neoforge:compostables} data map.
  */
 public class DragonFruitCompostables {
 

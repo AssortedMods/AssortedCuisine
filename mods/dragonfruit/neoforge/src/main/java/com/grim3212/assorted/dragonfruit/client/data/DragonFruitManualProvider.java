@@ -4,7 +4,7 @@ import com.grim3212.assorted.dragonfruit.Constants;
 import com.grim3212.assorted.dragonfruit.common.item.DragonFruitItems;
 import com.grim3212.assorted.lib.data.LibManualProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 /**
  * This part's chapter of the Assorted Cuisine section, which every part shares; the explicit chapter order keeps
@@ -24,7 +24,7 @@ public class DragonFruitManualProvider extends LibManualProvider {
     }
 
     /** The Grim Pack screenshots under {@code textures/gui/manual}, cropped and sized to leave room for the text. */
-    private static Identifier picture(String name) {
-        return Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/manual/" + name + ".png");
+    private static ResourceLocation picture(String name) {
+        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/manual/" + name + ".png");
     }
 }

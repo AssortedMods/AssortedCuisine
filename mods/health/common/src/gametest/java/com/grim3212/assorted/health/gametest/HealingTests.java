@@ -38,7 +38,7 @@ final class HealingTests {
         player.getMainHandItem().use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
         helper.assertTrue(player.isUsingItem(), "the health pack was not being applied");
 
-        player.hurtServer(helper.getLevel(), helper.getLevel().damageSources().generic(), 1.0F);
+        player.hurt(helper.getLevel().damageSources().generic(), 1.0F);
         // The player's own tick runs this, which a test player is not given.
         player.getUseItem().onUseTick(helper.getLevel(), player, player.getUseItemRemainingTicks());
         helper.assertFalse(player.isUsingItem(), "a hit did not stop the health pack being applied");
@@ -50,7 +50,7 @@ final class HealingTests {
         ServerPlayer player = hurtPlayer(helper, new ItemStack(HealthItems.BANDAGE.get(), 2));
         ItemStack stack = player.getMainHandItem();
 
-        InteractionResult result = stack.use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        InteractionResult result = stack.use(helper.getLevel(), player, InteractionHand.MAIN_HAND).getResult();
         helper.assertTrue(result.consumesAction(), "the bandage was not used");
         helper.assertTrue(player.isUsingItem(), "the bandage healed without being applied");
         helper.assertTrue(player.getUseItemRemainingTicks() > 0, "the bandage takes no time to apply");
@@ -61,7 +61,7 @@ final class HealingTests {
         ServerPlayer player = survivalPlayer(helper, new ItemStack(HealthItems.BANDAGE.get()));
         player.setHealth(player.getMaxHealth());
 
-        InteractionResult result = player.getMainHandItem().use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        InteractionResult result = player.getMainHandItem().use(helper.getLevel(), player, InteractionHand.MAIN_HAND).getResult();
         helper.assertFalse(result.consumesAction(), "a bandage was spent at full health");
         helper.assertTrue(player.getMainHandItem().getCount() == 1, "a bandage was consumed at full health");
         helper.succeed();

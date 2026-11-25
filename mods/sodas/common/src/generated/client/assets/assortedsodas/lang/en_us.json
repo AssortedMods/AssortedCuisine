@@ -31,6 +31,7 @@
   "manual.assortedcuisine.description": "Cocoa, chocolate, dairy and everything else this mod gives you to cook, bottle and eat.",
   "manual.assortedcuisine.title": "Assorted Cuisine",
   "tag.item.assortedsodas.sodas": "Sodas",
+  "tag.item.c.tools.knife": "Knives",
   "tooltip.assortedsodas.hurts": "Costs %s hearts",
   "tooltip.assortedsodas.restores": "Restores %s hearts"
 }

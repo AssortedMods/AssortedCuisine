@@ -1,0 +1,79 @@
+{
+  "values": {
+    "assortedkitchen:apple_pie": {
+      "chance": 1.0
+    },
+    "assortedkitchen:bread_slice": {
+      "chance": 0.5
+    },
+    "assortedkitchen:butter": {
+      "chance": 0.65
+    },
+    "assortedkitchen:cheese": {
+      "chance": 0.65
+    },
+    "assortedkitchen:cheese_block": {
+      "chance": 1.0
+    },
+    "assortedkitchen:cheese_burger": {
+      "chance": 0.65
+    },
+    "assortedkitchen:chocolate_ball": {
+      "chance": 0.5
+    },
+    "assortedkitchen:chocolate_bar": {
+      "chance": 0.5
+    },
+    "assortedkitchen:chocolate_bar_wrapped": {
+      "chance": 0.5
+    },
+    "assortedkitchen:chocolate_cake": {
+      "chance": 1.0
+    },
+    "assortedkitchen:chocolate_pie": {
+      "chance": 1.0
+    },
+    "assortedkitchen:cocoa_dust": {
+      "chance": 0.3
+    },
+    "assortedkitchen:dough": {
+      "chance": 0.5
+    },
+    "assortedkitchen:eggs_cooked": {
+      "chance": 0.65
+    },
+    "assortedkitchen:hot_cheese": {
+      "chance": 0.65
+    },
+    "assortedkitchen:melon_pie": {
+      "chance": 1.0
+    },
+    "assortedkitchen:pork_pie": {
+      "chance": 1.0
+    },
+    "assortedkitchen:pumpkin_pie": {
+      "chance": 1.0
+    },
+    "assortedkitchen:pumpkin_slice": {
+      "chance": 0.5
+    },
+    "assortedkitchen:raw_apple_pie": {
+      "chance": 0.85
+    },
+    "assortedkitchen:raw_chocolate_pie": {
+      "chance": 0.85
+    },
+    "assortedkitchen:raw_empty_pie": {
+      "chance": 0.85
+    },
+    "assortedkitchen:raw_melon_pie": {
+      "chance": 0.85
+    },
+    "assortedkitchen:raw_pork_pie": {
+      "chance": 0.85
+    },
+    "assortedkitchen:raw_pumpkin_pie": {
+      "chance": 0.85
+    }
+  }
+}
