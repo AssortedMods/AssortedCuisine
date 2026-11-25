@@ -21,6 +21,7 @@ public final class KitchenGameTests {
         SmokeTests.register(out);
         MachineTests.register(out);
         CompostTests.register(out);
+        FoodValueTests.register(out);
         AutomationTests.register(out);
         RecipeTests.register(out);
         KitchenToolTests.register(out);

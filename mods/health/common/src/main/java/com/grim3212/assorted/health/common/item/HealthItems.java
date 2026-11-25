@@ -28,8 +28,13 @@ public class HealthItems {
         return register(name, props -> new HealingItem(healAmount, props.stacksTo(stackSize).component(DataComponents.CONSUMABLE, HealingItem.APPLYING)));
     }
 
-    private static IRegistryObject<Item> food(String name, int nutrition, float saturation) {
-        return register(name, props -> new Item(props.food(new FoodProperties(nutrition, saturation, false))));
+    private static IRegistryObject<Item> food(String name, int nutrition, float saturationModifier) {
+        return register(name, props -> new Item(props.food(meal(nutrition, saturationModifier))));
+    }
+
+    /** Saturation is written as vanilla writes it, as a modifier: the food restores nutrition x modifier x 2. */
+    private static FoodProperties meal(int nutrition, float saturationModifier) {
+        return new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturationModifier).build();
     }
 
     private static <T extends Item> IRegistryObject<T> register(final String name, final Function<Item.Properties, ? extends T> factory) {

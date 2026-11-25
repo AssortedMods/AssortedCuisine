@@ -66,8 +66,8 @@ public class KitchenItems {
      * being drunk, and the chocolate mold takes the bowl from a recipe-shaped path rather than from
      * an eating animation.
      */
-    private static Item.Properties drink(Item.Properties props, int nutrition, float saturation) {
-        return props.food(new FoodProperties(nutrition, saturation, false), Consumables.defaultDrink().build())
+    private static Item.Properties drink(Item.Properties props, int nutrition, float saturationModifier) {
+        return props.food(meal(nutrition, saturationModifier), Consumables.defaultDrink().build())
                 .usingConvertsTo(Items.BOWL);
     }
 
@@ -79,12 +79,17 @@ public class KitchenItems {
         return food(name, 2, 0.3F, RAW_PASTRY);
     }
 
-    private static IRegistryObject<Item> food(String name, int nutrition, float saturation) {
-        return register(name, props -> new Item(props.food(new FoodProperties(nutrition, saturation, false))));
+    private static IRegistryObject<Item> food(String name, int nutrition, float saturationModifier) {
+        return register(name, props -> new Item(props.food(meal(nutrition, saturationModifier))));
     }
 
-    private static IRegistryObject<Item> food(String name, int nutrition, float saturation, Consumable consumable) {
-        return register(name, props -> new Item(props.food(new FoodProperties(nutrition, saturation, false), consumable)));
+    private static IRegistryObject<Item> food(String name, int nutrition, float saturationModifier, Consumable consumable) {
+        return register(name, props -> new Item(props.food(meal(nutrition, saturationModifier), consumable)));
+    }
+
+    /** Saturation is written as vanilla writes it, as a modifier: the food restores nutrition x modifier x 2. */
+    private static FoodProperties meal(int nutrition, float saturationModifier) {
+        return new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturationModifier).build();
     }
 
     private static <T extends Item> IRegistryObject<T> register(final String name, final Function<Item.Properties, ? extends T> factory) {

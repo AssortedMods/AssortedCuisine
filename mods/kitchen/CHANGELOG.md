@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.1
+
+- Every food and drink now gives the saturation its food value was written for, as vanilla food does. They were being given a fraction of it: a cheese burger gave 0.95 and now gives 22.8, cooked eggs gave 0.8 and now give 16
+- The hunger each food restores is unchanged
+
 ## 2.0.0
 
 Updated to Minecraft 26.3, for NeoForge and Fabric.

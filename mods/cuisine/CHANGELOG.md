@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.1
+
+- Includes Assorted Kitchen 2.0.1, Assorted Health 2.0.1 and Assorted Dragon Fruit 2.0.1, so every food and
+  drink gives the saturation its food value was written for instead of a fraction of it
+
 ## 3.0.0
 
 Updated to Minecraft 26.3, for NeoForge and Fabric.

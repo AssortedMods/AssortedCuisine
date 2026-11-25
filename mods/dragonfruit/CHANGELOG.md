@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Dragon fruit now gives the saturation its food value was written for, 2.4 instead of 0.3. It was being given a fraction of it
+
 ## 2.0.0
 
 Updated to Minecraft 26.3, for NeoForge and Fabric.
